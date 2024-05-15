@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+import UIKit
+
+struct Restaurant{
+    var restImage : String = ""
+    var restName : String
+    var restWaitingTime : Int
+    var usage : String
+    
+    
+}
+
