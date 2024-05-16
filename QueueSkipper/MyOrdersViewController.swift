@@ -8,6 +8,13 @@
 import UIKit
 
 class MyOrdersViewController: UIViewController {
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.tabBarItem.title = "My Orders"
+        self.tabBarItem.image = UIImage(systemName: "bag")
+        self.tabBarItem.selectedImage = UIImage(systemName: "bag.fill")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

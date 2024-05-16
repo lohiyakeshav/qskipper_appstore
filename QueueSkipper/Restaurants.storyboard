@@ -1,30 +1,209 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7x5-nP-ICM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="s0d-6b-0kx">
+        <!--Galgotias University-->
+        <scene sceneID="66y-HH-PB0">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <tableViewController id="nIm-0D-4n2" customClass="RestaurantTableViewController" customModule="QueueSkipper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="fGg-Cj-4Wh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Search Restaurants" id="wJK-zB-lk8">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="nIm-0D-4n2" id="P3R-b8-MFj"/>
+                            </connections>
+                        </searchBar>
+                        <sections>
+                            <tableViewSection id="Qr9-hS-DMo">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="279" id="tpL-at-E4R" customClass="RestaurantListTableViewCell" customModule="QueueSkipper" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="94" width="393" height="279"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tpL-at-E4R" id="2Ln-s4-55N">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="279"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zmu-Bc-Cfx">
+                                                    <rect key="frame" x="10" y="5" width="373" height="198"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5T-80-ZVi">
+                                                    <rect key="frame" x="10" y="208" width="178" height="23"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cuisine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pzt-jA-LSQ">
+                                                    <rect key="frame" x="327" y="208" width="56" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="FAx-o2-SQe"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLa-Bg-2fT">
+                                                    <rect key="frame" x="20" y="237" width="0.0" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sNi-Ux-zGJ">
+                                                    <rect key="frame" x="10" y="237" width="20" height="23"/>
+                                                    <color key="tintColor" systemColor="systemGreenColor"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Waiting Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-qD-J5Y">
+                                                    <rect key="frame" x="40" y="236" width="149" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iRn-qD-J5Y" firstAttribute="baseline" secondItem="sNi-Ux-zGJ" secondAttribute="firstBaseline" id="37W-ph-hCP"/>
+                                                <constraint firstItem="iRn-qD-J5Y" firstAttribute="leading" secondItem="sNi-Ux-zGJ" secondAttribute="trailing" constant="10" id="4tw-bb-Hoi"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Pzt-jA-LSQ" secondAttribute="bottom" constant="39" id="9A7-lo-kEq"/>
+                                                <constraint firstItem="BLa-Bg-2fT" firstAttribute="leading" secondItem="2Ln-s4-55N" secondAttribute="leadingMargin" id="9RK-e7-T2V"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="iRn-qD-J5Y" secondAttribute="bottom" constant="10" id="BYH-r0-phq"/>
+                                                <constraint firstItem="zmu-Bc-Cfx" firstAttribute="top" secondItem="2Ln-s4-55N" secondAttribute="top" constant="5" id="DgD-ZD-JcZ"/>
+                                                <constraint firstItem="Pzt-jA-LSQ" firstAttribute="top" secondItem="zmu-Bc-Cfx" secondAttribute="bottom" constant="5" id="FQg-eu-GJs"/>
+                                                <constraint firstItem="sNi-Ux-zGJ" firstAttribute="centerX" secondItem="BLa-Bg-2fT" secondAttribute="centerX" id="Hhl-f1-TKa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="BLa-Bg-2fT" secondAttribute="bottom" constant="31" id="Jgy-EP-0Nh"/>
+                                                <constraint firstItem="sNi-Ux-zGJ" firstAttribute="top" secondItem="k5T-80-ZVi" secondAttribute="bottom" constant="5" id="K6u-Ku-ppc"/>
+                                                <constraint firstItem="zmu-Bc-Cfx" firstAttribute="leading" secondItem="2Ln-s4-55N" secondAttribute="leading" constant="10" id="VDp-YS-reD"/>
+                                                <constraint firstAttribute="trailing" secondItem="zmu-Bc-Cfx" secondAttribute="trailing" constant="10" id="Y6J-Nd-Cb3"/>
+                                                <constraint firstItem="iRn-qD-J5Y" firstAttribute="top" secondItem="k5T-80-ZVi" secondAttribute="bottom" constant="5" id="bcV-Z6-0ZL"/>
+                                                <constraint firstItem="k5T-80-ZVi" firstAttribute="top" secondItem="zmu-Bc-Cfx" secondAttribute="bottom" constant="5" id="iGb-jI-ush"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="sNi-Ux-zGJ" secondAttribute="bottom" constant="7.6666666666666856" id="jnz-Xe-d9a"/>
+                                                <constraint firstItem="k5T-80-ZVi" firstAttribute="leading" secondItem="2Ln-s4-55N" secondAttribute="leading" constant="10" id="o4h-ak-79e"/>
+                                                <constraint firstItem="sNi-Ux-zGJ" firstAttribute="leading" secondItem="2Ln-s4-55N" secondAttribute="leading" constant="10" id="rqG-sW-OZY"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pzt-jA-LSQ" secondAttribute="trailing" constant="10" id="t3j-1f-Uw9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Galgotias University" largeTitleDisplayMode="never" id="1GK-GO-Mcz">
+                        <barButtonItem key="rightBarButtonItem" image="location" catalog="system" id="Ugs-dh-3lz"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2r-MU-lTD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="892" y="808"/>
+        </scene>
+        <!--PR Live Foods-->
+        <scene sceneID="uGF-Yp-i3o">
+            <objects>
+                <viewController id="geu-2t-jxS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tUP-G4-EtM">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ad3-rH-Kzp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="PR Live Foods" largeTitleDisplayMode="always" id="F1Z-sz-Oes"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xRi-PC-XH3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1650" y="808"/>
+        </scene>
+        <!--Menu-->
+        <scene sceneID="2Gp-8I-fK6">
+            <objects>
+                <navigationController id="MgV-KK-D0j" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Menu" image="list.bullet" catalog="system" selectedImage="list.bullet" id="Tkd-RZ-31b"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="iTg-ow-aAx">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nIm-0D-4n2" kind="relationship" relationship="rootViewController" id="80a-JQ-Wzl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KvN-9a-eKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="143" y="808"/>
+        </scene>
+        <!--Favourites-->
+        <scene sceneID="MRe-13-cDI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Favourites" id="jOU-PU-eO3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favourites" image="star" catalog="system" selectedImage="star.fill" id="T5G-EJ-HVb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wxe-vh-C7n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1009" y="1229"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="pUu-6Q-fKB">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="7x5-nP-ICM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qrr-x7-dFb">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <tabBarAppearance key="scrollEdgeAppearance"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="MgV-KK-D0j" kind="relationship" relationship="viewControllers" id="CZk-Aw-DxY"/>
+                        <segue destination="jOU-PU-eO3" kind="relationship" relationship="viewControllers" id="oSK-VT-m9N"/>
+                        <segue destination="VxU-Ud-yiS" kind="relationship" relationship="viewControllers" id="VHc-Ys-JSK"/>
+                        <segue destination="kF7-CG-dJk" kind="relationship" relationship="viewControllers" id="YOE-hI-Xkv"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X4z-zi-Sde" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-598" y="808"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="ecQ-VC-mvV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="kF7-CG-dJk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.crop.circle" catalog="system" selectedImage="person.crop.circle.fill" id="Z2n-jU-KTk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="19U-K6-ukF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-150" y="1229"/>
+        </scene>
+        <!--MyOrders-->
+        <scene sceneID="WCG-6P-dvl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyOrders" id="VxU-Ud-yiS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Orders" image="bag" catalog="system" selectedImage="bag.fill" id="cDk-re-viM"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qyc-zg-RmP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-600" y="1229"/>
         </scene>
     </scenes>
     <resources>
+        <image name="bag" catalog="system" width="128" height="128"/>
+        <image name="bag.fill" catalog="system" width="128" height="128"/>
+        <image name="clock.fill" catalog="system" width="128" height="123"/>
+        <image name="list.bullet" catalog="system" width="128" height="87"/>
+        <image name="location" catalog="system" width="128" height="119"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
+        <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

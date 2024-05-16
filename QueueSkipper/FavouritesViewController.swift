@@ -8,9 +8,17 @@
 import UIKit
 
 class FavouritesViewController: UIViewController {
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.tabBarItem.title = "Favourites"
+        self.tabBarItem.image = UIImage(systemName: "heart")
+        self.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
     }
