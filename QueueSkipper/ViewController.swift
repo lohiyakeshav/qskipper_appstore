@@ -10,9 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
-    
-
+    //Ayush
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
