@@ -1,13 +1,13 @@
 //
-//  FavouritesTableViewController.swift
+//  RestaurantTableViewController.swift
 //  QueueSkipper
 //
-//  Created by ayush yadav on 08/05/24.
+//  Created by Batch-2 on 16/05/24.
 //
 
 import UIKit
 
-class FavouritesTableViewController: UITableViewController {
+class RestaurantTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
