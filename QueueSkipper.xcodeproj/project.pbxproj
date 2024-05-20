@@ -19,6 +19,8 @@
 		05AFDB8E2BF6115C00878F68 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AFDB8D2BF6115C00878F68 /* Profile.storyboard */; };
 		05AFDB902BF6166A00878F68 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDB8F2BF6166A00878F68 /* ProfileViewController.swift */; };
 		05AFDB942BF616A700878F68 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDB932BF616A700878F68 /* FavouritesViewController.swift */; };
+		05C8CFB82BFB5FAF00279977 /* RestaurantDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05C8CFB72BFB5FAF00279977 /* RestaurantDetails.xib */; };
+		05C8CFBA2BFB63F300279977 /* RestaurantDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C8CFB92BFB63F300279977 /* RestaurantDetailsCollectionViewCell.swift */; };
 		05C93BC82BDF4CCA0035FA61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C93BC72BDF4CCA0035FA61 /* AppDelegate.swift */; };
 		05C93BCA2BDF4CCA0035FA61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C93BC92BDF4CCA0035FA61 /* SceneDelegate.swift */; };
 		05C93BCC2BDF4CCA0035FA61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C93BCB2BDF4CCA0035FA61 /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 		05AFDB8D2BF6115C00878F68 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		05AFDB8F2BF6166A00878F68 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		05AFDB932BF616A700878F68 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		05C8CFB72BFB5FAF00279977 /* RestaurantDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantDetails.xib; sourceTree = "<group>"; };
+		05C8CFB92BFB63F300279977 /* RestaurantDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		05C93BC42BDF4CCA0035FA61 /* QueueSkipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QueueSkipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C93BC72BDF4CCA0035FA61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05C93BC92BDF4CCA0035FA61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 			children = (
 				05C93BC72BDF4CCA0035FA61 /* AppDelegate.swift */,
 				05E4608C2BF4D33600E0108C /* Restaurant.swift */,
+				05C8CFB72BFB5FAF00279977 /* RestaurantDetails.xib */,
+				05C8CFB92BFB63F300279977 /* RestaurantDetailsCollectionViewCell.swift */,
 				05C93BC92BDF4CCA0035FA61 /* SceneDelegate.swift */,
 				05C93BCB2BDF4CCA0035FA61 /* ViewController.swift */,
 				05C93BCD2BDF4CCA0035FA61 /* Main.storyboard */,
@@ -167,6 +173,7 @@
 				05AFDB8C2BF6105F00878F68 /* Restaurants.storyboard in Resources */,
 				05AFDB882BF60FB500878F68 /* Favourites.storyboard in Resources */,
 				05AFDB8A2BF6100A00878F68 /* MyOrders.storyboard in Resources */,
+				05C8CFB82BFB5FAF00279977 /* RestaurantDetails.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +191,7 @@
 				0598D6F32BF716CE00425F46 /* MyOrdersTableViewController.swift in Sources */,
 				05C93BCA2BDF4CCA0035FA61 /* SceneDelegate.swift in Sources */,
 				052977312BF627D6001C6679 /* RestaurantListTableViewCell.swift in Sources */,
+				05C8CFBA2BFB63F300279977 /* RestaurantDetailsCollectionViewCell.swift in Sources */,
 				05AFDB942BF616A700878F68 /* FavouritesViewController.swift in Sources */,
 				05A7EF9F2BF61A5F0064E909 /* RestaurantTableViewController.swift in Sources */,
 				0598D6F72BF71AA400425F46 /* OrdersTableViewCell.swift in Sources */,
