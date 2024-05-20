@@ -14,7 +14,15 @@ struct Restaurant{
     var restName : String
     var restWaitingTime : Int
     var cuisine : String
-    
+    var dish: [Dish]
+  
     
 }
+struct Dish {
+    var image: String
+    var name: String
+    var description: String
+    var price: Int
+}
+
 

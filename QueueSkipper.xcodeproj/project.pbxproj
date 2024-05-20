@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		052977312BF627D6001C6679 /* RestaurantListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052977302BF627D6001C6679 /* RestaurantListTableViewCell.swift */; };
+		0574093B2BF72316000303B2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574093A2BF72316000303B2 /* MenuViewController.swift */; };
 		0598D6F32BF716CE00425F46 /* MyOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */; };
 		05A7EF9F2BF61A5F0064E909 /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7EF9E2BF61A5F0064E909 /* RestaurantTableViewController.swift */; };
 		05AFDB882BF60FB500878F68 /* Favourites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AFDB872BF60FB500878F68 /* Favourites.storyboard */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		052977302BF627D6001C6679 /* RestaurantListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListTableViewCell.swift; sourceTree = "<group>"; };
+		0574093A2BF72316000303B2 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersTableViewController.swift; sourceTree = "<group>"; };
 		05A7EF9E2BF61A5F0064E909 /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
 		05AFDB872BF60FB500878F68 /* Favourites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favourites.storyboard; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				05C93BCB2BDF4CCA0035FA61 /* ViewController.swift */,
 				05C93BCD2BDF4CCA0035FA61 /* Main.storyboard */,
 				05AFDB8B2BF6105F00878F68 /* Restaurants.storyboard */,
+				0574093A2BF72316000303B2 /* MenuViewController.swift */,
 				052977302BF627D6001C6679 /* RestaurantListTableViewCell.swift */,
 				05A7EF9E2BF61A5F0064E909 /* RestaurantTableViewController.swift */,
 				05AFDB8D2BF6115C00878F68 /* Profile.storyboard */,
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05C93BCC2BDF4CCA0035FA61 /* ViewController.swift in Sources */,
+				0574093B2BF72316000303B2 /* MenuViewController.swift in Sources */,
 				05C93BC82BDF4CCA0035FA61 /* AppDelegate.swift in Sources */,
 				05AFDB902BF6166A00878F68 /* ProfileViewController.swift in Sources */,
 				0598D6F32BF716CE00425F46 /* MyOrdersTableViewController.swift in Sources */,
