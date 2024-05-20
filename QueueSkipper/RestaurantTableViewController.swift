@@ -12,11 +12,9 @@ class RestaurantTableViewController: UITableViewController {
     
     var restaurant : [Restaurant] = [
         
-        
-        Restaurant(restImage: "big_1", restName: "PR Live Food", restWaitingTime: 25, cuisine: "Indian"),
-        Restaurant(restImage: "big_2", restName: "PR Live Food", restWaitingTime: 30, cuisine: "Indian"),
-        Restaurant(restImage: "big_3", restName: "PR Live Food", restWaitingTime: 30, cuisine: "Indian"),
-        Restaurant(restImage: "big_4", restName: "PR Live Food", restWaitingTime: 25, cuisine: "Indian")
+        Restaurant(restImage: "big_1", restName: "PR Live Foods", restWaitingTime: 10, cuisine: "North Indian", dish: [Dish(image: "big_2", name: "Samosa", description: "Indian Food", price: 150), Dish(image: "big_3", name: "Bread Pakora", description: "Bread Dish", price: 75)]),
+        Restaurant(restImage: "big_2", restName: "Bistro House", restWaitingTime: 10, cuisine: "Fast Food", dish: [Dish(image: "big_3", name: "Pizza", description: "Italian Food", price: 150), Dish(image: "big_1", name: "Burger", description: "Bread Dish", price: 75)]),
+        Restaurant(restImage: "big_3", restName: "Doctor Dosa", restWaitingTime: 10, cuisine: "South Indian", dish: [Dish(image: "big_2", name: "Dosa", description: "South Indian Food", price: 150), Dish(image: "big_1", name: "Idli Sambhar", description: "Rice Dish", price: 75)])
 
     ]
 
@@ -57,6 +55,17 @@ class RestaurantTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         300
     }
+    
+    @IBSegueAction func restaurantMenu(_ coder: NSCoder, sender: Any?) -> MenuViewController? {
+        if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+            
+            let rest = restaurant[indexPath.row]
+            return MenuViewController(coder: coder, restaurant: rest)
+        }
+        return nil
+    }
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
