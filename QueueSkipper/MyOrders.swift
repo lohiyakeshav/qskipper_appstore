@@ -15,5 +15,6 @@ struct Order {
     var items: [(name: String, quantity: Int)]
     var prepTimeRemaining: Int
     var bookingDate: Date
+    var rating: Int?
 }
 

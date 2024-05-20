@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,34 +39,6 @@
                                                 <color key="baseForegroundColor" systemColor="systemGreenColor"/>
                                             </buttonConfiguration>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" fixedFrame="YES" text="Items" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InH-nW-H5m">
-                                            <rect key="frame" x="20" y="86" width="46" height="20.333333333333314"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ordered On" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acL-ue-XSR">
-                                            <rect key="frame" x="20" y="184" width="109" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="Date and Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhW-Q1-Bgm">
-                                            <rect key="frame" x="20" y="227" width="181" height="33"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" fixedFrame="YES" text="Ordered Items" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGy-Fb-yNc">
-                                            <rect key="frame" x="16" y="107" width="189" height="54"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2e-6I-YFr">
                                             <rect key="frame" x="297" y="24" width="75" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -80,7 +53,89 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" fixedFrame="YES" text="Items" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InH-nW-H5m">
+                                            <rect key="frame" x="20" y="86" width="46" height="20.333333333333314"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" fixedFrame="YES" text="Ordered Items" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGy-Fb-yNc">
+                                            <rect key="frame" x="20" y="107" width="189" height="54"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ordered On" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acL-ue-XSR">
+                                            <rect key="frame" x="20" y="184" width="94.666666666666629" height="34.333333333333314"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="Date and Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhW-Q1-Bgm">
+                                            <rect key="frame" x="20" y="225" width="189" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-25" translatesAutoresizingMaskIntoConstraints="NO" id="YbH-p5-90I">
+                                            <rect key="frame" x="251.66666666666663" y="225" width="130" height="34.333333333333314"/>
+                                            <subviews>
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdC-Y1-Qw3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="46" height="34.333333333333336"/>
+                                                    <buttonConfiguration key="configuration" style="plain">
+                                                        <imageReference key="image" image="star" catalog="system" symbolScale="medium"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="starButtonTapped:" destination="vQT-Ha-plr" eventType="touchUpInside" id="5VL-WT-3Od"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dq-yB-CJZ">
+                                                    <rect key="frame" x="21.000000000000028" y="0.0" width="46" height="34.333333333333336"/>
+                                                    <buttonConfiguration key="configuration" style="plain">
+                                                        <imageReference key="image" image="star" catalog="system" symbolScale="medium"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="starButtonTapped:" destination="vQT-Ha-plr" eventType="touchUpInside" id="RnJ-Ca-rei"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeA-JF-YUU">
+                                                    <rect key="frame" x="42.000000000000028" y="0.0" width="46" height="34.333333333333336"/>
+                                                    <buttonConfiguration key="configuration" style="plain">
+                                                        <imageReference key="image" image="star" catalog="system" symbolScale="medium"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="starButtonTapped:" destination="vQT-Ha-plr" eventType="touchUpInside" id="dWY-gB-flF"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GeG-J0-UNf">
+                                                    <rect key="frame" x="63.000000000000028" y="0.0" width="46" height="34.333333333333336"/>
+                                                    <buttonConfiguration key="configuration" style="plain">
+                                                        <imageReference key="image" image="star" catalog="system" symbolScale="medium"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="starButtonTapped:" destination="vQT-Ha-plr" eventType="touchUpInside" id="3Gm-yc-0r1"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vl0-1d-EDu">
+                                                    <rect key="frame" x="84.000000000000028" y="0.0" width="46" height="34.333333333333336"/>
+                                                    <buttonConfiguration key="configuration" style="plain">
+                                                        <imageReference key="image" image="star" catalog="system" symbolScale="medium"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="starButtonTapped:" destination="vQT-Ha-plr" eventType="touchUpInside" id="o50-pY-tK9"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="YbH-p5-90I" firstAttribute="centerX" secondItem="OnL-F2-4eg" secondAttribute="centerX" constant="120" id="8N6-Zo-QFL"/>
+                                        <constraint firstItem="YbH-p5-90I" firstAttribute="centerY" secondItem="OnL-F2-4eg" secondAttribute="centerY" constant="100" id="rDE-86-RiZ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="OrderBookedLabel" destination="dhW-Q1-Bgm" id="7cW-8W-0xe"/>
@@ -89,6 +144,11 @@
                                     <outlet property="OrderPrepTimeLabel" destination="rE3-m4-JDD" id="tra-Fg-xkM"/>
                                     <outlet property="OrderPriceLabel" destination="K2e-6I-YFr" id="l16-pR-RSL"/>
                                     <outlet property="OrderStatus" destination="Tog-tu-3kW" id="w41-2W-hAR"/>
+                                    <outlet property="starButton1" destination="DdC-Y1-Qw3" id="oOl-t7-Ytd"/>
+                                    <outlet property="starButton2" destination="0dq-yB-CJZ" id="f1X-R2-b76"/>
+                                    <outlet property="starButton3" destination="NeA-JF-YUU" id="vzQ-Qf-Wwf"/>
+                                    <outlet property="starButton4" destination="GeG-J0-UNf" id="UEw-rf-om3"/>
+                                    <outlet property="starButton5" destination="vl0-1d-EDu" id="MO5-1r-dus"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -121,6 +181,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
