@@ -27,12 +27,11 @@ class OrdersTableViewCell: UITableViewCell {
     
     
     
-    
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,13 +41,14 @@ class OrdersTableViewCell: UITableViewCell {
     }
     
     func configureCell(for order: Order) {
+        isHighlighted = false
         OrderIdLabel.text = "Order#\(order.id)"
         OrderStatus.setTitle(order.status, for: .normal)
         
         
         if order.status == "Completed" {
-            backgroundColor = .lightGray
-            OrderStatus.backgroundColor = .lightGray
+            backgroundColor = .systemGray4
+            OrderStatus.backgroundColor = .systemGray4
             OrderStatus.configuration?.baseForegroundColor = .black
             OrderPrepTimeLabel.isHidden = true
             showRatingStars()

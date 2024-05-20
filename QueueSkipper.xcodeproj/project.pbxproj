@@ -17,7 +17,6 @@
 		05AFDB8A2BF6100A00878F68 /* MyOrders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AFDB892BF6100A00878F68 /* MyOrders.storyboard */; };
 		05AFDB8C2BF6105F00878F68 /* Restaurants.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AFDB8B2BF6105F00878F68 /* Restaurants.storyboard */; };
 		05AFDB8E2BF6115C00878F68 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AFDB8D2BF6115C00878F68 /* Profile.storyboard */; };
-		05AFDB902BF6166A00878F68 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDB8F2BF6166A00878F68 /* ProfileViewController.swift */; };
 		05AFDB942BF616A700878F68 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDB932BF616A700878F68 /* FavouritesViewController.swift */; };
 		05C93BC82BDF4CCA0035FA61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C93BC72BDF4CCA0035FA61 /* AppDelegate.swift */; };
 		05C93BCA2BDF4CCA0035FA61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C93BC92BDF4CCA0035FA61 /* SceneDelegate.swift */; };
@@ -25,6 +24,8 @@
 		05C93BCF2BDF4CCA0035FA61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05C93BCD2BDF4CCA0035FA61 /* Main.storyboard */; };
 		05C93BD12BDF4CCB0035FA61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05C93BD02BDF4CCB0035FA61 /* Assets.xcassets */; };
 		05E4608D2BF4D33600E0108C /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E4608C2BF4D33600E0108C /* Restaurant.swift */; };
+		72B54F772BFB63FE0050DD7F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B54F762BFB63FE0050DD7F /* ProfileViewController.swift */; };
+		72B54F792BFB65610050DD7F /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B54F782BFB65610050DD7F /* ProfileTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +39,6 @@
 		05AFDB892BF6100A00878F68 /* MyOrders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyOrders.storyboard; sourceTree = "<group>"; };
 		05AFDB8B2BF6105F00878F68 /* Restaurants.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Restaurants.storyboard; sourceTree = "<group>"; };
 		05AFDB8D2BF6115C00878F68 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		05AFDB8F2BF6166A00878F68 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		05AFDB932BF616A700878F68 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		05C93BC42BDF4CCA0035FA61 /* QueueSkipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QueueSkipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C93BC72BDF4CCA0035FA61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +48,9 @@
 		05C93BD02BDF4CCB0035FA61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05C93BD52BDF4CCB0035FA61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05E4608C2BF4D33600E0108C /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		72255ACC2BFB575500CDFD89 /* QueueSkipper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QueueSkipper-Bridging-Header.h"; sourceTree = "<group>"; };
+		72B54F762BFB63FE0050DD7F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		72B54F782BFB65610050DD7F /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +93,8 @@
 				052977302BF627D6001C6679 /* RestaurantListTableViewCell.swift */,
 				05A7EF9E2BF61A5F0064E909 /* RestaurantTableViewController.swift */,
 				05AFDB8D2BF6115C00878F68 /* Profile.storyboard */,
-				05AFDB8F2BF6166A00878F68 /* ProfileViewController.swift */,
+				72B54F762BFB63FE0050DD7F /* ProfileViewController.swift */,
+				72B54F782BFB65610050DD7F /* ProfileTableViewController.swift */,
 				05AFDB892BF6100A00878F68 /* MyOrders.storyboard */,
 				0598D6F82BF7207C00425F46 /* MyOrders.swift */,
 				0598D6F62BF71AA400425F46 /* OrdersTableViewCell.swift */,
@@ -99,6 +103,7 @@
 				05AFDB932BF616A700878F68 /* FavouritesViewController.swift */,
 				05C93BD02BDF4CCB0035FA61 /* Assets.xcassets */,
 				05C93BD52BDF4CCB0035FA61 /* Info.plist */,
+				72255ACC2BFB575500CDFD89 /* QueueSkipper-Bridging-Header.h */,
 			);
 			path = QueueSkipper;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 				TargetAttributes = {
 					05C93BC32BDF4CCA0035FA61 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -180,13 +186,14 @@
 				05C93BCC2BDF4CCA0035FA61 /* ViewController.swift in Sources */,
 				0574093B2BF72316000303B2 /* MenuViewController.swift in Sources */,
 				05C93BC82BDF4CCA0035FA61 /* AppDelegate.swift in Sources */,
-				05AFDB902BF6166A00878F68 /* ProfileViewController.swift in Sources */,
 				0598D6F32BF716CE00425F46 /* MyOrdersTableViewController.swift in Sources */,
 				05C93BCA2BDF4CCA0035FA61 /* SceneDelegate.swift in Sources */,
 				052977312BF627D6001C6679 /* RestaurantListTableViewCell.swift in Sources */,
 				05AFDB942BF616A700878F68 /* FavouritesViewController.swift in Sources */,
 				05A7EF9F2BF61A5F0064E909 /* RestaurantTableViewController.swift in Sources */,
+				72B54F792BFB65610050DD7F /* ProfileTableViewController.swift in Sources */,
 				0598D6F72BF71AA400425F46 /* OrdersTableViewCell.swift in Sources */,
+				72B54F772BFB63FE0050DD7F /* ProfileViewController.swift in Sources */,
 				05E4608D2BF4D33600E0108C /* Restaurant.swift in Sources */,
 				0598D6F92BF7207C00425F46 /* MyOrders.swift in Sources */,
 			);
@@ -330,8 +337,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P533CX5FTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueueSkipper/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -344,9 +353,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lohiyakeshav.QueueSkipper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vinyak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "QueueSkipper/QueueSkipper-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -357,8 +368,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P533CX5FTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueueSkipper/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -371,9 +384,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lohiyakeshav.QueueSkipper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vinyak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "QueueSkipper/QueueSkipper-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
