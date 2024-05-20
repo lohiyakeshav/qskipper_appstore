@@ -50,6 +50,12 @@ class MyOrdersTableViewController: UITableViewController {
         let order = orders[indexPath.row]
         cell.OrderIdLabel.text = "Order#\(order.id)"
         cell.OrderStatus.setTitle("\(order.status)", for: .normal)
+//        var grey = UIColor(red: 211, green: 211, blue: 211, alpha: 1.0)
+        if (order.status == "Completed"){
+            cell.backgroundColor = .lightGray
+            cell.OrderStatus.backgroundColor = .lightGray
+            cell.OrderStatus.configuration?.baseForegroundColor = .black
+        }
         cell.OrderPriceLabel.text = String(format: " \u{20b9}%.2f", order.price)
         //cell.OrderItemsLabel.text = order.items.joined(separator: "\n")
         
@@ -86,7 +92,7 @@ class MyOrdersTableViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
+        270
     }
     
     
