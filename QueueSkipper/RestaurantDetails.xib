@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RestaurantDetails" id="Hsp-so-tOC" customClass="RestaurantDetailsCollectionViewCell" customModule="QueueSkipper" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eF0-t2-a76">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9z-bR-ZJ9">
+                        <rect key="frame" x="10" y="10" width="373" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Ratings: 4.3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVF-ck-Ttu">
+                        <rect key="frame" x="10" y="41" width="91" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="clock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Iom-CC-hyA">
+                        <rect key="frame" x="111" y="42" width="20" height="21"/>
+                        <color key="tintColor" systemColor="systemGreenColor"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBz-fg-kMk">
+                        <rect key="frame" x="141" y="41" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Z0-8O-f9f">
+                        <rect key="frame" x="10" y="72" width="81" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Pge-4O-7Id"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="tinted" title="🥦 Veg" cornerStyle="medium"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Tl-yA-92U">
+                        <rect key="frame" x="101" y="72" width="118" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="kSW-X5-7zm"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="tinted" title="🍗 Non-veg" cornerStyle="medium"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="d9z-bR-ZJ9" firstAttribute="top" secondItem="eF0-t2-a76" secondAttribute="top" constant="10" id="7Cq-r4-nem"/>
+                    <constraint firstItem="d9z-bR-ZJ9" firstAttribute="leading" secondItem="eF0-t2-a76" secondAttribute="leading" constant="10" id="83O-zY-5Wg"/>
+                    <constraint firstItem="nVF-ck-Ttu" firstAttribute="top" secondItem="d9z-bR-ZJ9" secondAttribute="bottom" constant="10" id="8V0-Zh-VNC"/>
+                    <constraint firstItem="7Z0-8O-f9f" firstAttribute="leading" secondItem="eF0-t2-a76" secondAttribute="leading" constant="10" id="SAe-k6-1SW"/>
+                    <constraint firstAttribute="trailing" secondItem="d9z-bR-ZJ9" secondAttribute="trailing" constant="10" id="U2r-Y3-FlV"/>
+                    <constraint firstItem="xBz-fg-kMk" firstAttribute="leading" secondItem="Iom-CC-hyA" secondAttribute="trailing" constant="10" id="fg9-zX-OCR"/>
+                    <constraint firstItem="xBz-fg-kMk" firstAttribute="top" secondItem="d9z-bR-ZJ9" secondAttribute="bottom" constant="10" id="gZS-46-8JT"/>
+                    <constraint firstItem="1Tl-yA-92U" firstAttribute="leading" secondItem="7Z0-8O-f9f" secondAttribute="trailing" constant="10" id="i7e-IO-62a"/>
+                    <constraint firstItem="1Tl-yA-92U" firstAttribute="top" secondItem="xBz-fg-kMk" secondAttribute="bottom" constant="10" id="lOF-YP-TQ2"/>
+                    <constraint firstItem="nVF-ck-Ttu" firstAttribute="leading" secondItem="eF0-t2-a76" secondAttribute="leading" constant="10" id="mwl-ZU-7nw"/>
+                    <constraint firstItem="Iom-CC-hyA" firstAttribute="leading" secondItem="nVF-ck-Ttu" secondAttribute="trailing" constant="10" id="ova-dM-JNO"/>
+                    <constraint firstItem="Iom-CC-hyA" firstAttribute="top" secondItem="d9z-bR-ZJ9" secondAttribute="bottom" constant="10" id="uRK-5h-pTu"/>
+                    <constraint firstItem="7Z0-8O-f9f" firstAttribute="top" secondItem="nVF-ck-Ttu" secondAttribute="bottom" constant="10" id="wzS-oC-wo2"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <connections>
+                <outlet property="cuisineLabel" destination="d9z-bR-ZJ9" id="Hlb-ZD-sGN"/>
+                <outlet property="ratingsLabel" destination="nVF-ck-Ttu" id="u3g-qe-k4H"/>
+                <outlet property="waitingTimeLabel" destination="xBz-fg-kMk" id="6ZR-pn-5ie"/>
+            </connections>
+            <point key="canvasLocation" x="17" y="-32"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="clock.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
