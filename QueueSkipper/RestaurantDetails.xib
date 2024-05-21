@@ -40,17 +40,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Z0-8O-f9f">
-                        <rect key="frame" x="10" y="72" width="81" height="21"/>
+                        <rect key="frame" x="10" y="72" width="81" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Pge-4O-7Id"/>
+                            <constraint firstAttribute="height" constant="25" id="Vdt-Aq-yQZ"/>
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="tinted" title="🥦 Veg" cornerStyle="medium"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Tl-yA-92U">
-                        <rect key="frame" x="101" y="72" width="118" height="21"/>
+                        <rect key="frame" x="101" y="72" width="118" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="kSW-X5-7zm"/>
+                            <constraint firstAttribute="height" constant="25" id="gac-hx-DSF"/>
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="tinted" title="🍗 Non-veg" cornerStyle="medium"/>
@@ -83,7 +83,7 @@
     <resources>
         <image name="clock.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
