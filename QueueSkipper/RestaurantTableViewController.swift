@@ -51,9 +51,9 @@ class RestaurantTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        300
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        300
+//    }
     
     @IBSegueAction func restaurantMenu(_ coder: NSCoder, sender: Any?) -> MenuViewController? {
         if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {

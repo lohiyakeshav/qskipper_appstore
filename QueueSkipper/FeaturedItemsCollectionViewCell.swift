@@ -9,4 +9,12 @@ import UIKit
 
 class FeaturedItemsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet var dishImageLabel: UIImageView!
+    
+    @IBOutlet var dishNameLabel: UILabel!
+    
+    
+    @IBOutlet var dishRatingLabel: UILabel!
+    
+    
 }
