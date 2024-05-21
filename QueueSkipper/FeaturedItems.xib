@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="key-Pa-zSq" customClass="FeaturedItemsCollectionViewCell" customModule="QueueSkipper" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="190" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7xx-BK-mbW">
+                <rect key="frame" x="0.0" y="0.0" width="190" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big_4" translatesAutoresizingMaskIntoConstraints="NO" id="gbg-P5-hbR">
+                        <rect key="frame" x="10" y="2" width="170" height="150"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="170" id="Gk8-3T-26T"/>
+                            <constraint firstAttribute="height" constant="150" id="eDl-oX-Np9"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xoz-6j-FvZ">
+                        <rect key="frame" x="69" y="162" width="52" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vb1-wj-RS2">
+                        <rect key="frame" x="10" y="127" width="59" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="YI1-Df-Esl"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="filled" title="ADD">
+                            <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                        </buttonConfiguration>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ztr-PF-RcN">
+                        <rect key="frame" x="156" y="130.66666666666666" width="22" height="18"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" systemColor="groupTableViewBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Xoz-6j-FvZ" firstAttribute="centerX" secondItem="7xx-BK-mbW" secondAttribute="centerX" id="DNp-5V-IYg"/>
+                    <constraint firstItem="gbg-P5-hbR" firstAttribute="top" secondItem="7xx-BK-mbW" secondAttribute="top" constant="2" id="FS5-L2-CnU"/>
+                    <constraint firstItem="gbg-P5-hbR" firstAttribute="centerX" secondItem="7xx-BK-mbW" secondAttribute="centerX" id="TkM-uU-vcU"/>
+                    <constraint firstItem="Ztr-PF-RcN" firstAttribute="leading" secondItem="vb1-wj-RS2" secondAttribute="trailing" constant="87" id="VSO-hv-gJh"/>
+                    <constraint firstItem="Ztr-PF-RcN" firstAttribute="centerY" secondItem="vb1-wj-RS2" secondAttribute="centerY" id="e8U-qj-rps"/>
+                    <constraint firstItem="Xoz-6j-FvZ" firstAttribute="top" secondItem="gbg-P5-hbR" secondAttribute="bottom" constant="10" id="ocS-Fi-I4b"/>
+                    <constraint firstItem="vb1-wj-RS2" firstAttribute="bottom" secondItem="gbg-P5-hbR" secondAttribute="bottom" id="swS-RR-1r1"/>
+                    <constraint firstItem="vb1-wj-RS2" firstAttribute="leading" secondItem="gbg-P5-hbR" secondAttribute="leading" id="ul0-km-gEE"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <connections>
+                <outlet property="dishImageLabel" destination="gbg-P5-hbR" id="Faa-sa-FVw"/>
+                <outlet property="dishNameLabel" destination="Xoz-6j-FvZ" id="MOi-qL-pHw"/>
+                <outlet property="dishRatingLabel" destination="Ztr-PF-RcN" id="7s6-H7-9iw"/>
+            </connections>
+            <point key="canvasLocation" x="48.091603053435115" y="-154.22535211267606"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="big_4" width="1340" height="740"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

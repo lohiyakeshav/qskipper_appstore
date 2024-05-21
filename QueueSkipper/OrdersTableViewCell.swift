@@ -24,7 +24,7 @@ class OrdersTableViewCell: UITableViewCell {
     @IBOutlet var starButton5: UIButton!
     
     var ratingChanged: ((Int) -> Void)?
-    
+
     
     
 
@@ -41,14 +41,21 @@ class OrdersTableViewCell: UITableViewCell {
     }
     
     func configureCell(for order: Order) {
+
         isHighlighted = false
+
         OrderIdLabel.text = "Order#\(order.id)"
         OrderStatus.setTitle(order.status, for: .normal)
         
         
         if order.status == "Completed" {
+
             backgroundColor = .systemGray4
             OrderStatus.backgroundColor = .systemGray4
+
+            backgroundColor = .lightGray
+            OrderStatus.backgroundColor = .lightGray
+
             OrderStatus.configuration?.baseForegroundColor = .black
             OrderPrepTimeLabel.isHidden = true
             showRatingStars()

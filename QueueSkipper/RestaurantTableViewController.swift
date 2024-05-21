@@ -12,10 +12,9 @@ class RestaurantTableViewController: UITableViewController {
     
     var restaurant : [Restaurant] = [
         
-        Restaurant(restImage: "big_1", restName: "PR Live Foods", restWaitingTime: 10, cuisine: "North Indian", dish: [Dish(image: "big_2", name: "Samosa", description: "Indian Food", price: 150), Dish(image: "big_3", name: "Bread Pakora", description: "Bread Dish", price: 75)]),
-        Restaurant(restImage: "big_2", restName: "Bistro House", restWaitingTime: 10, cuisine: "Fast Food", dish: [Dish(image: "big_3", name: "Pizza", description: "Italian Food", price: 150), Dish(image: "big_1", name: "Burger", description: "Bread Dish", price: 75)]),
-        Restaurant(restImage: "big_3", restName: "Doctor Dosa", restWaitingTime: 10, cuisine: "South Indian", dish: [Dish(image: "big_2", name: "Dosa", description: "South Indian Food", price: 150), Dish(image: "big_1", name: "Idli Sambhar", description: "Rice Dish", price: 75)])
-
+        Restaurant(restImage: "big_1", restName: "PR Live Foods", restWaitingTime: 10, cuisine: "North Indian", dish: [Dish(image: "big_2", name: "Samosa", description: "Potato Dish", price: 17, rating: 4.1, foodType: "Veg", favourites: true), Dish(image: "big_3", name: "Bread Pakora", description: "Indian Bread Dish", price: 30, rating: 3.6, foodType: "Veg", favourites: false), Dish(image: "big_2", name: "Samosa", description: "Potato Dish", price: 17, rating: 4.1, foodType: "Veg", favourites: true), Dish(image: "big_3", name: "Bread Pakora", description: "Indian Bread Dish", price: 30, rating: 3.6, foodType: "Veg", favourites: false),Dish(image: "big_2", name: "Samosa", description: "Potato Dish", price: 17, rating: 4.1, foodType: "Veg", favourites: true), Dish(image: "big_3", name: "Bread Pakora", description: "Indian Bread Dish", price: 30, rating: 3.6, foodType: "Veg", favourites: false)], rating: 4.3),
+        Restaurant(restImage: "big_2", restName: "Bistro House", restWaitingTime: 10, cuisine: "Fast Food", dish: [Dish(image: "big_3", name: "Pizza", description: "Italian Dish", price: 120, rating: 4.0, foodType: "Veg", favourites: true), Dish(image: "big_1", name: "Omelete", description: "Egg Dish", price: 50, rating: 3.4, foodType: "Non-Veg", favourites: false)], rating: 4.0),
+        Restaurant(restImage: "big_3", restName: "Doctor Dosa", restWaitingTime: 10, cuisine: "South Indian", dish: [Dish(image: "big_1", name: "Dosa", description: "South Indian Food", price: 80, rating: 3.9, foodType: "Veg", favourites: true), Dish(image: "big_2", name: "Idli Sambhar", description: "Rice Dish", price: 70, rating: 3.2, foodType: "Veg", favourites: false)], rating: 3.7)
     ]
 
     override func viewDidLoad() {
@@ -52,14 +51,15 @@ class RestaurantTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        300
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        300
+//    }
     
     @IBSegueAction func restaurantMenu(_ coder: NSCoder, sender: Any?) -> MenuViewController? {
         if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
             
             let rest = restaurant[indexPath.row]
+            print(rest)
             return MenuViewController(coder: coder, restaurant: rest)
         }
         return nil
