@@ -16,4 +16,6 @@ class RestaurantDetailsCollectionViewCell: UICollectionViewCell {
     @IBOutlet var waitingTimeLabel: UILabel!
     
     
+    
+    
 }

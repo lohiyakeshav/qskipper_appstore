@@ -36,10 +36,10 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             return 1
         case 1:
             //return Menu.featuredItems.count
-            return 4
+            return restaurant.dish.count
         case 2:
             //return Menu.dish.count
-            return 5
+            return restaurant.dish.count
         default:
             return 0
         }
@@ -48,13 +48,23 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantDetails", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantDetails", for: indexPath) as! RestaurantDetailsCollectionViewCell
+            cell.cuisineLabel.text = restaurant.cuisine
+            cell.ratingsLabel.text = "Rating: \(restaurant.rating)"
+            cell.waitingTimeLabel.text = "\(restaurant.restWaitingTime) Mins"
             return cell
         case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedItems", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedItems", for: indexPath) as! FeaturedItemsCollectionViewCell
+            cell.dishImageLabel.image = UIImage(named: restaurant.dish[indexPath.row].image)
+            cell.dishNameLabel.text = restaurant.dish[indexPath.row].name
+            cell.dishRatingLabel.text = "\(restaurant.dish[indexPath.row].rating)"
             return cell
         case 2:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Menu", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Menu", for: indexPath) as! MenuCollectionViewCell
+            cell.dishImage.image = UIImage(named: restaurant.dish[indexPath.row].image)
+            cell.dishName.text = restaurant.dish[indexPath.row].name
+            cell.dishRating.text = "\(restaurant.dish[indexPath.row].rating)"
+            cell.dishDescription.text = restaurant.dish[indexPath.row].description
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantDetails", for: indexPath)
@@ -77,7 +87,9 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(generateLayout(), animated: true)
+       
     }
+    
     
     func generateLayout() ->UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout{
