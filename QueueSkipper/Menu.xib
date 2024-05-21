@@ -18,14 +18,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big_1" translatesAutoresizingMaskIntoConstraints="NO" id="cki-nP-nRd">
-                        <rect key="frame" x="16" y="15" width="120" height="120"/>
+                        <rect key="frame" x="16" y="15" width="130" height="120"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="120" id="Oh9-Uw-93h"/>
+                            <constraint firstAttribute="width" constant="130" id="FW5-AW-khq"/>
                             <constraint firstAttribute="height" constant="120" id="PVS-Rf-anf"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dish Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQL-Cn-pJN">
-                        <rect key="frame" x="153" y="15" width="83" height="21"/>
+                        <rect key="frame" x="153" y="15" width="183" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
