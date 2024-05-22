@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct FavouriteDish {
+    var dish: [Dish]
+    
+    init(dish: [Dish] = []) {
+        self.dish = dish
+    }
+}
