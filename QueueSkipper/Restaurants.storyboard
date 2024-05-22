@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7x5-nP-ICM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -96,7 +96,9 @@
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" title="Galgotias University" largeTitleDisplayMode="never" id="1GK-GO-Mcz">
-                        <barButtonItem key="rightBarButtonItem" image="location" catalog="system" id="Ugs-dh-3lz"/>
+                        <barButtonItem key="rightBarButtonItem" image="location" catalog="system" id="Ugs-dh-3lz">
+                            <color key="tintColor" systemColor="systemGreenColor"/>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2r-MU-lTD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -187,6 +189,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemGreenColor"/>
                         <tabBarAppearance key="scrollEdgeAppearance"/>
                     </tabBar>
                     <connections>
