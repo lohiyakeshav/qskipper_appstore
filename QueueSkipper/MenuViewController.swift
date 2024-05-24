@@ -7,17 +7,19 @@
 
 import UIKit
 
+
 class MenuViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    var restaurant: Restaurant
+    
 
     
-    var restaurant: Restaurant
-   
-    
+    var restaurantSelected: Restaurant
     
     @IBOutlet var collectionView: UICollectionView!
     
     
-    init?(coder: NSCoder, restaurant: Restaurant) {
+    init?(coder: NSCoder, restaurantSelected: Restaurant, restaurant: Restaurant) {
+        self.restaurantSelected = restaurantSelected
         self.restaurant = restaurant
         super.init(coder: coder)
     }
@@ -36,10 +38,10 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             return 1
         case 1:
             //return Menu.featuredItems.count
-            return restaurant.dish.count
+            return restaurantSelected.dish.count
         case 2:
             //return Menu.dish.count
-            return restaurant.dish.count
+            return restaurantSelected.dish.count
         default:
             return 0
         }
@@ -49,22 +51,30 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         switch indexPath.section {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantDetails", for: indexPath) as! RestaurantDetailsCollectionViewCell
-            cell.cuisineLabel.text = restaurant.cuisine
-            cell.ratingsLabel.text = "Rating: \(restaurant.rating)"
-            cell.waitingTimeLabel.text = "\(restaurant.restWaitingTime) Mins"
+            cell.cuisineLabel.text = restaurantSelected.cuisine
+            cell.ratingsLabel.text = "Rating: \(restaurantSelected.rating)"
+            cell.waitingTimeLabel.text = "\(restaurantSelected.restWaitingTime) Mins"
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedItems", for: indexPath) as! FeaturedItemsCollectionViewCell
-            cell.dishImageLabel.image = UIImage(named: restaurant.dish[indexPath.row].image)
-            cell.dishNameLabel.text = restaurant.dish[indexPath.row].name
-            cell.dishRatingLabel.text = "\(restaurant.dish[indexPath.row].rating)"
+            cell.dishImageLabel.image = UIImage(named: restaurantSelected.dish[indexPath.row].image)
+            cell.dishNameLabel.text = restaurantSelected.dish[indexPath.row].name
+            cell.dishRatingLabel.text = "\(restaurantSelected.dish[indexPath.row].rating)"
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Menu", for: indexPath) as! MenuCollectionViewCell
-            cell.dishImage.image = UIImage(named: restaurant.dish[indexPath.row].image)
-            cell.dishName.text = restaurant.dish[indexPath.row].name
-            cell.dishRating.text = "\(restaurant.dish[indexPath.row].rating)"
-            cell.dishDescription.text = restaurant.dish[indexPath.row].description
+            cell.dishImage.image = UIImage(named: restaurantSelected.dish[indexPath.row].image)
+            cell.dishName.text = restaurantSelected.dish[indexPath.row].name
+            cell.dishRating.text = "\(restaurantSelected.dish[indexPath.row].rating)"
+            cell.dishDescription.text = restaurantSelected.dish[indexPath.row].description
+            cell.dish = restaurantSelected.dish[indexPath.row]
+            //cell.index = indexPath.row
+            for dishinFavourite in favouriteDish {
+                if restaurantSelected.dish[indexPath.row] == dishinFavourite {
+                    cell.addToFavourites.isSelected = true
+                }
+            }
+            
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantDetails", for: indexPath)
@@ -75,7 +85,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = restaurant.restName
+        self.navigationItem.title = restaurantSelected.restName
 
         let restaurantDetailNib = UINib(nibName: "RestaurantDetails", bundle: nil)
         collectionView.register(restaurantDetailNib, forCellWithReuseIdentifier: "RestaurantDetails")
@@ -90,7 +100,11 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //collectionView.reloadData()
+    }
     
+  
     func generateLayout() ->UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout{
             (section, env) -> NSCollectionLayoutSection? in
@@ -130,6 +144,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         return layout
     }
 
+    
     /*
     // MARK: - Navigation
 
