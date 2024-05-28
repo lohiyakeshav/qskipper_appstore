@@ -9,24 +9,22 @@ import UIKit
 
 
 class MenuViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    var restaurant: Restaurant
     
 
     
-    var restaurantSelected: Restaurant
+    var restaurantSelected = Restaurant()
     
     @IBOutlet var collectionView: UICollectionView!
     
     
-    init?(coder: NSCoder, restaurantSelected: Restaurant, restaurant: Restaurant) {
-        self.restaurantSelected = restaurantSelected
-        self.restaurant = restaurant
-        super.init(coder: coder)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init?(coder: NSCoder, restaurantSelected: Restaurant) {
+//        self.restaurantSelected = restaurantSelected
+//        super.init(coder: coder)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
@@ -38,10 +36,10 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             return 1
         case 1:
             //return Menu.featuredItems.count
-            return restaurantSelected.dish.count
+            return featuredMenu.count
         case 2:
             //return Menu.dish.count
-            return restaurantSelected.dish.count
+            return dish.count
         default:
             return 0
         }
@@ -57,20 +55,20 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedItems", for: indexPath) as! FeaturedItemsCollectionViewCell
-            cell.dishImageLabel.image = UIImage(named: restaurantSelected.dish[indexPath.row].image)
-            cell.dishNameLabel.text = restaurantSelected.dish[indexPath.row].name
-            cell.dishRatingLabel.text = "\(restaurantSelected.dish[indexPath.row].rating)"
+            cell.dishImageLabel.image = UIImage(named: featuredMenu[indexPath.row].image)
+            cell.dishNameLabel.text = featuredMenu[indexPath.row].name
+            cell.dishRatingLabel.text = "\(featuredMenu[indexPath.row].rating)"
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Menu", for: indexPath) as! MenuCollectionViewCell
-            cell.dishImage.image = UIImage(named: restaurantSelected.dish[indexPath.row].image)
-            cell.dishName.text = restaurantSelected.dish[indexPath.row].name
-            cell.dishRating.text = "\(restaurantSelected.dish[indexPath.row].rating)"
-            cell.dishDescription.text = restaurantSelected.dish[indexPath.row].description
-            cell.dish = restaurantSelected.dish[indexPath.row]
+            cell.dishImage.image = UIImage(named: dish[indexPath.row].image)
+            cell.dishName.text = dish[indexPath.row].name
+            cell.dishRating.text = "\(dish[indexPath.row].rating)"
+            cell.dishDescription.text = dish[indexPath.row].description
+            cell.dish = dish[indexPath.row]
             //cell.index = indexPath.row
             for dishinFavourite in favouriteDish {
-                if restaurantSelected.dish[indexPath.row] == dishinFavourite {
+                if dish[indexPath.row] == dishinFavourite {
                     cell.addToFavourites.isSelected = true
                 }
             }
@@ -86,6 +84,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = restaurantSelected.restName
+        
 
         let restaurantDetailNib = UINib(nibName: "RestaurantDetails", bundle: nil)
         collectionView.register(restaurantDetailNib, forCellWithReuseIdentifier: "RestaurantDetails")
@@ -93,58 +92,100 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         collectionView.register(featuredItemNib, forCellWithReuseIdentifier: "FeaturedItems")
         let menuNib = UINib(nibName: "Menu", bundle: nil)
         collectionView.register(menuNib, forCellWithReuseIdentifier: "Menu")
+        
+        collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView")
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(generateLayout(), animated: true)
-       
+        let button: UIBarButtonItem = {
+            let button = UIBarButtonItem(image: UIImage(systemName: "cart"), style:.plain, target: nil, action: #selector(cartButtonTapped))
+                
+                return button
+            }()
+        self.navigationItem.rightBarButtonItem = button
     }
+    
+    @objc func cartButtonTapped() {
+        print("Selecy")
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         //collectionView.reloadData()
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
+            
+            headerView.headerLabel.text = sectionHeaders[indexPath.section]
+            print(sectionHeaders[indexPath.section])
+            headerView.headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
+            
+            //headerView.button.tag = indexPath.section
+            //headerView.button.setTitle("See All", for: .normal)
+            //headerView.button.addTarget(self, action: #selector(headerButtonTapped(_:)), for: .touchUpInside)
+            
+            return headerView
+        }
+        fatalError("Unexpected element kind")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 44)
+    }
+    
   
     func generateLayout() ->UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout{
-            (section, env) -> NSCollectionLayoutSection? in
+            (sectionIndex, env) -> NSCollectionLayoutSection? in let section: NSCollectionLayoutSection
             
-            switch section {
+            switch sectionIndex {
             case 0:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.90), heightDimension: .absolute(100))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                return section
+                section = self.generateSection0()
             case 1:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(200))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
-                let section = NSCollectionLayoutSection(group: group)
-                section.orthogonalScrollingBehavior = .groupPagingCentered
-                return section
+                section = self.generateSection1()
             case 2:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                return section
+                section = self.generateSection2()
             default:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.90), heightDimension: .absolute(100))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                return section
+                section = self.generateSection0()
             }
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+            let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+            section.boundarySupplementaryItems = [header]
+            return section
         }
         return layout
     }
-
     
+    func generateSection0() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.90), heightDimension: .absolute(100))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        return section
+    }
+    
+    func generateSection1() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(200))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPagingCentered
+        return section
+    }
+    
+    func generateSection2() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        return section
+    }
     /*
     // MARK: - Navigation
 

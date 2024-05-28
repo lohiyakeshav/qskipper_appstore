@@ -28,7 +28,7 @@ class FavouritesViewController: UIViewController,UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print(favouriteDish)
+        //print(favouriteDish)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Menu", for: indexPath) as! MenuCollectionViewCell
         cell.dishImage.image = UIImage(named: favouriteDish[indexPath.row].image)
         cell.dishName.text = favouriteDish[indexPath.row].name

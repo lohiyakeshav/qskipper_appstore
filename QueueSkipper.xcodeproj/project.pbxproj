@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		052977312BF627D6001C6679 /* RestaurantListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052977302BF627D6001C6679 /* RestaurantListTableViewCell.swift */; };
 		0574093B2BF72316000303B2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574093A2BF72316000303B2 /* MenuViewController.swift */; };
 		0598D6F32BF716CE00425F46 /* MyOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */; };
 		0598D6F72BF71AA400425F46 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6F62BF71AA400425F46 /* OrdersTableViewCell.swift */; };
 		0598D6F92BF7207C00425F46 /* MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6F82BF7207C00425F46 /* MyOrders.swift */; };
-		05A7EF9F2BF61A5F0064E909 /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7EF9E2BF61A5F0064E909 /* RestaurantTableViewController.swift */; };
 		05AFDB882BF60FB500878F68 /* Favourites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AFDB872BF60FB500878F68 /* Favourites.storyboard */; };
 		05AFDB8A2BF6100A00878F68 /* MyOrders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AFDB892BF6100A00878F68 /* MyOrders.storyboard */; };
 		05AFDB8C2BF6105F00878F68 /* Restaurants.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AFDB8B2BF6105F00878F68 /* Restaurants.storyboard */; };
@@ -33,16 +31,20 @@
 		A03CE6F52BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CE6F42BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift */; };
 		A03CE6F72BFBA0E100803028 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A03CE6F62BFBA0E100803028 /* Menu.xib */; };
 		A03CE6F92BFBA33900803028 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CE6F82BFBA33900803028 /* MenuCollectionViewCell.swift */; };
+		A077D1592C00A88000A94830 /* HomeBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = A077D1582C00A88000A94830 /* HomeBanner.xib */; };
+		A077D15B2C00AB8500A94830 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077D15A2C00AB8500A94830 /* HomeViewController.swift */; };
+		A0D0AE542C043C1000129DEB /* HomeBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D0AE532C043C1000129DEB /* HomeBannerCollectionViewCell.swift */; };
+		A0D0AE582C04545D00129DEB /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D0AE572C04545D00129DEB /* HeaderCollectionReusableView.swift */; };
+		A0D0AE5A2C04643B00129DEB /* RestaurantList.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0D0AE592C04643B00129DEB /* RestaurantList.xib */; };
+		A0D0AE5C2C0465A000129DEB /* RestaurantListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D0AE5B2C0465A000129DEB /* RestaurantListCollectionViewCell.swift */; };
 		A0D386EA2BFD0BE2002E1F1E /* FavouriteDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D386E92BFD0BE2002E1F1E /* FavouriteDish.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		052977302BF627D6001C6679 /* RestaurantListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListTableViewCell.swift; sourceTree = "<group>"; };
 		0574093A2BF72316000303B2 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersTableViewController.swift; sourceTree = "<group>"; };
 		0598D6F62BF71AA400425F46 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
 		0598D6F82BF7207C00425F46 /* MyOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrders.swift; sourceTree = "<group>"; };
-		05A7EF9E2BF61A5F0064E909 /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
 		05AFDB872BF60FB500878F68 /* Favourites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favourites.storyboard; sourceTree = "<group>"; };
 		05AFDB892BF6100A00878F68 /* MyOrders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyOrders.storyboard; sourceTree = "<group>"; };
 		05AFDB8B2BF6105F00878F68 /* Restaurants.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Restaurants.storyboard; sourceTree = "<group>"; };
@@ -66,6 +68,12 @@
 		A03CE6F42BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedItemsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A03CE6F62BFBA0E100803028 /* Menu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Menu.xib; sourceTree = "<group>"; };
 		A03CE6F82BFBA33900803028 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		A077D1582C00A88000A94830 /* HomeBanner.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeBanner.xib; sourceTree = "<group>"; };
+		A077D15A2C00AB8500A94830 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A0D0AE532C043C1000129DEB /* HomeBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0D0AE572C04545D00129DEB /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		A0D0AE592C04643B00129DEB /* RestaurantList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantList.xib; sourceTree = "<group>"; };
+		A0D0AE5B2C0465A000129DEB /* RestaurantListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0D386E92BFD0BE2002E1F1E /* FavouriteDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteDish.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,12 +117,16 @@
 				05C93BCB2BDF4CCA0035FA61 /* ViewController.swift */,
 				05C93BCD2BDF4CCA0035FA61 /* Main.storyboard */,
 				05AFDB8B2BF6105F00878F68 /* Restaurants.storyboard */,
+				A077D1582C00A88000A94830 /* HomeBanner.xib */,
+				A0D0AE532C043C1000129DEB /* HomeBannerCollectionViewCell.swift */,
 				0574093A2BF72316000303B2 /* MenuViewController.swift */,
 				A03CE6F62BFBA0E100803028 /* Menu.xib */,
 				A03CE6F82BFBA33900803028 /* MenuCollectionViewCell.swift */,
-				052977302BF627D6001C6679 /* RestaurantListTableViewCell.swift */,
-				05A7EF9E2BF61A5F0064E909 /* RestaurantTableViewController.swift */,
+				A077D15A2C00AB8500A94830 /* HomeViewController.swift */,
+				A0D0AE592C04643B00129DEB /* RestaurantList.xib */,
+				A0D0AE5B2C0465A000129DEB /* RestaurantListCollectionViewCell.swift */,
 				05AFDB8D2BF6115C00878F68 /* Profile.storyboard */,
+				A0D0AE572C04545D00129DEB /* HeaderCollectionReusableView.swift */,
 				726507E72BFBB8BE00D579FF /* ProfileInfoTableViewCell.swift */,
 				72B54F782BFB65610050DD7F /* ProfileTableViewController.swift */,
 				05AFDB892BF6100A00878F68 /* MyOrders.storyboard */,
@@ -193,7 +205,9 @@
 			files = (
 				05AFDB8E2BF6115C00878F68 /* Profile.storyboard in Resources */,
 				05C93BD12BDF4CCB0035FA61 /* Assets.xcassets in Resources */,
+				A077D1592C00A88000A94830 /* HomeBanner.xib in Resources */,
 				A03CE6F32BFB92BB00803028 /* FeaturedItems.xib in Resources */,
+				A0D0AE5A2C04643B00129DEB /* RestaurantList.xib in Resources */,
 				05C93BCF2BDF4CCA0035FA61 /* Main.storyboard in Resources */,
 				A03CE6F72BFBA0E100803028 /* Menu.xib in Resources */,
 				05AFDB8C2BF6105F00878F68 /* Restaurants.storyboard in Resources */,
@@ -215,17 +229,19 @@
 				0574093B2BF72316000303B2 /* MenuViewController.swift in Sources */,
 				05C93BC82BDF4CCA0035FA61 /* AppDelegate.swift in Sources */,
 				0598D6F32BF716CE00425F46 /* MyOrdersTableViewController.swift in Sources */,
+				A0D0AE542C043C1000129DEB /* HomeBannerCollectionViewCell.swift in Sources */,
 				726507E82BFBB8BE00D579FF /* ProfileInfoTableViewCell.swift in Sources */,
+				A077D15B2C00AB8500A94830 /* HomeViewController.swift in Sources */,
 				05C93BCA2BDF4CCA0035FA61 /* SceneDelegate.swift in Sources */,
-				052977312BF627D6001C6679 /* RestaurantListTableViewCell.swift in Sources */,
+				A0D0AE582C04545D00129DEB /* HeaderCollectionReusableView.swift in Sources */,
 				A03CE6F52BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift in Sources */,
 				05C8CFBA2BFB63F300279977 /* RestaurantDetailsCollectionViewCell.swift in Sources */,
 				05AFDB942BF616A700878F68 /* FavouritesViewController.swift in Sources */,
-				05A7EF9F2BF61A5F0064E909 /* RestaurantTableViewController.swift in Sources */,
 				A0D386EA2BFD0BE2002E1F1E /* FavouriteDish.swift in Sources */,
 				72B54F792BFB65610050DD7F /* ProfileTableViewController.swift in Sources */,
 				0598D6F72BF71AA400425F46 /* OrdersTableViewCell.swift in Sources */,
 				05E4608D2BF4D33600E0108C /* Restaurant.swift in Sources */,
+				A0D0AE5C2C0465A000129DEB /* RestaurantListCollectionViewCell.swift in Sources */,
 				0598D6F92BF7207C00425F46 /* MyOrders.swift in Sources */,
 				A03CE6F92BFBA33900803028 /* MenuCollectionViewCell.swift in Sources */,
 			);

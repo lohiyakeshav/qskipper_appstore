@@ -9,4 +9,12 @@ import UIKit
 
 class HomeBannerCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet var imageView: UIImageView!
+    
+    @IBOutlet var dishName: UILabel!
+    
+    
+    @IBOutlet var restaurantName: UILabel!
+    
+    
 }

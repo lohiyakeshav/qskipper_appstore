@@ -39,10 +39,10 @@ class MenuCollectionViewCell: UICollectionViewCell {
                     //restaurantSelected.dish[index].favourites = true
                 }
                 else {
-                    print(dish)
+                   // print(dish)
                     
                     favouriteDish.removeAll {$0 == dish}
-                    print(favouriteDish)
+                    //print(favouriteDish)
                   //addToFavourites.isSelected = false
                     //restaurantSelected.dish[index].favourites = false
                 }
