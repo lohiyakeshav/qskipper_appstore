@@ -58,6 +58,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             cell.dishImageLabel.image = UIImage(named: featuredMenu[indexPath.row].image)
             cell.dishNameLabel.text = featuredMenu[indexPath.row].name
             cell.dishRatingLabel.text = "\(featuredMenu[indexPath.row].rating)"
+            cell.dish = featuredMenu[indexPath.row]
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Menu", for: indexPath) as! MenuCollectionViewCell
@@ -99,7 +100,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(generateLayout(), animated: true)
         let button: UIBarButtonItem = {
-            let button = UIBarButtonItem(image: UIImage(systemName: "cart"), style:.plain, target: nil, action: #selector(cartButtonTapped))
+            let button = UIBarButtonItem(image: UIImage(systemName: "cart"), style:.plain, target: self, action: #selector(cartButtonTapped))
                 
                 return button
             }()
@@ -107,7 +108,16 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
     }
     
     @objc func cartButtonTapped() {
-        print("Selecy")
+        
+        
+        let storyboard = UIStoryboard(name: "MyCart", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "MyCartViewController") as! MyCartViewController
+//        viewController.restaurantSelected = Restaurant()
+        
+        let navVC = self.navigationController
+        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
+        navVC?.pushViewController(viewController, animated: true)
+        
     }
     
     

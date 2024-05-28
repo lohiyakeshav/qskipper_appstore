@@ -47,6 +47,11 @@ class MenuCollectionViewCell: UICollectionViewCell {
                     //restaurantSelected.dish[index].favourites = false
                 }
             }
+    
+    @IBAction func addToCartButtonTapped(_ sender: UIButton) {
+        cartDish.append(dish)
+    }
+    
             
     
     

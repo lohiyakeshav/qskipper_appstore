@@ -15,6 +15,11 @@ class FeaturedItemsCollectionViewCell: UICollectionViewCell {
     
     
     @IBOutlet var dishRatingLabel: UILabel!
+    var dish = Dish()
     
+    
+    @IBAction func addToCartButtonTapped(_ sender: UIButton) {
+        cartDish.append(dish)
+    }
     
 }
