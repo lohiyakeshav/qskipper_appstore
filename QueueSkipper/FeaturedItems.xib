@@ -63,6 +63,7 @@
                 </constraints>
             </collectionViewCellContentView>
             <connections>
+                <outlet property="addButton" destination="vb1-wj-RS2" id="dhY-WR-Ax2"/>
                 <outlet property="dishImageLabel" destination="gbg-P5-hbR" id="Faa-sa-FVw"/>
                 <outlet property="dishNameLabel" destination="Xoz-6j-FvZ" id="MOi-qL-pHw"/>
                 <outlet property="dishRatingLabel" destination="Ztr-PF-RcN" id="7s6-H7-9iw"/>

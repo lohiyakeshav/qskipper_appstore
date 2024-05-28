@@ -101,10 +101,12 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         collectionView.setCollectionViewLayout(generateLayout(), animated: true)
         let button: UIBarButtonItem = {
             let button = UIBarButtonItem(image: UIImage(systemName: "cart"), style:.plain, target: self, action: #selector(cartButtonTapped))
-                
+            button.tintColor = .systemGreen
                 return button
             }()
         self.navigationItem.rightBarButtonItem = button
+        
+        //collectionView.reloadData()
     }
     
     @objc func cartButtonTapped() {
