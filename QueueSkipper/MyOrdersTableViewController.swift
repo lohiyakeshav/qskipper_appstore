@@ -57,22 +57,22 @@ class MyOrdersTableViewController: UITableViewController {
 //        cell.OrderStatus.setTitle("\(order.status)", for: .normal)
 //        cell.OrderPriceLabel.text = String(format: " \u{20b9}%.2f", order.price)
 //        //cell.OrderItemsLabel.text = order.items.joined(separator: "\n")
-//        
-//        
+//
+//
 //        let itemDescriptions = order.items.map { "\($0.quantity) x \($0.name)"}
-//        
+//
 //        print(itemDescriptions)
 //        cell.OrderItemsLabel.text = itemDescriptions.joined(separator: "\n")
-//        
+//
 //        cell.OrderPrepTimeLabel.text = " \(order.prepTimeRemaining) minutes"
-//        
-//        
-//        
+//
+//
+//
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateStyle = .short
 //        dateFormatter.timeStyle = .short
 //        cell.OrderBookedLabel.text = dateFormatter.string(from: order.bookingDate)
-//        
+//
 //
 //        // Configure the cell...
 
@@ -114,7 +114,7 @@ class MyOrdersTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 

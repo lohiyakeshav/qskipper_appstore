@@ -7,9 +7,16 @@
 
 import UIKit
 
-class HomeViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class HomeViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     @IBOutlet var collectionView: UICollectionView!
+    
+    
+    
+    @IBOutlet var searchBar: UISearchBar!
+    
+    var filteredRestaurants: [Restaurant] = []
+    var isSearching: Bool = false
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -21,7 +28,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         case 0:
             return featuredItem.count
         case 1:
-            return restaurant.count
+            return isSearching ? filteredRestaurants.count:restaurant.count
         default:
             return 0
         }
@@ -38,23 +45,41 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantList", for: indexPath) as! RestaurantListCollectionViewCell
-            cell.imageView.image = UIImage(named: restaurant[indexPath.row].restImage)
-            cell.name.text = restaurant[indexPath.row].restName
-            cell.waitingTime.text = "\(restaurant[indexPath.row].restWaitingTime) Mins"
-            cell.cuisine.text = restaurant[indexPath.row].cuisine
-            //cell.isUserInteractionEnabled = true
-            return cell
+            let rest = isSearching ? filteredRestaurants[indexPath.row] : restaurant[indexPath.row]
+                        cell.imageView.image = UIImage(named: rest.restImage)
+                        cell.name.text = rest.restName
+                        cell.waitingTime.text = "\(rest.restWaitingTime) Mins"
+                        cell.cuisine.text = rest.cuisine
+                        return cell
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeBanner", for: indexPath)
-            return cell
+            return UICollectionViewCell()
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeBanner", for: indexPath)
+//            return cell
         }
         
     }
     
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            isSearching = false
+        } else {
+            isSearching = true
+            filteredRestaurants = restaurant.filter { $0.restName.lowercased().contains(searchText.lowercased()) }
+        }
+        collectionView.reloadData()
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        isSearching = false
+        searchBar.resignFirstResponder()
+        collectionView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchBar.delegate = self
         let featuredNib = UINib(nibName: "HomeBanner", bundle: nil)
         collectionView.register(featuredNib, forCellWithReuseIdentifier: "HomeBanner")
         let restaurantNib = UINib(nibName: "RestaurantList", bundle: nil)
@@ -65,7 +90,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(generateLayout(), animated: true)
+        filteredRestaurants = restaurant
     }
+   
     
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -141,7 +168,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             }
             
         default:
-            viewController.restaurantSelected = restaurant[indexPath.row]
+            viewController.restaurantSelected = isSearching ? filteredRestaurants[indexPath.row] : restaurant[indexPath.row]
         
         }
         let navVC = self.navigationController

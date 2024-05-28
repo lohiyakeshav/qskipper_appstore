@@ -47,15 +47,18 @@ class OrdersTableViewCell: UITableViewCell {
         OrderIdLabel.text = "Order#\(order.id)"
         OrderStatus.setTitle(order.status, for: .normal)
         
+      
+        if order.status == "Preparing" {
+            OrderStatus.backgroundColor = .systemGray6
+        }
         
         if order.status == "Completed" {
-
-            backgroundColor = .systemGray4
-            OrderStatus.backgroundColor = .systemGray4
-
-            backgroundColor = .lightGray
-            OrderStatus.backgroundColor = .lightGray
-
+            
+            backgroundColor = .systemGray5
+            OrderStatus.backgroundColor = .systemGray6
+            
+            OrderStatus.setTitleColor(.systemGreen, for: .normal)
+            OrderStatus.setTitle("Re-Order", for: .normal)
             OrderStatus.configuration?.baseForegroundColor = .black
             OrderPrepTimeLabel.isHidden = true
             showRatingStars()
@@ -63,7 +66,7 @@ class OrdersTableViewCell: UITableViewCell {
             if let rating = order.rating {
                             updateStars(for: rating)
                         } else {
-                            updateStars(for: 0)  // Reset stars if no rating
+                            updateStars(for: 0)
                         }
                     } else {
                         OrderPrepTimeLabel.isHidden = false
