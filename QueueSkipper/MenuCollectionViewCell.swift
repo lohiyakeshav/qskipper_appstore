@@ -34,6 +34,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
             sender.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
             sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }, completion: nil)
+        NotificationCenter.default.post(name: .cartUpdated, object: nil)
     }
     
     private func updateFavouriteButtonState() {

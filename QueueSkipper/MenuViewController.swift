@@ -108,11 +108,22 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
        
         NotificationCenter.default.addObserver(self, selector: #selector(updateCollectionView), name: .favouritesUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateCollectionView), name: .cartUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(cartUpdated), name: .cartUpdated, object: nil)
     }
     
     @objc func updateCollectionView() {
         collectionView.reloadData()
     }
+    
+    @objc func cartUpdated() {
+        if cartDish.isEmpty {
+                
+                self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "cart")
+            } else {
+               
+                self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "cart.fill")
+            }
+       }
     
     @objc func cartButtonTapped() {
         
@@ -125,12 +136,14 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
         navVC?.pushViewController(viewController, animated: true)
         
+        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
+        cartUpdated()
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
