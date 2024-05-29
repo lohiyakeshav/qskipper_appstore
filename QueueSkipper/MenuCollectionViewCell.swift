@@ -31,10 +31,19 @@ class MenuCollectionViewCell: UICollectionViewCell {
         NotificationCenter.default.post(name: .cartUpdated, object: nil)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: [], animations: {
-            sender.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
-            sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        }, completion: nil)
-        NotificationCenter.default.post(name: .cartUpdated, object: nil)
+                    sender.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+                    sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                }, completion: { _ in
+                    // Disable the button and change its text after the animation
+                    sender.isEnabled = false
+                    sender.setTitle("In Cart", for: .normal)
+                    sender.alpha = 0.5 // Optionally, adjust the appearance to indicate it's disabled
+                })
+//        NotificationCenter.default.post(name: .cartUpdated, object: nil)
+        
+        
+        
+        
     }
     
     private func updateFavouriteButtonState() {
@@ -44,8 +53,16 @@ class MenuCollectionViewCell: UICollectionViewCell {
     
     private func updateCartButtonState() {
         let isInCart = cartDish.contains(where: { $0.dishId == dish.dishId })
-        addToCart.isHidden = isInCart
-    }
+                if isInCart {
+                    addToCart.isEnabled = false
+                    addToCart.setTitle("In Cart", for: .normal)
+                    addToCart.alpha = 0.5 // Optionally, adjust the appearance to indicate it's disabled
+                } else {
+                    addToCart.isEnabled = true
+                    addToCart.setTitle("ADD", for: .normal)
+                    addToCart.alpha = 1.0
+                }
+            }
 }
 
 extension Notification.Name {

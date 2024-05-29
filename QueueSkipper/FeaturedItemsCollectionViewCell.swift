@@ -17,14 +17,14 @@ class FeaturedItemsCollectionViewCell: UICollectionViewCell {
     @IBOutlet var dishRatingLabel: UILabel!
     var dish = Dish() {
         didSet {
-            updateAddButtonVisibility()
+            updateAddButtonState()
         }
     }
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        updateAddButtonVisibility()
+        updateAddButtonState()
             
             
         NotificationCenter.default.addObserver(self, selector: #selector(cartUpdated), name: .cartUpdated, object: nil)
@@ -40,26 +40,36 @@ class FeaturedItemsCollectionViewCell: UICollectionViewCell {
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
         
         cartDish.append(dish)
+        self.contentView.bringSubviewToFront(addButton)
+                    
+        
+        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: [], animations: {
             sender.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
             sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }, completion: { _ in
-            self.updateAddButtonVisibility()
+            
+            self.updateAddButtonState()
+            
             NotificationCenter.default.post(name: .cartUpdated, object: nil)
         })
     }
     
     
-    func updateAddButtonVisibility() {
+    func updateAddButtonState() {
             if cartDish.contains(where: { $0.dishId == dish.dishId }) {
-                addButton.isHidden = true
+                addButton.isEnabled = false
+                addButton.tintColor = .systemRed
+                addButton.setTitle("In Cart", for: .normal)
+                addButton.alpha = 0.5 // Optionally, adjust the appearance to indicate it's disabled
             } else {
-                addButton.isHidden = false
+                addButton.isEnabled = true
+                addButton.setTitle("ADD", for: .normal)
+                addButton.alpha = 1.0
             }
         }
-        
         @objc func cartUpdated() {
-            updateAddButtonVisibility()
+            updateAddButtonState()
         }
     
 }

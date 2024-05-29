@@ -51,6 +51,7 @@ class FavouritesViewController: UIViewController,UICollectionViewDataSource, UIC
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         collectionView.setCollectionViewLayout(generateLayout(), animated: true)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
