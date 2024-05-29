@@ -1,64 +1,53 @@
-//
-//  MenuCollectionViewCell.swift
-//  QueueSkipper
-//
-//  Created by ayush yadav on 20/05/24.
-//
-
 import UIKit
 
-
-
-
 class MenuCollectionViewCell: UICollectionViewCell {
-
     
     @IBOutlet var dishImage: UIImageView!
-    
     @IBOutlet var dishName: UILabel!
-    
     @IBOutlet var dishDescription: UITextView!
-    
     @IBOutlet var addToFavourites: UIButton!
-
     @IBOutlet var addToCart: UIButton!
-    
     @IBOutlet var dishRating: UILabel!
-    var dish = Dish()
-    //var index: Int = 0
-    
-    @IBAction func addToOrderButtonTapped(_ sender: UIButton) {
-       
 
-                addToFavourites.isSelected.toggle()
-                //dish.favourites.toggle()
-        
+    var dish = Dish() {
+        didSet {
+            updateFavouriteButtonState()
+            updateCartButtonState()
+        }
+    }
+
+    @IBAction func addToFavouritesTapped(_ sender: UIButton) {
         if addToFavourites.isSelected {
-                    favouriteDish.append(dish)
-                    //addToFavourites.isSelected = true
-                    //restaurantSelected.dish[index].favourites = true
-                }
-                else {
-                   // print(dish)
-                    
-                    favouriteDish.removeAll {$0 == dish}
-                    //print(favouriteDish)
-                  //addToFavourites.isSelected = false
-                    //restaurantSelected.dish[index].favourites = false
-                }
-            }
+            favouriteDish.removeAll { $0.dishId == dish.dishId }
+        } else {
+            favouriteDish.append(dish)
+        }
+        NotificationCenter.default.post(name: .favouritesUpdated, object: nil)
+        updateFavouriteButtonState()
+    }
     
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
         cartDish.append(dish)
+        NotificationCenter.default.post(name: .cartUpdated, object: nil)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: [], animations: {
             sender.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
             sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }, completion: nil)
-        
     }
     
-            
+    private func updateFavouriteButtonState() {
+        let isFavourite = favouriteDish.contains(where: { $0.dishId == dish.dishId })
+        addToFavourites.isSelected = isFavourite
+    }
     
-    
+    private func updateCartButtonState() {
+        let isInCart = cartDish.contains(where: { $0.dishId == dish.dishId })
+        addToCart.isHidden = isInCart
+    }
+}
+
+extension Notification.Name {
+    static let favouritesUpdated = Notification.Name("favouritesUpdated")
+    //static let cartUpdated = Notification.Name("cartUpdated")
 }

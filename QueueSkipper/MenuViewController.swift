@@ -11,9 +11,9 @@ import UIKit
 class MenuViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
 
-    
     var restaurantSelected = Restaurant()
     
+   
     @IBOutlet var collectionView: UICollectionView!
     
     
@@ -105,8 +105,13 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
                 return button
             }()
         self.navigationItem.rightBarButtonItem = button
-        
-        //collectionView.reloadData()
+       
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCollectionView), name: .favouritesUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCollectionView), name: .cartUpdated, object: nil)
+    }
+    
+    @objc func updateCollectionView() {
+        collectionView.reloadData()
     }
     
     @objc func cartButtonTapped() {
@@ -124,7 +129,8 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
     
     
     override func viewWillAppear(_ animated: Bool) {
-        //collectionView.reloadData()
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
