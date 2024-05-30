@@ -85,7 +85,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = restaurantSelected.restName
-        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
 
         let restaurantDetailNib = UINib(nibName: "RestaurantDetails", bundle: nil)
         collectionView.register(restaurantDetailNib, forCellWithReuseIdentifier: "RestaurantDetails")
@@ -182,9 +182,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             default:
                 section = self.generateSection0()
             }
-            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
-            let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-            section.boundarySupplementaryItems = [header]
+            
             return section
         }
         return layout
@@ -196,6 +194,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.90), heightDimension: .absolute(100))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        
         return section
     }
     
@@ -206,6 +205,9 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPagingCentered
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [header]
         return section
     }
     
@@ -215,6 +217,9 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [header]
         return section
     }
     /*

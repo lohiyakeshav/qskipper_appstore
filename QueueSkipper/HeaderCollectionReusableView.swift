@@ -8,7 +8,12 @@
 import UIKit
 
 class HeaderCollectionReusableView: UICollectionReusableView {
-    let headerLabel = UILabel()
+    let headerLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 380, height: 44))
+        label.font = UIFont.systemFont(ofSize: 50, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 //    let button: UIButton = {
 //        let button = UIButton(type: .system)
 //        button.translatesAutoresizingMaskIntoConstraints = false
@@ -41,5 +46,9 @@ class HeaderCollectionReusableView: UICollectionReusableView {
 //            button.topAnchor.constraint(equalTo: self.topAnchor),
 //            button.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
+    }
+    
+    func configure(with title: String) {
+        headerLabel.text = title
     }
 }

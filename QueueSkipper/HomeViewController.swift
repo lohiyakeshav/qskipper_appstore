@@ -91,6 +91,8 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(generateLayout(), animated: true)
         filteredRestaurants = restaurant
+        
+       
     }
    
     

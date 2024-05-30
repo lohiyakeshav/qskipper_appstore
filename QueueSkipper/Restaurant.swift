@@ -65,4 +65,4 @@ var featuredMenu: [Dish] = []
 var cartDish: [Dish] = []
 
 var sectionHeaders: [String] = [ "PRLiveFoods", "Featured Items", "Dishes"]
-var homeHeaders: [String] = ["Featured Item", "Restaurants"]
+var homeHeaders: [String] = ["Top Picks", "Restaurants"]

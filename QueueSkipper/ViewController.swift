@@ -15,13 +15,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         
-        
         Task.init {
             do {
                 print("Called for menu")
-                _ = try await  NetworkUtils.shared.fetchRestaurants()
+                let list = try await  NetworkUtils.shared.fetchRestaurants()
                 print("Called for dusra menu")
-             
+                restaurant = list
+             print(restaurant)
                
             } catch {
                print("erroe]")
