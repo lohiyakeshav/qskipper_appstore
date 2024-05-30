@@ -9,9 +9,9 @@ import Foundation
 
 import UIKit
 
-struct Restaurant: Equatable{
+struct Restaurant: Equatable, Codable{
     var restId: String = ""
-    var restImage : String = ""
+    var restImage : URL?
     var restName : String = ""
     var restWaitingTime : Int = 0
     var cuisine : String = ""
@@ -21,7 +21,17 @@ struct Restaurant: Equatable{
     static func ==(lhs: Restaurant, rhs: Restaurant) -> Bool {
         return lhs.restName == rhs.restName
     }
+    
+    enum CodingKeys : String, CodingKey{
+        case restId = "_id"
+        case restName = "resturantName"
+        case restWaitingTime = "estimatedTime"
+        case cuisine = "cuisines"
+        case restImage
+        
+    }
 }
+
 
 struct Dish: Equatable {
     var dishId: String = ""
@@ -42,15 +52,15 @@ struct Dish: Equatable {
 
 
 
-var restaurant : [Restaurant] = [Restaurant(restId: "123", restImage: "big_1", restName: "PR LIVE FOODS", restWaitingTime: 10, cuisine: "Indian", rating: 4.3)]
+var restaurant : [Restaurant] = []
 
-var dish: [Dish] = [Dish(dishId: "1234", image: "big_2", name: "Samosa", description: "Indian snacks", price: 17, rating: 4.0, foodType: "Veg", restaurant: "PR LIVE FOODS"), Dish(dishId: "2345", image: "big_3", name: "Sandwich Pakora", description: "Rohit's Special", price: 35, rating: 4.2, foodType: "Veg", restaurant: "PR LIVE FOODS")]
+var dish: [Dish] = []
 
 var favouriteDish: [Dish] = []
 
 var featuredItem: [Dish] = []
 
-var featuredMenu: [Dish] = [Dish(dishId: "3456", image: "big_1", name: "Rajma Chawal", description: "Indian", price: 70, rating: 4.1, foodType: "Veg", restaurant: "PR LIVE FOODS")]
+var featuredMenu: [Dish] = []
 
 var cartDish: [Dish] = []
 

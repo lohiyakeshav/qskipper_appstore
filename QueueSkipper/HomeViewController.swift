@@ -46,7 +46,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantList", for: indexPath) as! RestaurantListCollectionViewCell
             let rest = isSearching ? filteredRestaurants[indexPath.row] : restaurant[indexPath.row]
-                        cell.imageView.image = UIImage(named: rest.restImage)
+                       // cell.imageView.image = UIImage(named: rest.restImage)
                         cell.name.text = rest.restName
                         cell.waitingTime.text = "\(rest.restWaitingTime) Mins"
                         cell.cuisine.text = rest.cuisine

@@ -11,10 +11,25 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //Ayush
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        
+        
+        Task.init {
+            do {
+                print("Called for menu")
+                _ = try await  NetworkUtils.shared.fetchRestaurants()
+                print("Called for dusra menu")
+             
+               
+            } catch {
+               print("erroe]")
+            }
+        }
+        
+        
+        
         // Do any additional setup after loading the view.
     }
 
