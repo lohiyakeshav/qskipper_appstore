@@ -73,6 +73,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
                     cell.addToFavourites.isSelected = true
                 }
             }
+            cell.updateCartButtonState()
             
             return cell
         default:

@@ -10,7 +10,7 @@ import UIKit
 
 class NetworkUtils{
     
-    var baseURl = URL(string : "https://queueskipperbackend.onrender.com")!
+    var baseURl = URL(string : "https://queueskipperbackend.onrender.com/")!
 
     static let shared = NetworkUtils()
     

@@ -33,7 +33,7 @@ struct Restaurant: Equatable, Codable{
 }
 
 
-struct Dish: Equatable {
+struct Dish: Equatable, Hashable {
     var dishId: String = ""
     var image: String = ""
     var name: String = ""
@@ -46,7 +46,11 @@ struct Dish: Equatable {
     var quantity: Int?
     
     static func ==(lhs: Dish, rhs: Dish) -> Bool {
-        return lhs.image == rhs.image && lhs.name == rhs.name && lhs.description == rhs.description && lhs.price == rhs.price && lhs.rating == rhs.rating && lhs.foodType == rhs.foodType
+        return lhs.dishId == rhs.dishId
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(dishId)
     }
 }
 

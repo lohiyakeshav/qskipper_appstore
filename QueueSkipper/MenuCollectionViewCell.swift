@@ -9,7 +9,8 @@ class MenuCollectionViewCell: UICollectionViewCell {
     @IBOutlet var addToCart: UIButton!
     @IBOutlet var dishRating: UILabel!
 
-    var dish = Dish() {
+    var dish = Dish() 
+    {
         didSet {
             updateFavouriteButtonState()
             updateCartButtonState()
@@ -35,9 +36,9 @@ class MenuCollectionViewCell: UICollectionViewCell {
                     sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 }, completion: { _ in
                     // Disable the button and change its text after the animation
-                    sender.isEnabled = false
-                    sender.setTitle("In Cart", for: .normal)
-                    sender.alpha = 0.5 // Optionally, adjust the appearance to indicate it's disabled
+                    self.updateCartButtonState()
+                    
+                    NotificationCenter.default.post(name: .cartUpdated, object: nil)
                 })
 //        NotificationCenter.default.post(name: .cartUpdated, object: nil)
         
@@ -51,8 +52,8 @@ class MenuCollectionViewCell: UICollectionViewCell {
         addToFavourites.isSelected = isFavourite
     }
     
-    private func updateCartButtonState() {
-        let isInCart = RestaurantController.shared.cartDish.contains(where: { $0.dishId == dish.dishId })
+     private func updateCartButtonState() {
+        let isInCart = RestaurantController.shared.cartDish.contains(where: { $0 == dish })
                 if isInCart {
                     addToCart.isEnabled = false
                     addToCart.setTitle("In Cart", for: .normal)
@@ -67,5 +68,5 @@ class MenuCollectionViewCell: UICollectionViewCell {
 
 extension Notification.Name {
     static let favouritesUpdated = Notification.Name("favouritesUpdated")
-    //static let cartUpdated = Notification.Name("cartUpdated")
+    //static let cartUpdate = Notification.Name("cartUpdated")
 }

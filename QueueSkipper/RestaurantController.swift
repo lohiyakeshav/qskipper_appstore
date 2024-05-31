@@ -60,6 +60,7 @@ class RestaurantController {
     
     init() {
        loadDummyDish()
+        loadDummyFeaturedMenu()
     }
     func loadDummyDish() {
         let dummyDish: [Dish] = [
@@ -67,6 +68,14 @@ class RestaurantController {
             Dish(dishId: "234",image: "big_2", name: "Sandwich Pakora", description: "Rohit's Special", price: 35, rating: 4.3, foodType: "Veg", restaurant: "PR LIVE FOODS")
         ]
         _dish = dummyDish
+    }
+    
+    func loadDummyFeaturedMenu() {
+        let dummyFeaturedMenu: [Dish] = [
+            Dish(dishId: "345",image: "big_3", name: "Rajma Chawal", description: "Indian dish", price: 70, rating: 4.0, foodType: "Veg", restaurant: "PR LIVE FOODS"),
+            Dish(dishId: "456",image: "big_4", name: "Premium Thali", description: "PR Special", price: 130, rating: 4.1, foodType: "Veg", restaurant: "PR LIVE FOODS")
+        ]
+        _featuredMenu = dummyFeaturedMenu
     }
     
     func appendCartDish(dish: Dish) { _cartDish.append(dish) }
