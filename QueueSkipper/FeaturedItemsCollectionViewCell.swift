@@ -39,7 +39,7 @@ class FeaturedItemsCollectionViewCell: UICollectionViewCell {
     
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
         
-        cartDish.append(dish)
+        RestaurantController.shared.appendCartDish(dish: dish)
         self.contentView.bringSubviewToFront(addButton)
                     
         
@@ -57,7 +57,7 @@ class FeaturedItemsCollectionViewCell: UICollectionViewCell {
     
     
     func updateAddButtonState() {
-            if cartDish.contains(where: { $0.dishId == dish.dishId }) {
+        if RestaurantController.shared.cartDish.contains(where: { $0.dishId == dish.dishId }) {
                 addButton.isEnabled = false
                 addButton.tintColor = .systemRed
                 addButton.setTitle("In Cart", for: .normal)

@@ -24,18 +24,18 @@ class FavouritesViewController: UIViewController,UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return favouriteDish.count
+        return RestaurantController.shared.favouriteDish.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //print(favouriteDish)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Menu", for: indexPath) as! MenuCollectionViewCell
-        cell.dishImage.image = UIImage(named: favouriteDish[indexPath.row].image)
-        cell.dishName.text = favouriteDish[indexPath.row].name
-        cell.dishDescription.text = favouriteDish[indexPath.row].description
-        cell.dishRating.text = "\(favouriteDish[indexPath.row].rating)"
+        cell.dishImage.image = UIImage(named: RestaurantController.shared.favouriteDish[indexPath.row].image)
+        cell.dishName.text = RestaurantController.shared.favouriteDish[indexPath.row].name
+        cell.dishDescription.text = RestaurantController.shared.favouriteDish[indexPath.row].description
+        cell.dishRating.text = "\(RestaurantController.shared.favouriteDish[indexPath.row].rating)"
     
-        cell.dish = favouriteDish[indexPath.row]
+        cell.dish = RestaurantController.shared.favouriteDish[indexPath.row]
             //cell.index = indexPath.row
         cell.addToFavourites.isSelected = true
 

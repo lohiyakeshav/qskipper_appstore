@@ -18,16 +18,16 @@ class MenuCollectionViewCell: UICollectionViewCell {
 
     @IBAction func addToFavouritesTapped(_ sender: UIButton) {
         if addToFavourites.isSelected {
-            favouriteDish.removeAll { $0.dishId == dish.dishId }
+            RestaurantController.shared.removeFavouriteDish(dish: dish)
         } else {
-            favouriteDish.append(dish)
+            RestaurantController.shared.appendFavouriteDish(dish: dish)
         }
         NotificationCenter.default.post(name: .favouritesUpdated, object: nil)
         updateFavouriteButtonState()
     }
     
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
-        cartDish.append(dish)
+        RestaurantController.shared.appendCartDish(dish: dish)
         NotificationCenter.default.post(name: .cartUpdated, object: nil)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: [], animations: {
@@ -47,12 +47,12 @@ class MenuCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateFavouriteButtonState() {
-        let isFavourite = favouriteDish.contains(where: { $0.dishId == dish.dishId })
+        let isFavourite = RestaurantController.shared.favouriteDish.contains(where: { $0.dishId == dish.dishId })
         addToFavourites.isSelected = isFavourite
     }
     
     private func updateCartButtonState() {
-        let isInCart = cartDish.contains(where: { $0.dishId == dish.dishId })
+        let isInCart = RestaurantController.shared.cartDish.contains(where: { $0.dishId == dish.dishId })
                 if isInCart {
                     addToCart.isEnabled = false
                     addToCart.setTitle("In Cart", for: .normal)

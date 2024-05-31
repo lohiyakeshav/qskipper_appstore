@@ -36,10 +36,10 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             return 1
         case 1:
             //return Menu.featuredItems.count
-            return featuredMenu.count
+            return RestaurantController.shared.featuredMenu.count
         case 2:
             //return Menu.dish.count
-            return dish.count
+            return RestaurantController.shared.dish.count
         default:
             return 0
         }
@@ -55,21 +55,21 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedItems", for: indexPath) as! FeaturedItemsCollectionViewCell
-            cell.dishImageLabel.image = UIImage(named: featuredMenu[indexPath.row].image)
-            cell.dishNameLabel.text = featuredMenu[indexPath.row].name
-            cell.dishRatingLabel.text = "\(featuredMenu[indexPath.row].rating)"
-            cell.dish = featuredMenu[indexPath.row]
+            cell.dishImageLabel.image = UIImage(named: RestaurantController.shared.featuredMenu[indexPath.row].image)
+            cell.dishNameLabel.text = RestaurantController.shared.featuredMenu[indexPath.row].name
+            cell.dishRatingLabel.text = "\(RestaurantController.shared.featuredMenu[indexPath.row].rating)"
+            cell.dish = RestaurantController.shared.featuredMenu[indexPath.row]
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Menu", for: indexPath) as! MenuCollectionViewCell
-            cell.dishImage.image = UIImage(named: dish[indexPath.row].image)
-            cell.dishName.text = dish[indexPath.row].name
-            cell.dishRating.text = "\(dish[indexPath.row].rating)"
-            cell.dishDescription.text = dish[indexPath.row].description
-            cell.dish = dish[indexPath.row]
+            cell.dishImage.image = UIImage(named: RestaurantController.shared.dish[indexPath.row].image)
+            cell.dishName.text = RestaurantController.shared.dish[indexPath.row].name
+            cell.dishRating.text = "\(RestaurantController.shared.dish[indexPath.row].rating)"
+            cell.dishDescription.text = RestaurantController.shared.dish[indexPath.row].description
+            cell.dish = RestaurantController.shared.dish[indexPath.row]
             //cell.index = indexPath.row
-            for dishinFavourite in favouriteDish {
-                if dish[indexPath.row] == dishinFavourite {
+            for dishinFavourite in RestaurantController.shared.favouriteDish {
+                if RestaurantController.shared.dish[indexPath.row] == dishinFavourite {
                     cell.addToFavourites.isSelected = true
                 }
             }
@@ -116,7 +116,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
     }
     
     @objc func cartUpdated() {
-        if cartDish.isEmpty {
+        if RestaurantController.shared.cartDish.isEmpty {
                 
                 self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: "cart")
             } else {
@@ -150,8 +150,8 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
             
-            headerView.headerLabel.text = sectionHeaders[indexPath.section]
-            print(sectionHeaders[indexPath.section])
+            headerView.headerLabel.text = RestaurantController.shared.sectionHeaders[indexPath.section]
+            print(RestaurantController.shared.sectionHeaders[indexPath.section])
             headerView.headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
             
             //headerView.button.tag = indexPath.section

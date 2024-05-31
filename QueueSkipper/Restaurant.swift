@@ -50,19 +50,3 @@ struct Dish: Equatable {
     }
 }
 
-
-
-var restaurant : [Restaurant] = []
-
-var dish: [Dish] = []
-
-var favouriteDish: [Dish] = []
-
-var featuredItem: [Dish] = []
-
-var featuredMenu: [Dish] = []
-
-var cartDish: [Dish] = []
-
-var sectionHeaders: [String] = [ "PRLiveFoods", "Featured Items", "Dishes"]
-var homeHeaders: [String] = ["Top Picks", "Restaurants"]

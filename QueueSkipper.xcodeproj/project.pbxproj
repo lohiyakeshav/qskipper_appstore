@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		054106F62C098926001739D8 /* RestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054106F52C098926001739D8 /* RestaurantController.swift */; };
 		0574093B2BF72316000303B2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574093A2BF72316000303B2 /* MenuViewController.swift */; };
 		0598D6F32BF716CE00425F46 /* MyOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */; };
 		0598D6F72BF71AA400425F46 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6F62BF71AA400425F46 /* OrdersTableViewCell.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		054106F52C098926001739D8 /* RestaurantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantController.swift; sourceTree = "<group>"; };
 		0574093A2BF72316000303B2 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersTableViewController.swift; sourceTree = "<group>"; };
 		0598D6F62BF71AA400425F46 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				05C93BC72BDF4CCA0035FA61 /* AppDelegate.swift */,
 				05E4608C2BF4D33600E0108C /* Restaurant.swift */,
+				054106F52C098926001739D8 /* RestaurantController.swift */,
 				05C7489A2C0835280047B4D5 /* ResponseModel.swift */,
 				05C8CFB72BFB5FAF00279977 /* RestaurantDetails.xib */,
 				A03CE6F22BFB92BB00803028 /* FeaturedItems.xib */,
@@ -258,6 +261,7 @@
 				05AFDB942BF616A700878F68 /* FavouritesViewController.swift in Sources */,
 				05F8D0F32C05C99600581125 /* MyCartViewController.swift in Sources */,
 				A0D386EA2BFD0BE2002E1F1E /* FavouriteDish.swift in Sources */,
+				054106F62C098926001739D8 /* RestaurantController.swift in Sources */,
 				72B54F792BFB65610050DD7F /* ProfileTableViewController.swift in Sources */,
 				0598D6F72BF71AA400425F46 /* OrdersTableViewCell.swift in Sources */,
 				05F8D0F52C05CA7800581125 /* MyCartTableViewCell.swift in Sources */,

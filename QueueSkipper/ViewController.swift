@@ -20,8 +20,8 @@ class ViewController: UIViewController {
                 print("Called for menu")
                 let list = try await  NetworkUtils.shared.fetchRestaurants()
                 print("Called for dusra menu")
-                restaurant = list
-             print(restaurant)
+                RestaurantController.shared.setRestaurant(restaurant: list) 
+                print(RestaurantController.shared.restaurant)
                
             } catch {
                print("erroe]")

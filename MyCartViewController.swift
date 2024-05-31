@@ -52,13 +52,13 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cartDish.count
+        return RestaurantController.shared.cartDish.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCart", for: indexPath) as! MyCartTableViewCell
         
-        let item = cartDish[indexPath.row]
+        let item = RestaurantController.shared.cartDish[indexPath.row]
                cell.configure(with: item, index: indexPath.row)
                cell.stepper.tag = indexPath.row // Set tag to identify the row
                
@@ -66,7 +66,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
                    if quantity == 0 {
                        self?.removeItem(at: indexPath.row)
                    } else {
-                       cartDish[indexPath.row].quantity = quantity
+                       RestaurantController.shared.setCartDishQuantity(index: indexPath.row, quantity: quantity)
                        self?.updateTotalPrice()
                        cell.updatePriceLabel(price: Double(item.price), quantity: quantity)
                    }
@@ -125,17 +125,17 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func stepperValueChanged(_ sender: UIStepper) {
         let row = sender.tag
         print(row)// Get the row for which the stepper was changed
-        guard row >= 0 && row < cartDish.count else {
+        guard row >= 0 && row < RestaurantController.shared.cartDish.count else {
             return
         }
         
         let quantity = Int(sender.value)
         
-        cartDish[row].quantity = quantity
+        RestaurantController.shared.setCartDishQuantity(index: row, quantity: quantity)
         
         // Update the cell
         if let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? MyCartTableViewCell {
-            cell.configure(with: cartDish[row], index: row)
+            cell.configure(with: RestaurantController.shared.cartDish[row], index: row)
         }
         
         updateTotalPrice()
@@ -152,7 +152,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func updateTotalPrice() {
             var totalPrice = 0.0
-            for item in cartDish {
+        for item in RestaurantController.shared.cartDish {
                 totalPrice += Double(item.price) * Double(item.quantity ?? 1)
             }
             totalPrice += convenienceFee
@@ -161,10 +161,10 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     
     func removeItem(at index: Int) {
-        guard index >= 0 && index < cartDish.count else {
+        guard index >= 0 && index < RestaurantController.shared.cartDish.count else {
             return
         }
-        cartDish.remove(at: index)
+        RestaurantController.shared.removeCartDish(at: index)
         tableView.performBatchUpdates({
             tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }) { _ in
@@ -172,7 +172,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.updateTotalPrice()
         }
         
-        if cartDish.isEmpty {
+        if RestaurantController.shared.cartDish.isEmpty {
             print("Empty Cart")
         }
     }

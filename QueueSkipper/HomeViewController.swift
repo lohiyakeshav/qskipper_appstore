@@ -26,9 +26,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return featuredItem.count
+            return RestaurantController.shared.featuredItem.count
         case 1:
-            return isSearching ? filteredRestaurants.count:restaurant.count
+            return isSearching ? filteredRestaurants.count:RestaurantController.shared.restaurant.count
         default:
             return 0
         }
@@ -38,14 +38,14 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         switch indexPath.section {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeBanner", for: indexPath) as! HomeBannerCollectionViewCell
-            cell.imageView.image = UIImage(named: featuredItem[indexPath.row].image)
-            cell.dishName.text = featuredItem[indexPath.row].name
-            cell.restaurantName.text = featuredItem[indexPath.row].restaurant
+            cell.imageView.image = UIImage(named: RestaurantController.shared.featuredItem[indexPath.row].image)
+            cell.dishName.text = RestaurantController.shared.featuredItem[indexPath.row].name
+            cell.restaurantName.text = RestaurantController.shared.featuredItem[indexPath.row].restaurant
             //cell.isUserInteractionEnabled = true
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantList", for: indexPath) as! RestaurantListCollectionViewCell
-            let rest = isSearching ? filteredRestaurants[indexPath.row] : restaurant[indexPath.row]
+            let rest = isSearching ? filteredRestaurants[indexPath.row] : RestaurantController.shared.restaurant[indexPath.row]
                        // cell.imageView.image = UIImage(named: rest.restImage)
                         cell.name.text = rest.restName
                         cell.waitingTime.text = "\(rest.restWaitingTime) Mins"
@@ -65,7 +65,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             isSearching = false
         } else {
             isSearching = true
-            filteredRestaurants = restaurant.filter { $0.restName.lowercased().contains(searchText.lowercased()) }
+            filteredRestaurants = RestaurantController.shared.restaurant.filter { $0.restName.lowercased().contains(searchText.lowercased()) }
         }
         collectionView.reloadData()
     }
@@ -90,7 +90,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(generateLayout(), animated: true)
-        filteredRestaurants = restaurant
+        filteredRestaurants = RestaurantController.shared.restaurant
         
        
     }
@@ -101,7 +101,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
             
-            headerView.headerLabel.text = homeHeaders[indexPath.section]
+            headerView.headerLabel.text = RestaurantController.shared.homeHeaders[indexPath.section]
             headerView.headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
             //headerView.button.tag = indexPath.section
             //headerView.button.setTitle("See All", for: .normal)
@@ -161,8 +161,8 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
 //        viewController.restaurantSelected = Restaurant()
         switch indexPath.section {
         case 0:
-            for rest in restaurant {
-                if rest.restName == featuredItem[indexPath.row].restaurant {
+            for rest in RestaurantController.shared.restaurant {
+                if rest.restName == RestaurantController.shared.featuredItem[indexPath.row].restaurant {
                     print(rest)
                     viewController.restaurantSelected = rest
                     
@@ -170,7 +170,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             }
             
         default:
-            viewController.restaurantSelected = isSearching ? filteredRestaurants[indexPath.row] : restaurant[indexPath.row]
+            viewController.restaurantSelected = isSearching ? filteredRestaurants[indexPath.row] : RestaurantController.shared.restaurant[indexPath.row]
         
         }
         let navVC = self.navigationController
