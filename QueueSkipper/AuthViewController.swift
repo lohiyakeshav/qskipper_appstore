@@ -36,7 +36,7 @@ class AuthViewController: UIViewController {
                     return
                 }
                 
-                showLoading(true)
+                //showLoading(true)
                 
                 Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                     self.showLoading(false)
@@ -73,15 +73,15 @@ class AuthViewController: UIViewController {
             }
             
     func navigateToHomeScreen() {
-                print ("haha2")
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                print ("haha2")
-                if let viewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? ViewController {
-                    viewController.modalPresentationStyle = .fullScreen
-//                    self.present(viewController, animated: true, completion: nil)
-                    print ("haha2")
-                    navigationController?.pushViewController(viewController, animated: true)
-                }
+            print("navigateToHomeScreen called")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let viewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? ViewController {
+                print("ViewController instantiated")
+                viewController.modalPresentationStyle = .fullScreen
+                navigationController?.pushViewController(viewController, animated: true)
+            } else {
+                print("Failed to instantiate ViewController")
+            }
         }
             
             func showAlert(message: String) {
