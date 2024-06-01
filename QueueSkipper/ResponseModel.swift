@@ -17,3 +17,4 @@ struct RestaurantsResponse: Codable {
         case restaurants = "Resturanrt"
     }
 }
+

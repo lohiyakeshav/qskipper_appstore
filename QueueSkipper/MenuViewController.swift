@@ -73,7 +73,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
                     cell.addToFavourites.isSelected = true
                 }
             }
-            cell.updateCartButtonState()
+
             
             return cell
         default:
@@ -202,7 +202,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
     func generateSection1() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(200))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.99), heightDimension: .absolute(200))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPagingCentered

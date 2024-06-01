@@ -85,3 +85,5 @@ class RestaurantController {
     func setCartDishQuantity(index: Int, quantity: Int) { _cartDish[index].quantity = quantity }
     func removeCartDish(at: Int) { _cartDish.remove(at: at) }
 }
+
+var orders: [Order] = []

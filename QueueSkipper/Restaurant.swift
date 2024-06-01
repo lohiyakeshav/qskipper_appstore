@@ -11,7 +11,7 @@ import UIKit
 
 struct Restaurant: Equatable, Codable{
     var restId: String = ""
-    var restImage : URL?
+    //var restImage : URL?
     var restName : String = ""
     var restWaitingTime : Int = 0
     var cuisine : String = ""
@@ -27,7 +27,7 @@ struct Restaurant: Equatable, Codable{
         case restName = "resturantName"
         case restWaitingTime = "estimatedTime"
         case cuisine = "cuisines"
-        case restImage
+        //case restImage = "restaurant_photo"
         
     }
 }

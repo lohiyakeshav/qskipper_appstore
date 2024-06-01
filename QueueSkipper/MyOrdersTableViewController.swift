@@ -81,13 +81,13 @@ class MyOrdersTableViewController: UITableViewController {
     
     func loadOrders() {
         let now = Date()
-        orders = [
-            Order(id: "2303", status: "Preparing", price: 374, items: [("Pizza", 2), ("Soda", 3)], prepTimeRemaining: 10, bookingDate: now, rating: nil),
-            Order(id: "2304", status: "Completed", price: 128, items: [("Burger", 3), ("Chai", 1)], prepTimeRemaining: 0, bookingDate: now.addingTimeInterval(-3600), rating: 4),
-            
-            Order(id: "2302", status: "Completed", price: 456, items: [("Panner", 2), ("Naan", 4)], prepTimeRemaining: 0, bookingDate: now.addingTimeInterval(-7200), rating: 1)
-            
-        ]
+//        orders = [
+//            Order(id: "2303", status: "Preparing", price: 374, items: [("Pizza", 2), ("Soda", 3)], prepTimeRemaining: 10, bookingDate: now, rating: nil),
+//            Order(id: "2304", status: "Completed", price: 128, items: [("Burger", 3), ("Chai", 1)], prepTimeRemaining: 0, bookingDate: now.addingTimeInterval(-3600), rating: 4),
+//            
+//            Order(id: "2302", status: "Completed", price: 456, items: [("Panner", 2), ("Naan", 4)], prepTimeRemaining: 0, bookingDate: now.addingTimeInterval(-7200), rating: 1)
+//            
+//        ]
         tableView.reloadData()
     }
     

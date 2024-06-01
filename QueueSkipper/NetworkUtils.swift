@@ -17,7 +17,7 @@ class NetworkUtils{
     
     enum NetworkUtilsError : Error, LocalizedError {
     case restaurantNotFound
-//    case restaurantNotFound
+    case ImageNotFound
 //    case restaurantNotFound
 //    case restaurantNotFound
     }
@@ -40,7 +40,24 @@ class NetworkUtils{
         return restaurantListResponse.restaurants
     }
     
-    
+    func fetchImage(from url: URL) async throws -> UIImage {
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        if let string = String(data: data, encoding: .utf8){
+            print(string)
+        }
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 202 else {
+            throw NetworkUtilsError.ImageNotFound
+        }
+        print(httpResponse)
+        guard let image = UIImage(data: data) else {
+            throw NetworkUtilsError.ImageNotFound
+        }
+        print(image.size )
+        print(image)
+        return image
+    }
     
 }
 

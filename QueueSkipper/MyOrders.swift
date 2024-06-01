@@ -12,7 +12,7 @@ struct Order {
     var id: String
     var status: String
     var price: Double
-    var items: [(name: String, quantity: Int)]
+    var items: [Dish]
     var prepTimeRemaining: Int
     var bookingDate: Date
     var rating: Int?

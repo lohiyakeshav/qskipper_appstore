@@ -18,7 +18,6 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     var filteredRestaurants: [Restaurant] = []
     var isSearching: Bool = false
     
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -46,11 +45,21 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantList", for: indexPath) as! RestaurantListCollectionViewCell
             let rest = isSearching ? filteredRestaurants[indexPath.row] : RestaurantController.shared.restaurant[indexPath.row]
+            
+            
                        // cell.imageView.image = UIImage(named: rest.restImage)
-                        cell.name.text = rest.restName
-                        cell.waitingTime.text = "\(rest.restWaitingTime) Mins"
-                        cell.cuisine.text = rest.cuisine
-                        return cell
+            cell.name.text = rest.restName
+            cell.waitingTime.text = "\(rest.restWaitingTime) Mins"
+            cell.cuisine.text = rest.cuisine
+            cell.imageView = nil
+            Task.init {
+                if let image = try? await NetworkUtils.shared.fetchImage(from: URL(string: "https://queueskipperbackend.onrender.com/get_restaurant_photo/\(rest.restId)")!) {
+                    print("Image fetched")
+                    cell.imageView.image = image
+                }
+            }
+           
+            return cell
         default:
             return UICollectionViewCell()
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeBanner", for: indexPath)
