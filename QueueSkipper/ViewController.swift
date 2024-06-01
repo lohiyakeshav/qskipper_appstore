@@ -24,7 +24,7 @@ class ViewController: UIViewController {
                 print(RestaurantController.shared.restaurant)
                
             } catch {
-               print("erroe]")
+               print("error at home")
             }
         }
         
