@@ -40,6 +40,10 @@ class NetworkUtils{
         return restaurantListResponse.restaurants
     }
     
+//    func fetchRestaurantMenu() async throws -> [Dish] {
+//
+//    }
+//    
     func fetchImage(from url: URL) async throws -> UIImage {
         let (data, response) = try await URLSession.shared.data(from: url)
         
@@ -50,13 +54,11 @@ class NetworkUtils{
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 202 else {
             throw NetworkUtilsError.ImageNotFound
         }
-        print(httpResponse)
-        guard let image = UIImage(data: data) else {
-            throw NetworkUtilsError.ImageNotFound
-        }
-        print(image.size )
-        print(image)
-        return image
+        let decoder = JSONDecoder()
+        let restaurantImage = try decoder.decode(RestaurantImage.self, from: data)
+        print("chalagya")
+        print(restaurantImage.restaurant.banner_photo64)
+        return restaurantImage.restaurant.banner_photo64
     }
     
 }

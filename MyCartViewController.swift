@@ -86,6 +86,12 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
             sender.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
             sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }, completion: nil)
+        
+        if scheduleLater.isSelected {
+            
+        } else {
+            orders.append(Order(id: "123", status: "Preparing", price: totalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: 10, bookingDate: Date()))
+        }
     }
     
     
@@ -149,7 +155,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
             orderTimeLabel.text = dateString
         }
 
-    
+    var totalPrice = 0.0
     func updateTotalPrice() {
             var totalPrice = 0.0
         for item in RestaurantController.shared.cartDish {

@@ -9,7 +9,6 @@ import UIKit
 
 class MyOrdersTableViewController: UITableViewController {
     
-    var orders: [Order] = []
 
     
     required init?(coder: NSCoder) {
@@ -51,7 +50,7 @@ class MyOrdersTableViewController: UITableViewController {
         
         cell.configureCell(for: order)
         
-        cell.ratingChanged = { [weak self] rating in self?.orders[indexPath.row].rating = rating}
+        cell.ratingChanged = { rating in orders[indexPath.row].rating = rating }
         
 //        cell.OrderIdLabel.text = "Order#\(order.id)"
 //        cell.OrderStatus.setTitle("\(order.status)", for: .normal)
@@ -80,7 +79,7 @@ class MyOrdersTableViewController: UITableViewController {
     }
     
     func loadOrders() {
-        let now = Date()
+//        let now = Date()
 //        orders = [
 //            Order(id: "2303", status: "Preparing", price: 374, items: [("Pizza", 2), ("Soda", 3)], prepTimeRemaining: 10, bookingDate: now, rating: nil),
 //            Order(id: "2304", status: "Completed", price: 128, items: [("Burger", 3), ("Chai", 1)], prepTimeRemaining: 0, bookingDate: now.addingTimeInterval(-3600), rating: 4),
@@ -91,7 +90,7 @@ class MyOrdersTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-
+ 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         280
     }
