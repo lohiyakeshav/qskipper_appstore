@@ -40,10 +40,15 @@ class ViewController: UIViewController {
         
     }
     
+    private func configureNavigationBarHidden(_ hidden: Bool) {
+            navigationController?.setNavigationBarHidden(hidden, animated: false)
+        }
+        
+    
     override func viewDidLoad() {
             super.viewDidLoad()
             self.navigationController?.isNavigationBarHidden = true
-            
+        //configureNavigationBarHidden(true)
             initialCenter = sliderView.center
             
             Task.init {
@@ -66,20 +71,21 @@ class ViewController: UIViewController {
         }
         
         func unlockAction() {
+            //configureNavigationBarHidden(true)
             print("Unlocked!")
             self.navigateToRestaurantScreen()
+            
         }
     
     
     func navigateToRestaurantScreen() {
-                print ("haha2")
-                let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
-                print ("haha2")
-        let viewController = (storyboard.instantiateViewController(withIdentifier: "restaurantVC") as! HomeViewController)
-                    //viewController.modalPresentationStyle = .fullScreen
-//                    self.present(viewController, animated: true, completion: nil)
-                    print ("haha2")
-                    present(viewController, animated: true)
-                
-        }
+        let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "restaurantVC") as! HomeViewController
+        navigationController?.pushViewController(viewController, animated: true)
+        
+//
+//        let navVC = UINavigationController()
+//        navVC.pushViewController(viewController, animated: true)
+    }
+
     }

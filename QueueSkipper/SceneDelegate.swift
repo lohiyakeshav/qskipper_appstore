@@ -29,13 +29,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainVC = storyboard.instantiateViewController(withIdentifier: "mainVC")
 
-            window?.rootViewController = mainVC
+            let navVC = UINavigationController()
+            navVC.pushViewController(mainVC, animated: true)
+            if let window = window {
+                window.rootViewController = navVC
+            }
+
+            //window?.rootViewController = navVC
         } else {
             
             let storyboard = UIStoryboard(name: "auth", bundle: nil)
             let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
+            let navVC = UINavigationController()
+            navVC.pushViewController(authVC, animated: true)
             
-            window?.rootViewController = authVC
+            if let window = window {
+                window.rootViewController = navVC
+            }
+
+            //window?.rootViewController = navVC
             
         }
         

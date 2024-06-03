@@ -97,6 +97,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationController?.isNavigationBarHidden = false
+        
         searchBar.delegate = self
         
        
@@ -195,9 +198,10 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             viewController.restaurantSelected = isSearching ? filteredRestaurants[indexPath.row] : RestaurantController.shared.restaurant[indexPath.row]
         
         }
-        let navVC = self.navigationController
-        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
-        navVC?.pushViewController(viewController, animated: true)
+//        let navVC = self.navigationController
+//        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
+//        navVC?.pushViewController(viewController, animated: true)
+        show(viewController, sender: self)
     }
     
     /*

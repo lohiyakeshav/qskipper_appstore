@@ -73,22 +73,11 @@ class AuthViewController: UIViewController {
             }
             
     func navigateToHomeScreen() {
-            print("navigateToHomeScreen called")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let viewController = (storyboard.instantiateViewController(withIdentifier: "mainVC") as! ViewController)
-                    //viewController.modalPresentationStyle = .fullScreen
-//                    self.present(viewController, animated: true, completion: nil)
-                    print ("haha2")
-                    present(viewController, animated: true)
-//            if let viewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? ViewController {
-//                print("ViewController instantiated")
-//             //   viewController.modalPresentationStyle = .fullScreen
-//                navigationController?.pushViewController(viewController, animated: true)
-//            } else {
-//                print("Failed to instantiate ViewController")
-//            }
-        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as! ViewController
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
             
             func showAlert(message: String) {
                 let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
