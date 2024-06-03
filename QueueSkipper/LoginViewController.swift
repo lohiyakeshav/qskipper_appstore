@@ -50,20 +50,21 @@ class LoginViewController: UIViewController {
             
             override func viewDidLoad() {
                 super.viewDidLoad()
-                
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-                    view.addGestureRecognizer(tapGesture)
+                self.navigationItem.setHidesBackButton(true, animated: false)
+               
+                self.navigationController?.navigationBar.isHidden = false
                 
             }
             
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
+            
     
     func navigateToHomeScreen() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as! ViewController
+        let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "restaurantVC") as! HomeViewController
+        let tabVC = UITabBarController()
+        tabVC.tabBar.isHidden = false
         navigationController?.pushViewController(viewController, animated: true)
+      
     }
 
             

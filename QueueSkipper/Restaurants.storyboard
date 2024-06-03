@@ -162,10 +162,10 @@
             </objects>
             <point key="canvasLocation" x="-1009" y="1229"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab View Controller-->
         <scene sceneID="pUu-6Q-fKB">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="7x5-nP-ICM" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="7x5-nP-ICM" customClass="TabViewController" customModule="QueueSkipper" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qrr-x7-dFb">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

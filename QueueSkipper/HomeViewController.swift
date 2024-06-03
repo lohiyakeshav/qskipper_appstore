@@ -100,6 +100,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationController?.isNavigationBarHidden = false
         
+        
         searchBar.delegate = self
         
        
@@ -119,6 +120,11 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         
        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
    
     
 

@@ -46,23 +46,56 @@ class ViewController: UIViewController {
         
     
     override func viewDidLoad() {
-            super.viewDidLoad()
-            self.navigationController?.isNavigationBarHidden = true
+        super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
         //configureNavigationBarHidden(true)
-            initialCenter = sliderView.center
-            
-            Task.init {
-                do {
-                    print("Called for menu")
-                    let list = try await NetworkUtils.shared.fetchRestaurants()
-                    print("Called for dusra menu")
-                    RestaurantController.shared.setRestaurant(restaurant: list)
-                    print(RestaurantController.shared.restaurant)
-                } catch {
-                    print("error at home")
-                }
+        initialCenter = sliderView.center
+        
+        Task.init {
+            do {
+                print("Called for menu")
+                let list = try await NetworkUtils.shared.fetchRestaurants()
+                print("Called for dusra menu")
+                RestaurantController.shared.setRestaurant(restaurant: list)
+                print(RestaurantController.shared.restaurant)
+            } catch {
+                print("error at home")
             }
         }
+        
+        
+        
+        UserDefaults.standard.register(defaults: ["isLoggedIn": false])
+        
+        let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+        
+        if isLoggedIn {
+            let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
+            let mainVC = storyboard.instantiateViewController(withIdentifier: "restaurantVC")
+
+            let navVC = UINavigationController()
+            navVC.pushViewController(mainVC, animated: true)
+           
+
+            //window?.rootViewController = navVC
+        } else {
+            
+            let storyboard = UIStoryboard(name: "auth", bundle: nil)
+            let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
+            let navVC = UINavigationController()
+            navVC.pushViewController(authVC, animated: true)
+          
+            //window?.rootViewController = navVC
+            
+        }
+        
+        
+    }
+    
+    
+    
+    
         
         func resetSlider() {
             UIView.animate(withDuration: 0.3) {
@@ -79,9 +112,10 @@ class ViewController: UIViewController {
     
     
     func navigateToRestaurantScreen() {
-        let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "restaurantVC") as! HomeViewController
+        let storyboard = UIStoryboard(name: "auth", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "authVC") as! LoginViewController
         navigationController?.pushViewController(viewController, animated: true)
+        
         
 //
 //        let navVC = UINavigationController()

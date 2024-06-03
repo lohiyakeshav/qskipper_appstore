@@ -5,6 +5,9 @@ struct User : Codable{
     var password: String
 }
 
+
+var isLoggedIn = false
+
 class UserController {
     private var _credential: [User] = []
     

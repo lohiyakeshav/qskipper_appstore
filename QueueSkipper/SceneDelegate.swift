@@ -7,11 +7,12 @@
 
 import UIKit
 
-var isLoggedIn = false
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -21,36 +22,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         guard let _ = (scene as? UIWindowScene) else { return }
-        UserDefaults.standard.register(defaults: ["isLoggedIn": false])
-        
-        let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
-        
-        if isLoggedIn {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainVC = storyboard.instantiateViewController(withIdentifier: "mainVC")
+       
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "mainVC")
 
-            let navVC = UINavigationController()
-            navVC.pushViewController(mainVC, animated: true)
-            if let window = window {
-                window.rootViewController = navVC
-            }
-
-            //window?.rootViewController = navVC
-        } else {
-            
-            let storyboard = UIStoryboard(name: "auth", bundle: nil)
-            let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
-            let navVC = UINavigationController()
-            navVC.pushViewController(authVC, animated: true)
-            
-            if let window = window {
-                window.rootViewController = navVC
-            }
-
-            //window?.rootViewController = navVC
-            
-        }
-        
+        let navVC = UINavigationController()
+        navVC.pushViewController(mainVC, animated: true)
+        window?.rootViewController = navVC
         
     }
 

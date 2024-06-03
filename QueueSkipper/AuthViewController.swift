@@ -70,11 +70,12 @@ class AuthViewController: UIViewController {
             
             override func viewDidLoad() {
                 super.viewDidLoad()
+                
             }
             
     func navigateToHomeScreen() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as! ViewController
+        let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "restaurantVC") as! ViewController
         navigationController?.pushViewController(viewController, animated: true)
     }
 

@@ -119,6 +119,16 @@
             </objects>
             <point key="canvasLocation" x="9912.2137404580153" y="-1.4084507042253522"/>
         </scene>
+        <!--Restaurants-->
+        <scene sceneID="QKW-KG-YDj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Restaurants" id="Rvl-lk-TPt" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="BL2-PM-501"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zgL-VI-j98" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9402" y="215"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="slQ-Od-q1b">
             <objects>
