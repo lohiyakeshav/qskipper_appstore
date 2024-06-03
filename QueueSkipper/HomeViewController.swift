@@ -19,6 +19,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     var isSearching: Bool = false
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
         return 2
     }
     
@@ -34,7 +35,10 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
         switch indexPath.section {
+            
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeBanner", for: indexPath) as! HomeBannerCollectionViewCell
             cell.imageView.image = UIImage(named: RestaurantController.shared.featuredItem[indexPath.row].image)
@@ -43,21 +47,26 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             //cell.isUserInteractionEnabled = true
             return cell
         case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantList", for: indexPath) as! RestaurantListCollectionViewCell
-            let rest = isSearching ? filteredRestaurants[indexPath.row] : RestaurantController.shared.restaurant[indexPath.row]
-            
-            
-                       // cell.imageView.image = UIImage(named: rest.restImage)
-            cell.name.text = rest.restName
-            cell.waitingTime.text = "\(rest.restWaitingTime) Mins"
-            cell.cuisine.text = rest.cuisine
-            cell.imageView = nil
-            Task.init {
-                if let image = try? await NetworkUtils.shared.fetchImage(from: URL(string: "https://queueskipperbackend.onrender.com/get_restaurant_photo/\(rest.restId)")!) {
-                    print("Image fetched")
-                    cell.imageView.image = image
-                }
-            }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantList", for: indexPath) as? RestaurantListCollectionViewCell else {
+                            fatalError("Could not dequeue cell with identifier: RestaurantList")
+                        }
+                        let restaurant = isSearching ? filteredRestaurants[indexPath.row] : RestaurantController.shared.restaurant[indexPath.row]
+                        
+                        cell.name.text = restaurant.restName
+                        cell.waitingTime.text = "\(restaurant.restWaitingTime) Mins"
+                        cell.cuisine.text = restaurant.cuisine
+
+                        Task {
+                            if let url = URL(string: "https://queueskipperbackend.onrender.com/get_restaurant_photo/\(restaurant.restId)") {
+                                if let image = try? await NetworkUtils.shared.fetchImage(from: url) {
+                                    cell.imageView.image = image
+                                } else {
+                                    print("Failed to load image for restaurant: \(restaurant.restName)")
+                                }
+                            } else {
+                                print("Invalid URL for restaurant: \(restaurant.restName)")
+                            }
+                        }
            
             return cell
         default:
@@ -89,6 +98,8 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        
+       
         let featuredNib = UINib(nibName: "HomeBanner", bundle: nil)
         collectionView.register(featuredNib, forCellWithReuseIdentifier: "HomeBanner")
         let restaurantNib = UINib(nibName: "RestaurantList", bundle: nil)
@@ -100,6 +111,8 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(generateLayout(), animated: true)
         filteredRestaurants = RestaurantController.shared.restaurant
+        
+        
         
        
     }
