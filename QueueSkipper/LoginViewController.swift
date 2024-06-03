@@ -55,15 +55,24 @@ class LoginViewController: UIViewController {
             
     
     func navigateToHomeScreen() {
-                print ("haha2")
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                print ("haha2")
-                if let viewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? ViewController {
-                    viewController.modalPresentationStyle = .fullScreen
+        
+        print("navigateToHomeScreen called")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    
+    let viewController = (storyboard.instantiateViewController(withIdentifier: "mainVC") as! ViewController)
+                //viewController.modalPresentationStyle = .fullScreen
 //                    self.present(viewController, animated: true, completion: nil)
-                    print ("haha2")
-                    navigationController?.pushViewController(viewController, animated: true)
-                }
+                print ("haha2")
+                present(viewController, animated: true)
+//                print ("haha2")
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                print ("haha2")
+//                if let viewController = storyboard.instantiateViewController(withIdentifier: "mainVC") as? ViewController {
+//                    viewController.modalPresentationStyle = .fullScreen
+////                    self.present(viewController, animated: true, completion: nil)
+//                    print ("haha2")
+//                    navigationController?.pushViewController(viewController, animated: true)
+//                }
         }
             
             func showAlert(message: String) {

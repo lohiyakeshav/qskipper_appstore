@@ -20,5 +20,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D1888DA1-5408-44A1-B2E4-5541FE8B0305"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QueueSkipper/LoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "navigateToHomeScreen()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D1888DA1-5408-44A1-B2E4-5541FE8B0305 - 8845fccd1df10184"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QueueSkipper.LoginViewController.showLoading(Swift.Bool) -&gt; ()"
+                  moduleName = "QueueSkipper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/batch-2/Desktop/api/QueueSkipper/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "D1888DA1-5408-44A1-B2E4-5541FE8B0305 - dce335a874493530"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QueueSkipper.LoginViewController.navigateToHomeScreen() -&gt; ()"
+                  moduleName = "QueueSkipper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/batch-2/Desktop/api/QueueSkipper/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "628">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
