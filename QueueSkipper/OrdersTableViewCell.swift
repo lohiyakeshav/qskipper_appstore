@@ -41,6 +41,8 @@ class OrdersTableViewCell: UITableViewCell {
     }
     
     func configureCell(for order: Order) {
+        
+       
 
         isHighlighted = false
 
@@ -70,11 +72,11 @@ class OrdersTableViewCell: UITableViewCell {
                         }
                     } else {
                         OrderPrepTimeLabel.isHidden = false
-                        OrderPrepTimeLabel.text = "\(order.prepTimeRemaining) minutes"
+                        OrderPrepTimeLabel.text = "\(calculatePrepTimeRemaining(from: order.bookingDate, prepTime: order.prepTimeRemaining)) minutes"
                         hideRatingStars()
                     }
             OrderPriceLabel.text = String(format: "₹%.2f", order.price)
-                let itemDescriptions = order.items.map { "\($0.quantity) x \($0.name)" }
+        let itemDescriptions = order.items.map { "\(String(describing: $0.quantity)) x \($0.name)" }
                 OrderItemsLabel.text = itemDescriptions.joined(separator: "\n")
                 
                 let dateFormatter = DateFormatter()
@@ -115,6 +117,13 @@ class OrdersTableViewCell: UITableViewCell {
             updateStars(for: rating)
             ratingChanged?(rating)
         }
+    
+    func calculatePrepTimeRemaining(from bookingDate: Date, prepTime: Int) -> Int {
+           let currentTime = Date()
+           let elapsedTime = Calendar.current.dateComponents([.minute], from: bookingDate, to: currentTime).minute ?? 0
+           let remainingTime = max(0, prepTime - elapsedTime)
+           return remainingTime
+       }
         
         
             

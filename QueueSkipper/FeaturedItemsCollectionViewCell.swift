@@ -38,7 +38,7 @@ class FeaturedItemsCollectionViewCell: UICollectionViewCell {
     @IBOutlet var addButton: UIButton!
     
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
-        
+        dish.quantity = 1
         RestaurantController.shared.appendCartDish(dish: dish)
         self.contentView.bringSubviewToFront(addButton)
                     

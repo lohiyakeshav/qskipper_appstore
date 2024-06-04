@@ -28,6 +28,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
+        dish.quantity = 1
         RestaurantController.shared.appendCartDish(dish: dish)
         NotificationCenter.default.post(name: .cartUpdated, object: nil)
         

@@ -59,6 +59,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
                         Task {
                             if let url = URL(string: "https://queueskipperbackend.onrender.com/get_restaurant_photo/\(restaurant.restId)") {
                                 if let image = try? await NetworkUtils.shared.fetchImage(from: url) {
+                                   // RestaurantController.shared.setRestaurantImage(image: image, index: indexPath.row)
                                     cell.imageView.image = image
                                 } else {
                                     print("Failed to load image for restaurant: \(restaurant.restName)")
@@ -99,9 +100,25 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationController?.isNavigationBarHidden = false
+        self.hidesBottomBarWhenPushed = false
         
         
         searchBar.delegate = self
+        
+        Task.init {
+            do {
+                print("Called for menu")
+                let list = try await NetworkUtils.shared.fetchRestaurants()
+                print("Called for dusra menu")
+                RestaurantController.shared.setRestaurant(restaurant: list)
+                print(RestaurantController.shared.restaurant)
+                await MainActor.run {
+                    self.collectionView.reloadData()
+                }
+            } catch {
+                print("error")
+            }
+        }
         
        
         let featuredNib = UINib(nibName: "HomeBanner", bundle: nil)
@@ -193,7 +210,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         switch indexPath.section {
         case 0:
             for rest in RestaurantController.shared.restaurant {
-                if rest.restName == RestaurantController.shared.featuredItem[indexPath.row].restaurant {
+                if rest.restId == RestaurantController.shared.featuredItem[indexPath.row].restaurant {
                     print(rest)
                     viewController.restaurantSelected = rest
                     

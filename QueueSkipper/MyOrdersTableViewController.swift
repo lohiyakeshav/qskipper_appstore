@@ -29,6 +29,9 @@ class MyOrdersTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
@@ -45,6 +48,10 @@ class MyOrdersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrdersTableViewCell
+        
+        if cell.calculatePrepTimeRemaining(from: orders[indexPath.row].bookingDate, prepTime: orders[indexPath.row].prepTimeRemaining) == 0 {
+            orders[indexPath.row].status = "Completed"
+        }
         
         let order = orders[indexPath.row]
         
