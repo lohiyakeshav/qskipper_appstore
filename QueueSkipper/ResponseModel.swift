@@ -18,16 +18,32 @@ struct RestaurantsResponse: Codable {
     }
 }
 
+struct DishResponse: Codable {
+    let products: [Dish]
+    
+    enum CodingKeys: String, CodingKey {
+        case products
+    }
+}
+
 
 struct RestaurantImage: Codable {
-    let restaurant: RestaurantIM
+    let restaurant: Image
     
     enum CodingKeys: String, CodingKey {
         case restaurant
     }
 }
 
-struct RestaurantIM: Codable {
+struct DishImage: Codable {
+    let product_photo: Image
+    
+    enum CodingKeys: String, CodingKey {
+        case product_photo
+    }
+}
+
+struct Image: Codable {
     let banner_photo64: UIImage
     
     enum CodingKeys: String, CodingKey {

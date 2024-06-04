@@ -11,7 +11,7 @@ import UIKit
 
 struct Restaurant: Equatable, Codable{
     var restId: String = ""
-    var restImage : URL?
+    //var restImage : UIImage?
     var restName : String = ""
     var restWaitingTime : Int = 0
     var cuisine : String = ""
@@ -27,13 +27,14 @@ struct Restaurant: Equatable, Codable{
         case restName = "restaurant_Name"
         case restWaitingTime = "estimatedTime"
         case cuisine 
-        case restImage = "banner_photo64"
+        //case restImage
         
     }
+    
 }
 
 
-struct Dish: Equatable, Hashable {
+struct Dish: Equatable, Codable {
     var dishId: String = ""
     var image: String = ""
     var name: String = ""
@@ -43,14 +44,22 @@ struct Dish: Equatable, Hashable {
     var foodType: String = ""
     //var favourites: Bool = false
     var restaurant: String = ""
-    var quantity: Int?
+    var availability: Bool = true
+    var quantity: Int? 
     
     static func ==(lhs: Dish, rhs: Dish) -> Bool {
         return lhs.dishId == rhs.dishId
     }
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(dishId)
+    enum CodingKeys: String, CodingKey {
+        case dishId = "_id"
+        case name = "product_name"
+        case description
+        case price = "product_price"
+        case foodType = "food_category"
+        case restaurant = "restaurant_id"
+        case availability
     }
+   
 }
 

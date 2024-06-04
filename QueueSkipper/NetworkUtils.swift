@@ -16,9 +16,9 @@ class NetworkUtils{
     
     
     enum NetworkUtilsError : Error, LocalizedError {
-    case restaurantNotFound
+    case RestaurantNotFound
     case ImageNotFound
-//    case restaurantNotFound
+    case DishNotFound
 //    case restaurantNotFound
     }
     
@@ -31,7 +31,7 @@ class NetworkUtils{
         }
         
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw NetworkUtilsError.restaurantNotFound
+            throw NetworkUtilsError.RestaurantNotFound
         }
         print(httpResponse)
         let decoder = JSONDecoder()
@@ -40,9 +40,21 @@ class NetworkUtils{
         return restaurantListResponse.restaurants
     }
     
-//    func fetchRestaurantMenu() async throws -> [Dish] {
-//
-//    }
+    func fetchDish(from url: URL) async throws -> [Dish] {
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        if let string = String(data: data, encoding: .utf8){
+            print(string)
+        }
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw NetworkUtilsError.DishNotFound
+        }
+        let decoder = JSONDecoder()
+        let userResponse = try decoder.decode(DishResponse.self, from: data)
+        return userResponse.products
+
+    }
 //    
     func fetchImage(from url: URL) async throws -> UIImage {
         let (data, response) = try await URLSession.shared.data(from: url)
@@ -59,6 +71,23 @@ class NetworkUtils{
         print("chalagya")
         print(restaurantImage.restaurant.banner_photo64)
         return restaurantImage.restaurant.banner_photo64
+    }
+    
+    func fetchDishImage(from url: URL) async throws -> UIImage {
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        if let string = String(data: data, encoding: .utf8){
+            print(string)
+        }
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 202 else {
+            throw NetworkUtilsError.ImageNotFound
+        }
+        let decoder = JSONDecoder()
+        let restaurantImage = try decoder.decode(DishImage.self, from: data)
+        print("chalagya")
+        print(restaurantImage.product_photo.banner_photo64)
+        return restaurantImage.product_photo.banner_photo64
     }
     
 }

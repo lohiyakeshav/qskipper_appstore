@@ -88,6 +88,24 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         self.navigationItem.title = restaurantSelected.restName
         self.navigationController?.navigationBar.prefersLargeTitles = true
 
+        Task.init {
+            do {
+                if let url = URL(string: "https://queueskipperbackend.onrender.com/get_all_product/\(restaurantSelected.restId)"){
+                    
+                    let list = try await NetworkUtils.shared.fetchDish(from: url)
+                    print("DishesFetched")
+                    print(list)
+                    RestaurantController.shared.setDish(dish: list)
+                    await MainActor.run {
+                        self.collectionView.reloadData()
+                    }
+                }
+            }
+                catch {
+                    print("error at home")
+                }
+    
+        }
         let restaurantDetailNib = UINib(nibName: "RestaurantDetails", bundle: nil)
         collectionView.register(restaurantDetailNib, forCellWithReuseIdentifier: "RestaurantDetails")
         let featuredItemNib = UINib(nibName: "FeaturedItems", bundle: nil)

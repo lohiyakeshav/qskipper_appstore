@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RestaurantController {
     
@@ -59,7 +60,7 @@ class RestaurantController {
     }
     
     init() {
-       loadDummyDish()
+//       loadDummyDish()
         loadDummyFeaturedMenu()
     }
     func loadDummyDish() {
@@ -84,6 +85,8 @@ class RestaurantController {
     func removeFavouriteDish(dish: Dish) { _favouriteDish.removeAll{ $0.dishId == dish.dishId } }
     func setCartDishQuantity(index: Int, quantity: Int) { _cartDish[index].quantity = quantity }
     func removeCartDish(at: Int) { _cartDish.remove(at: at) }
+    func setDish(dish: [Dish]) { _dish = dish}
+    func removeCartDish() { _cartDish.removeAll() }
 }
 
 var orders: [Order] = []

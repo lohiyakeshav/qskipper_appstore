@@ -90,7 +90,11 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if scheduleLater.isSelected {
             
         } else {
-            orders.append(Order(id: "123", status: "Preparing", price: totalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: 10, bookingDate: Date()))
+            orders.append(Order(id: "123", status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: 10, bookingDate: Date()))
+            RestaurantController.shared.removeCartDish()
+            tableView.reloadData()
+            updateTotalPrice()
+            updateOrderTime()
         }
     }
     
@@ -109,6 +113,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         reloadTableAndUpdateStepperTags()
         // Do any additional setup after loading the view.
     }
+    
     
     
     
@@ -155,13 +160,14 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
             orderTimeLabel.text = dateString
         }
 
-    var totalPrice = 0.0
+    var ordertotalPrice = 0.0
     func updateTotalPrice() {
             var totalPrice = 0.0
         for item in RestaurantController.shared.cartDish {
                 totalPrice += Double(item.price) * Double(item.quantity ?? 1)
             }
             totalPrice += convenienceFee
+        ordertotalPrice = totalPrice
             totalPriceLabel.text = String(format: "₹%.2f", totalPrice)
             convenienceFeeLabel.text = String(format: "₹%.2f", convenienceFee)
         }
