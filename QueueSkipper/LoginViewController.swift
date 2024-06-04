@@ -50,21 +50,39 @@ class LoginViewController: UIViewController {
             
             override func viewDidLoad() {
                 super.viewDidLoad()
-                self.navigationItem.setHidesBackButton(true, animated: false)
-               
-                self.navigationController?.navigationBar.isHidden = false
+                //self.navigationItem.setHidesBackButton(true, animated: false)
+               self.navigationController?.navigationBar.isHidden = false
                 
             }
             
             
     
     func navigateToHomeScreen() {
-        let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "restaurantVC") as! HomeViewController
-        let tabVC = UITabBarController()
-        tabVC.tabBar.isHidden = false
-        navigationController?.pushViewController(viewController, animated: true)
-      
+        let storyboard1 = UIStoryboard(name: "Restaurants", bundle: nil)
+        let viewController = storyboard1.instantiateViewController(withIdentifier: "restaurantVC") as! HomeViewController
+        
+        let storyboard2 = UIStoryboard(name: "Favourites", bundle: nil)
+        let storyboard3 = UIStoryboard(name: "MyOrders", bundle: nil)
+        let storyboard4 = UIStoryboard(name: "Profile", bundle: nil)
+        
+        let favVC = storyboard2.instantiateViewController(withIdentifier: "favouriteVC") as! FavouritesViewController
+        let orderVC = storyboard3.instantiateViewController(withIdentifier: "myOrdersVC") as! MyOrdersTableViewController
+        let profileVC = storyboard4.instantiateViewController(withIdentifier: "profileVC") as! ProfileTableViewController
+        
+//        let viewNavController = UINavigationController(rootViewController: viewController)
+//        let favNavVC = UINavigationController(rootViewController: favVC)
+//        let orderNavVC = UINavigationController(rootViewController: orderVC)
+//        let profileNavVC = UINavigationController(rootViewController: profileVC)
+        
+        viewController.tabBarItem = UITabBarItem(title: "Menu", image: UIImage(systemName: "list.bullet"), tag: 0)
+        favVC.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
+        orderVC.tabBarItem = UITabBarItem(title: "My Orders", image: UIImage(systemName: "bag"), selectedImage: UIImage(systemName: "bag.fill"))
+        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), selectedImage: UIImage(systemName: "person.crop.circle.fill"))
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [viewController, favVC, orderVC, profileVC]
+
+        navigationController?.pushViewController(tabBarController, animated: true)
     }
 
             

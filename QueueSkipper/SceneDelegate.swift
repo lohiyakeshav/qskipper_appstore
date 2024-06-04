@@ -24,14 +24,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         guard let _ = (scene as? UIWindowScene) else { return }
-       
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainVC = storyboard.instantiateViewController(withIdentifier: "mainVC")
+               let mainVC = storyboard.instantiateViewController(withIdentifier: "mainVC")
 
-        let navVC = UINavigationController()
-        navVC.pushViewController(mainVC, animated: true)
-        window?.rootViewController = navVC
-        
+               let navVC = UINavigationController()
+               navVC.pushViewController(mainVC, animated: true)
+               window?.rootViewController = navVC
+               
         
         
     }

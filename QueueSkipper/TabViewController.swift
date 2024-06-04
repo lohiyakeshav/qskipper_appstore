@@ -11,9 +11,6 @@ class TabViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = false
-        let tabVC = UITabBarController()
-        tabVC.tabBar.isHidden = false
         // Do any additional setup after loading the view.
     }
     
