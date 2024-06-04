@@ -95,6 +95,11 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
                     let list = try await NetworkUtils.shared.fetchDish(from: url)
                     print("DishesFetched")
                     print(list)
+                    for item in list {
+                        if item.rating >= 4.0 {
+                            
+                        }
+                    }
                     RestaurantController.shared.setDish(dish: list)
                     await MainActor.run {
                         self.collectionView.reloadData()

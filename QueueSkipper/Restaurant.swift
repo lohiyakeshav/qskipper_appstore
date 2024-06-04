@@ -59,6 +59,7 @@ struct Dish: Equatable, Codable {
         case foodType = "food_category"
         case restaurant = "restaurant_id"
         case availability
+        case rating = "ratinge"
     }
    
 }
