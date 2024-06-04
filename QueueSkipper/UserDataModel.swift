@@ -6,7 +6,7 @@ struct User : Codable{
 }
 
 
-var isLoggedIn = false
+//var isLoggedInApp = false
 
 class UserController {
     private var _credential: [User] = []

@@ -9,7 +9,7 @@ import Foundation
 
 
 struct Order {
-    var id: String
+    var id: UUID
     var status: String
     var price: Double
     var items: [Dish]

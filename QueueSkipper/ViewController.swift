@@ -61,29 +61,29 @@ class ViewController: UIViewController {
 //                    navigateToLoginScreen()
 //                }
         
-//               UserDefaults.standard.register(defaults: ["isLoggedIn": false])
-//               
-//               let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
-//               
-//               if isLoggedIn {
-//                   let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
-//                   let mainVC = storyboard.instantiateViewController(withIdentifier: "restaurantVC")
-//
-//                   let navVC = UINavigationController()
-//                   navVC.pushViewController(mainVC, animated: true)
-//                  
-//
-//                   //window?.rootViewController = navVC
-//               } else {
-//                   
-//                   let storyboard = UIStoryboard(name: "auth", bundle: nil)
-//                   let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
-//                   let navVC = UINavigationController()
-//                   navVC.pushViewController(authVC, animated: true)
-//                 
-//                   //window?.rootViewController = navVC
-//                   
-//               }
+               
+               
+               let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+               
+               if isLoggedIn {
+                   let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
+                   let mainVC = storyboard.instantiateViewController(withIdentifier: "restaurantVC")
+
+                   let navVC = UINavigationController()
+                   navVC.pushViewController(mainVC, animated: true)
+                  
+
+                   //window?.rootViewController = navVC
+               } else {
+                   
+                   let storyboard = UIStoryboard(name: "auth", bundle: nil)
+                   let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
+                   let navVC = UINavigationController()
+                   navVC.pushViewController(authVC, animated: true)
+                 
+                   //window?.rootViewController = navVC
+                   
+               }
 //               
             
            

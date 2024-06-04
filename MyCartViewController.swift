@@ -90,7 +90,10 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if scheduleLater.isSelected {
             
         } else {
-            orders.append(Order(id: "123", status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: 10, bookingDate: Date()))
+           
+            let order = (Order(id: UUID(), status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: 10, bookingDate: Date()))
+            
+            orders.insert(order, at: 0)
             RestaurantController.shared.removeCartDish()
             tableView.reloadData()
             updateTotalPrice()

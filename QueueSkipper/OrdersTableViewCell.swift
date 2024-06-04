@@ -76,7 +76,7 @@ class OrdersTableViewCell: UITableViewCell {
                         hideRatingStars()
                     }
             OrderPriceLabel.text = String(format: "₹%.2f", order.price)
-        let itemDescriptions = order.items.map { "\(String(describing: $0.quantity)) x \($0.name)" }
+        let itemDescriptions = order.items.map { "\(String(describing: $0.quantity!)) x \($0.name)" }
                 OrderItemsLabel.text = itemDescriptions.joined(separator: "\n")
                 
                 let dateFormatter = DateFormatter()
