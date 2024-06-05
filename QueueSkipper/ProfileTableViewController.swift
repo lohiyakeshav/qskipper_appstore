@@ -73,12 +73,11 @@ class ProfileTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
             
-                let storyboard = UIStoryboard(name: "MyOrders", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "myOrdersVC") as! MyOrdersTableViewController
+                let storyboard1 = UIStoryboard(name: "MyOrders", bundle: nil)
+                let viewController = storyboard1.instantiateViewController(withIdentifier: "myOrdersVC") as! MyOrdersTableViewController
                 
-                viewController.modalPresentationStyle = .fullScreen
-                present(viewController, animated: true)
-                
+            viewController.modalPresentationStyle = .fullScreen
+            present(viewController, animated: true)
             
         }
         if indexPath.row == 6 {
