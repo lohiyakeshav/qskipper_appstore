@@ -97,7 +97,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
                     print(list)
                     for item in list {
                         if item.rating >= 4.0 {
-                            
+                            RestaurantController.shared.appendFeaturedMenu(dish: item)
                         }
                     }
                     RestaurantController.shared.setDish(dish: list)

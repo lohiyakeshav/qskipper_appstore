@@ -90,6 +90,32 @@ class NetworkUtils{
         return restaurantImage.product_photo.banner_photo64
     }
     
+    func submitOrder(order: Order) async throws {
+        let submitOrderURL = baseURl.appendingPathComponent("order-placed")
+        var request = URLRequest(url: submitOrderURL)
+        print("Order Placed")
+        print(order)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try? jsonEncoder.encode(order)
+        request.httpBody = jsonData
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        if let string = String(data: data, encoding: .utf8){
+            //print("Order Placed")
+            print(string)
+        }
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 202 else {
+            throw NetworkUtilsError.RestaurantNotFound
+        }
+        
+        
+    }
+    
 }
 
 
