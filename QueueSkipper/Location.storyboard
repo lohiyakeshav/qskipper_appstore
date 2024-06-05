@@ -17,12 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KKS-cn-H9O">
-                                <rect key="frame" x="0.0" y="59" width="393" height="671"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KKS-cn-H9O">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="745"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwK-xi-s9r">
-                                <rect key="frame" x="16" y="753" width="361" height="56"/>
+                                <rect key="frame" x="0.0" y="744" width="393" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="See Available Location In Your Area"/>
@@ -33,12 +34,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WR7-lA-wu0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="WR7-lA-wu0" firstAttribute="bottom" secondItem="KKS-cn-H9O" secondAttribute="bottom" id="QUz-nD-WIp"/>
-                            <constraint firstItem="KKS-cn-H9O" firstAttribute="leading" secondItem="WR7-lA-wu0" secondAttribute="leading" id="UYk-QU-Dzq"/>
-                            <constraint firstItem="WR7-lA-wu0" firstAttribute="trailing" secondItem="KKS-cn-H9O" secondAttribute="trailing" id="aR5-Ut-fD7"/>
-                            <constraint firstItem="KKS-cn-H9O" firstAttribute="top" secondItem="WR7-lA-wu0" secondAttribute="top" id="znp-c5-oUq"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="KKS-cn-H9O" id="Wq4-fN-doS"/>
@@ -47,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OGs-Dp-mVi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="763" y="4"/>
+            <point key="canvasLocation" x="762.59541984732823" y="3.5211267605633805"/>
         </scene>
         <!--Available Locations View Controller-->
         <scene sceneID="2SS-lt-HdO">
