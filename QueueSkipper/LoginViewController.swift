@@ -50,11 +50,23 @@ class LoginViewController: UIViewController {
             }
             
             override func viewDidLoad() {
-                super.viewDidLoad()
+            super.viewDidLoad()
                 //self.navigationItem.setHidesBackButton(true, animated: false)
-               self.navigationController?.navigationBar.isHidden = false
+            self.navigationController?.navigationBar.isHidden = false
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+                
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            view.addGestureRecognizer(tapGesture)
+                
+            emailAddressTextField.delegate = self
+            passwordTextField.delegate = self
+
                 
             }
+    
+    @objc func dismissKeyboard() {
+            view.endEditing(true)
+        }
             
             
     
@@ -111,5 +123,12 @@ class LoginViewController: UIViewController {
                 return password.count >= 6
             }
     
+    
 
+}
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
