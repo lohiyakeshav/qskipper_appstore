@@ -87,6 +87,7 @@ class RestaurantController {
     func removeCartDish(at: Int) { _cartDish.remove(at: at) }
     func setDish(dish: [Dish]) { _dish = dish}
     func removeCartDish() { _cartDish.removeAll() }
+    func appendFeaturedMenu(dish: Dish) { _featuredMenu.append(dish) }
 }
 
 var orders: [Order] = []

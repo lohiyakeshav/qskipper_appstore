@@ -8,13 +8,17 @@
 import Foundation
 
 
-struct Order {
-    var id: UUID
+struct Order: Codable{
+    var id: String
     var status: String
     var price: Double
     var items: [Dish]
     var prepTimeRemaining: Int
     var bookingDate: Date
     var rating: Int?
+    
+//    enum CodingKeys: String, CodingKey {
+//        case id
+//    }
 }
 

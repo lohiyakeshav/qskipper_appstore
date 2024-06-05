@@ -89,11 +89,17 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if scheduleLater.isSelected {
             
+            
+            
         } else {
            
-            let order = (Order(id: UUID(), status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: 10, bookingDate: Date()))
+            var order = (Order(id: "" , status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: 10, bookingDate: Date()))
             
             orders.insert(order, at: 0)
+            
+            Task.init {
+                try await NetworkUtils.shared.submitOrder(order: order)
+            }
             RestaurantController.shared.removeCartDish()
             tableView.reloadData()
             updateTotalPrice()

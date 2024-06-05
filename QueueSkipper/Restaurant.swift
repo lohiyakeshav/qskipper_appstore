@@ -45,7 +45,7 @@ struct Dish: Equatable, Codable {
     //var favourites: Bool = false
     var restaurant: String = ""
     var availability: Bool = true
-    var quantity: Int? 
+    var quantity: Int = 1
     
     static func ==(lhs: Dish, rhs: Dish) -> Bool {
         return lhs.dishId == rhs.dishId
@@ -60,6 +60,7 @@ struct Dish: Equatable, Codable {
         case restaurant = "restaurant_id"
         case availability
         case rating = "ratinge"
+        case quantity
     }
    
 }
