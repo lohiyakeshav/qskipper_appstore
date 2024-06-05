@@ -20,6 +20,10 @@ class AuthViewController: UIViewController {
     
     
     @IBAction func createAccountButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: [], animations: {
+            sender.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+            sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        }, completion: nil)
         
         guard let username = userNameTextField.text, !username.isEmpty else {
                     showAlert(message: "Username cannot be empty.")
@@ -36,7 +40,7 @@ class AuthViewController: UIViewController {
                     return
                 }
                 
-                //showLoading(true)
+                showLoading(true)
                 
                 Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                     self.showLoading(false)
@@ -91,13 +95,14 @@ class AuthViewController: UIViewController {
         let profileNavVC = UINavigationController(rootViewController: profileVC)
         
         viewNavController.tabBarItem = UITabBarItem(title: "Menu", image: UIImage(systemName: "list.bullet"), tag: 0)
+        
         favNavVC.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
         orderNavVC.tabBarItem = UITabBarItem(title: "My Orders", image: UIImage(systemName: "bag"), selectedImage: UIImage(systemName: "bag.fill"))
         profileNavVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), selectedImage: UIImage(systemName: "person.crop.circle.fill"))
         
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [viewNavController, favNavVC, orderNavVC, profileNavVC]
-
+        
         //navigationController?.pushViewController(tabBarController, animated: true)
         tabBarController.modalPresentationStyle = .fullScreen
         present(tabBarController, animated: true)

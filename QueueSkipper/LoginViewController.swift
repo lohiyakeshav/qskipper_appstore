@@ -21,6 +21,10 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: [], animations: {
+            sender.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+            sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        }, completion: nil)
         
         guard let email = emailAddressTextField.text, isValidEmail(email) else {
                     showAlert(message: "Please enter a valid email address.")
@@ -44,8 +48,8 @@ class LoginViewController: UIViewController {
                     
                     UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
                     
-                    //self.showAlert(message: "Login successful")
-                    self.navigateToHomeScreen()
+                    //self.showSuccessAlert(message: "Login successful")
+                    self.navigateToLocation()
                 }
             }
             
@@ -69,6 +73,15 @@ class LoginViewController: UIViewController {
         }
             
             
+    
+    func navigateToLocation() {
+        let storyboard = UIStoryboard(name: "Location", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "locationVC") as! LocationViewController
+        
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
+        
+    }
     
     func navigateToHomeScreen() {
         print("keshav")
@@ -95,7 +108,8 @@ class LoginViewController: UIViewController {
         
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [viewNavController, favNavVC, orderNavVC, profileNavVC]
-
+        //tabBarController.tabBarItem.standardAppearance?.selectionIndicatorTintColor = .systemGreen
+        tabBarController.tabBar.tintColor = .systemGreen
         //navigationController?.pushViewController(tabBarController, animated: true)
         tabBarController.modalPresentationStyle = .fullScreen
         present(tabBarController, animated: true)
@@ -106,12 +120,26 @@ class LoginViewController: UIViewController {
             
             func showAlert(message: String) {
                 let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default,handler: { _ in
-                    self.navigateToHomeScreen()
+                alert.addAction(UIAlertAction(title: "OK", style: .default,handler: {
+                    _ in self.navigateToHomeScreen()
                 }))
+                
+            //handler: { _ in
+              //  self.navigateToHomeScreen()
                 present(alert, animated: true)
             }
             
+    func showSuccessAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            _ in self.navigateToHomeScreen()
+        }))
+        
+    //handler: { _ in
+      //  self.navigateToHomeScreen()
+        present(alert, animated: true)
+    }
+    
             func showLoading(_ show: Bool) {
             }
             
