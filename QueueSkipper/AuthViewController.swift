@@ -76,9 +76,29 @@ class AuthViewController: UIViewController {
                 super.viewDidLoad()
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
                 view.addGestureRecognizer(tapGesture)
+                NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
                     
-                
             }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            let distanceToBottom = view.frame.height - (userNameTextField.frame.origin.y + userNameTextField.frame.height)
+            let distanceToTopOfKeyboard = keyboardSize.height - distanceToBottom
+            
+           
+            if distanceToTopOfKeyboard < 0 {
+                view.frame.origin.y = distanceToTopOfKeyboard
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
+        view.frame.origin.y = 0
+    }
+
     
     
     @objc func dismissKeyboard() {

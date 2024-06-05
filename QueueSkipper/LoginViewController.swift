@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
                         
                         let user = User(userName: username, emailAddress: email, password: password)
                         UserController.shared.loginUser(user: user)
-                        self.navigateToHomeScreen()
+                        self.navigateToLocation()
                     }
                 }
             }
