@@ -56,14 +56,14 @@ class AuthViewController: UIViewController {
                     }
 
                     let usersRef = Database.database().reference().child("Users")
-                    let userData = ["username": username, "email": email]
+                    let userData = ["username": username, "email": email, "password" : password]
                     let userRef = usersRef.child(uid)
                     userRef.setValue(userData) { error, _ in
                         if let error = error {
                             self.showAlert(message: "Error updating user data: \(error.localizedDescription)")
                         } else {
                             //self.showAlert(message: "Account Created successfully")
-                            let user = User(emailAddress: email, password: password)
+                            let user = User(userName: username, emailAddress: email, password: password)
                             UserController.shared.registerUser(user: user)
                             self.navigateToHomeScreen()
                             
@@ -74,8 +74,17 @@ class AuthViewController: UIViewController {
             
             override func viewDidLoad() {
                 super.viewDidLoad()
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+                view.addGestureRecognizer(tapGesture)
+                    
                 
             }
+    
+    
+    @objc func dismissKeyboard() {
+            view.endEditing(true)
+        }
+        
             
     func navigateToHomeScreen() { print("keshav")
         let storyboard1 = UIStoryboard(name: "Restaurants", bundle: nil)
@@ -128,4 +137,11 @@ class AuthViewController: UIViewController {
             func isValidPassword(_ password: String) -> Bool {
                 return password.count >= 6
             }
+}
+
+extension AuthViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

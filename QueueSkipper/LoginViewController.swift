@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabaseInternal
 
 
 
@@ -45,11 +46,19 @@ class LoginViewController: UIViewController {
                         self.showAlert(message: "Error logging in: \(error.localizedDescription)")
                         return
                     }
-                    
-                    UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
-                    
-                    //self.showSuccessAlert(message: "Login successful")
-                    self.navigateToLocation()
+                    let uid = authResult!.user.uid
+                    let usersRef = Database.database().reference().child("Users").child(uid)
+                    usersRef.observeSingleEvent(of: .value) { snapshot in
+                        guard let userData = snapshot.value as? [String: Any],
+                              let username = userData["username"] as? String else {
+                            self.showAlert(message: "Error retrieving user data")
+                            return
+                        }
+                        
+                        let user = User(userName: username, emailAddress: email, password: password)
+                        UserController.shared.loginUser(user: user)
+                        self.navigateToHomeScreen()
+                    }
                 }
             }
             

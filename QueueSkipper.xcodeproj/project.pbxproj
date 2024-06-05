@@ -70,6 +70,7 @@
 		72CD1C752C103279002A7DC0 /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72CD1C742C103279002A7DC0 /* Location.storyboard */; };
 		72CD1C772C103341002A7DC0 /* AvailableLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD1C762C103341002A7DC0 /* AvailableLocationsViewController.swift */; };
 		72CD1C792C103361002A7DC0 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD1C782C103361002A7DC0 /* LocationViewController.swift */; };
+		72DBDF412C107539008B4B83 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DBDF402C107539008B4B83 /* UserController.swift */; };
 		A00E461E2C0090B800D494A3 /* Favourite.xib in Resources */ = {isa = PBXBuildFile; fileRef = A00E461D2C0090B800D494A3 /* Favourite.xib */; };
 		A03CE6F32BFB92BB00803028 /* FeaturedItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = A03CE6F22BFB92BB00803028 /* FeaturedItems.xib */; };
 		A03CE6F52BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CE6F42BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift */; };
@@ -123,6 +124,7 @@
 		72CD1C742C103279002A7DC0 /* Location.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
 		72CD1C762C103341002A7DC0 /* AvailableLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableLocationsViewController.swift; sourceTree = "<group>"; };
 		72CD1C782C103361002A7DC0 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		72DBDF402C107539008B4B83 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		A00E461D2C0090B800D494A3 /* Favourite.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Favourite.xib; sourceTree = "<group>"; };
 		A03CE6F22BFB92BB00803028 /* FeaturedItems.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeaturedItems.xib; sourceTree = "<group>"; };
 		A03CE6F42BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedItemsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				A03CE6F42BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift */,
 				05C8CFB92BFB63F300279977 /* RestaurantDetailsCollectionViewCell.swift */,
 				0522898E2C0AF902009E86E9 /* UserDataModel.swift */,
+				72DBDF402C107539008B4B83 /* UserController.swift */,
 				05C93BCB2BDF4CCA0035FA61 /* ViewController.swift */,
 				05C93BCD2BDF4CCA0035FA61 /* Main.storyboard */,
 				05AFDB8B2BF6105F00878F68 /* Restaurants.storyboard */,
@@ -384,6 +387,7 @@
 				A0D386EA2BFD0BE2002E1F1E /* FavouriteDish.swift in Sources */,
 				054106F62C098926001739D8 /* RestaurantController.swift in Sources */,
 				72B54F792BFB65610050DD7F /* ProfileTableViewController.swift in Sources */,
+				72DBDF412C107539008B4B83 /* UserController.swift in Sources */,
 				0598D6F72BF71AA400425F46 /* OrdersTableViewCell.swift in Sources */,
 				05F8D0F52C05CA7800581125 /* MyCartTableViewCell.swift in Sources */,
 				05E4608D2BF4D33600E0108C /* Restaurant.swift in Sources */,

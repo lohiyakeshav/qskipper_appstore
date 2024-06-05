@@ -120,6 +120,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SkN-pI-9Wh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ycj-TV-hdV" appends="YES" id="kE0-ni-ikh"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Create Account" largeTitleDisplayMode="always" id="Kcz-kz-EBv"/>
                     <connections>
@@ -129,6 +133,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yAK-vq-C1a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ycj-TV-hdV"/>
             </objects>
             <point key="canvasLocation" x="9912.2137404580153" y="-1.4084507042253522"/>
         </scene>
@@ -167,7 +172,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -61,33 +61,33 @@ class ViewController: UIViewController {
 //                    navigateToLoginScreen()
 //                }
         
-               
-               
-               let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
-               
-               if isLoggedIn {
-                   let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
-                   let mainVC = storyboard.instantiateViewController(withIdentifier: "restaurantVC")
-
-                   let navVC = UINavigationController()
-                   navVC.pushViewController(mainVC, animated: true)
-                  
-
-                   //window?.rootViewController = navVC
-               } else {
-                   
-                   let storyboard = UIStoryboard(name: "auth", bundle: nil)
-                   let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
-                   let navVC = UINavigationController()
-                   navVC.pushViewController(authVC, animated: true)
-                 
-                   //window?.rootViewController = navVC
-                   
-               }
-//               
             
-           
-        
+//               
+//               let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
+//               
+//               if isLoggedIn {
+//                   let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
+//                   let mainVC = storyboard.instantiateViewController(withIdentifier: "restaurantVC")
+//
+//                   let navVC = UINavigationController()
+//                   navVC.pushViewController(mainVC, animated: true)
+//                  
+//
+//                   //window?.rootViewController = navVC
+//               } else {
+//                   
+//                   let storyboard = UIStoryboard(name: "auth", bundle: nil)
+//                   let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
+//                   let navVC = UINavigationController()
+//                   navVC.pushViewController(authVC, animated: true)
+//                 
+//                   //window?.rootViewController = navVC
+//                   
+//               }
+////               
+//            
+//           
+//        
         
         
         
@@ -104,10 +104,24 @@ class ViewController: UIViewController {
         func unlockAction() {
             //configureNavigationBarHidden(true)
             print("Unlocked!")
-            self.navigateToLoginScreen()
+            
+            if UserController.shared.isLoggedIn() {
+                navigateToLocation()
+            } else {
+                navigateToLoginScreen()
+            }
+               
+            //self.navigateToLoginScreen()
             
         }
-    
+    func navigateToLocation() {
+        let storyboard = UIStoryboard(name: "Location", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "locationVC") as! LocationViewController
+        
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
+        
+    }
     func navigateToHomeScreen() {
            let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
            let viewController = storyboard.instantiateViewController(withIdentifier: "restaurantVC") as! HomeViewController

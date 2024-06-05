@@ -17,6 +17,11 @@ class ProfileTableViewController: UITableViewController {
         self.tabBarItem.selectedImage = UIImage(systemName: "person.crop.circle.fill")
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ProfileInfoCell")
+        
+        if let currentUser = UserController.shared.getCurrentUser() {
+            print(currentUser.userName)
+            self.navigationItem.title = "Hello, \(String(describing: currentUser.userName))"
+                }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -73,22 +78,83 @@ class ProfileTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
             
-                let storyboard1 = UIStoryboard(name: "MyOrders", bundle: nil)
-                let viewController = storyboard1.instantiateViewController(withIdentifier: "myOrdersVC") as! MyOrdersTableViewController
+            func navigateToOrderScreen() {
+                let storyboard = UIStoryboard(name: "MyOrders", bundle: nil)
+                let authVC = storyboard.instantiateViewController(withIdentifier: "myOrdersVC")
+                let navVC = UINavigationController(rootViewController: authVC)
+                navVC.modalPresentationStyle = .popover
+                present(navVC, animated: true, completion: nil)
+            }
+//            func navigateToOrderScreen() {
+//                
+//                let storyboard1 = UIStoryboard(name: "MyOrders", bundle: nil)
+//                let viewController = storyboard1.instantiateViewController(withIdentifier: "myOrdersVC") as! MyOrdersTableViewController
+//                
+//                let storyboard2 = UIStoryboard(name: "Favourites", bundle: nil)
+//                let storyboard3 = UIStoryboard(name: "MyOrders", bundle: nil)
+//                let storyboard4 = UIStoryboard(name: "Profile", bundle: nil)
+//                print("vinayak")
+//                let favVC = storyboard2.instantiateViewController(withIdentifier: "favouriteVC") as! FavouritesViewController
+//                let orderVC = storyboard3.instantiateViewController(withIdentifier: "myOrdersVC") as! MyOrdersTableViewController
+//                let profileVC = storyboard4.instantiateViewController(withIdentifier: "profileVC") as! ProfileTableViewController
+//                
+//                let viewNavController = UINavigationController(rootViewController: viewController)
+//                let favNavVC = UINavigationController(rootViewController: favVC)
+//                let orderNavVC = UINavigationController(rootViewController: orderVC)
+//                let profileNavVC = UINavigationController(rootViewController: profileVC)
+//                
+//                viewNavController.tabBarItem = UITabBarItem(title: "Menu", image: UIImage(systemName: "list.bullet"), tag: 0)
+//                favNavVC.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
+//                orderNavVC.tabBarItem = UITabBarItem(title: "My Orders", image: UIImage(systemName: "bag"), selectedImage: UIImage(systemName: "bag.fill"))
+//                profileNavVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), selectedImage: UIImage(systemName: "person.crop.circle.fill"))
+//                
+//                let tabBarController = UITabBarController()
+//                tabBarController.viewControllers = [viewNavController, favNavVC, orderNavVC, profileNavVC]
+//                //tabBarController.tabBarItem.standardAppearance?.selectionIndicatorTintColor = .systemGreen
+//                tabBarController.tabBar.tintColor = .systemGreen
+//                //navigationController?.pushViewController(tabBarController, animated: true)
+//                tabBarController.modalPresentationStyle = .fullScreen
+//                present(tabBarController, animated: true)
+//               //show(tabBarController, sender: self)
+//                print("Haan bvhai")
                 
-            viewController.modalPresentationStyle = .fullScreen
-            present(viewController, animated: true)
+//                
+//                
+//                let storyboard = UIStoryboard(name: "MyOrders", bundle: nil)
+//                let authVC = storyboard.instantiateViewController(withIdentifier: "myOrdersVC")
+//                let navVC = UINavigationController(rootViewController: authVC)
+//                navVC.modalPresentationStyle = .popover
+//                present(navVC, animated: true, completion: nil)
+            //}
+            navigateToOrderScreen()
+            
+//                let storyboard = UIStoryboard(name: "MyOrders", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "myOrdersVC") as! MyOrdersTableViewController
+//            navigationController?.isNavigationBarHidden = false
+//                
+//            viewController.modalPresentationStyle = .fullScreen
+//            present(viewController, animated: true)
             
         }
         if indexPath.row == 6 {
+                UserController.shared.logoutUser()
             
+            func navigateToLoginScreen() {
                 let storyboard = UIStoryboard(name: "auth", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "authVC") as! LoginViewController
-                
-                viewController.modalPresentationStyle = .fullScreen
-                present(viewController, animated: true)
-                
+                let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
+                let navVC = UINavigationController(rootViewController: authVC)
+                navVC.modalPresentationStyle = .fullScreen
+                present(navVC, animated: true, completion: nil)
+            }
+            navigateToLoginScreen()
             
+//                let storyboard = UIStoryboard(name: "auth", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "authVC") as! LoginViewController
+//                
+//                viewController.modalPresentationStyle = .fullScreen
+//                present(viewController, animated: true)
+//                
+//            
         }
     }
 }
