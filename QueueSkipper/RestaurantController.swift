@@ -59,25 +59,7 @@ class RestaurantController {
         return _homeHeaders
     }
     
-    init() {
-//       loadDummyDish()
-        loadDummyFeaturedMenu()
-    }
-    func loadDummyDish() {
-        let dummyDish: [Dish] = [
-            Dish(dishId: "123",image: "big_1", name: "Samosa", description: "Indian dish", price: 17, rating: 4.2, foodType: "Veg", restaurant: "PR LIVE FOODS"),
-            Dish(dishId: "234",image: "big_2", name: "Sandwich Pakora", description: "Rohit's Special", price: 35, rating: 4.3, foodType: "Veg", restaurant: "PR LIVE FOODS")
-        ]
-        _dish = dummyDish
-    }
     
-    func loadDummyFeaturedMenu() {
-        let dummyFeaturedMenu: [Dish] = [
-            Dish(dishId: "345",image: "big_3", name: "Rajma Chawal", description: "Indian dish", price: 70, rating: 4.0, foodType: "Veg", restaurant: "PR LIVE FOODS"),
-            Dish(dishId: "456",image: "big_4", name: "Premium Thali", description: "PR Special", price: 130, rating: 4.1, foodType: "Veg", restaurant: "PR LIVE FOODS")
-        ]
-        _featuredMenu = dummyFeaturedMenu
-    }
     
     func appendCartDish(dish: Dish) { _cartDish.append(dish) }
     func setRestaurant(restaurant: [Restaurant]) { _restaurant = restaurant }
@@ -88,6 +70,8 @@ class RestaurantController {
     func setDish(dish: [Dish]) { _dish = dish}
     func removeCartDish() { _cartDish.removeAll() }
     func appendFeaturedMenu(dish: Dish) { _featuredMenu.append(dish) }
+    func setRestaurantImage(image: UIImage, index: Int) { _restaurant[index].restImage = image}
+    func setDishImage(image: UIImage, index: Int) { _dish[index].image = image }
 }
 
 var orders: [Order] = []

@@ -48,9 +48,17 @@ class MyOrdersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrdersTableViewCell
-        
-        if cell.calculatePrepTimeRemaining(from: orders[indexPath.row].bookingDate, prepTime: orders[indexPath.row].prepTimeRemaining) == 0 {
-            orders[indexPath.row].status = "Completed"
+        if orders[indexPath.row].status == "Preparing" {
+            if cell.calculatePrepTimeRemaining(from: orders[indexPath.row].bookingDate, prepTime: orders[indexPath.row].prepTimeRemaining) == 0 {
+                orders[indexPath.row].status = "Completed"
+            }
+        }
+        if orders[indexPath.row].status == "Scheduled" {
+            let remainingTime = Calendar.current.dateComponents([.minute], from: Date(), to: orders[indexPath.row].scheduledDate!).minute ?? 0
+            if remainingTime <= 30 && orders[indexPath.row].orderSend == false {
+                orders[indexPath.row].status = "Preparing"
+            }
+            
         }
         
         let order = orders[indexPath.row]

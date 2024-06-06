@@ -11,7 +11,7 @@ import UIKit
 
 struct Restaurant: Equatable, Codable{
     var restId: String = ""
-    //var restImage : UIImage?
+    var restImage = UIImage(systemName: "photo.on.rectangle")
     var restName : String = ""
     var restWaitingTime : Int = 0
     var cuisine : String = ""
@@ -36,7 +36,7 @@ struct Restaurant: Equatable, Codable{
 
 struct Dish: Equatable, Codable {
     var dishId: String = ""
-    var image: String = ""
+    var image = UIImage(systemName: "photo.on.rectangle")
     var name: String = ""
     var description: String = ""
     var price: Int = 0

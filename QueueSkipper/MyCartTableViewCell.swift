@@ -41,11 +41,11 @@ class MyCartTableViewCell: UITableViewCell {
     
    
     func configure(with item: Dish,index: Int) {
-        cartFoodImage.image = UIImage(named: item.image)
+        cartFoodImage.image = item.image
            cartDishName.text = item.name
-        dishQuantity.text = "\(item.quantity ?? 1)"
-        updatePriceLabel(price: Double(item.price), quantity: item.quantity ?? 1)
-        stepper.value = Double(item.quantity ?? 1)
+        dishQuantity.text = "\(item.quantity)"
+        updatePriceLabel(price: Double(item.price), quantity: item.quantity)
+        stepper.value = Double(item.quantity)
         print(stepper.value)
            stepper.tag = index
        }

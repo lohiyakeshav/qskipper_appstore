@@ -91,7 +91,14 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }, completion: nil)
         
         if scheduleLater.isSelected {
+            var scheduledOrder = Order(id: "", status: "Scheduled", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: 10, bookingDate: Date(), scheduledDate: datePickerDate, orderSend: false)
+            orders.insert(scheduledOrder, at: 0)
             
+            RestaurantController.shared.removeCartDish()
+            tableView.reloadData()
+            updateTotalPrice()
+            updateOrderTime()
+            scheduleLater.isSelected = false
             
             
         } else {
@@ -243,10 +250,12 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    var datePickerDate = Date()
     
     @IBAction func unwindToMyCart(_ unwindSegue: UIStoryboardSegue) {
         if let sourceViewController = unwindSegue.source as? PreOrderTableViewController {
                     let selectedDate = sourceViewController.scheduleDatePicker.date
+            datePickerDate = selectedDate
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "MMM dd, hh:mm a"
                     orderTimeLabel.text = dateFormatter.string(from: selectedDate)

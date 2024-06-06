@@ -41,7 +41,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeBanner", for: indexPath) as! HomeBannerCollectionViewCell
-            cell.imageView.image = UIImage(named: RestaurantController.shared.featuredItem[indexPath.row].image)
+            cell.imageView.image = RestaurantController.shared.featuredItem[indexPath.row].image
             cell.dishName.text = RestaurantController.shared.featuredItem[indexPath.row].name
             cell.restaurantName.text = RestaurantController.shared.featuredItem[indexPath.row].restaurant
             //cell.isUserInteractionEnabled = true
@@ -59,7 +59,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
                         Task {
                             if let url = URL(string: "https://queueskipperbackend.onrender.com/get_restaurant_photo/\(restaurant.restId)") {
                                 if let image = try? await NetworkUtils.shared.fetchImage(from: url) {
-                                   // RestaurantController.shared.setRestaurantImage(image: image, index: indexPath.row)
+                                    
+                                    RestaurantController.shared.setRestaurantImage(image: image, index: indexPath.row)
+                                    
                                     cell.imageView.image = image
                                 } else {
                                     print("Failed to load image for restaurant: \(restaurant.restName)")
