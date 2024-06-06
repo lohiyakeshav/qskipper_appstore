@@ -46,8 +46,10 @@ class PreOrderTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-
-
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            return nil
+        }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

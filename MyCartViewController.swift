@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import UserNotifications
 
-class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+
+class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UNUserNotificationCenterDelegate {
     
     @IBOutlet var orderTimeLabel: UILabel!
     @IBOutlet var convenienceFeeLabel: UILabel!
@@ -92,7 +95,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             
         } else {
-           
+            
             var order = (Order(id: "" , status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: 10, bookingDate: Date()))
             
             orders.insert(order, at: 0)
@@ -104,13 +107,44 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.reloadData()
             updateTotalPrice()
             updateOrderTime()
+            
+            scheduleOrderPlacedNotification()
+            
         }
     }
     
     
-    
-    
-    
+    func requestNotificationPermission() {
+           let center = UNUserNotificationCenter.current()
+           center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+               if let error = error {
+                   print("Error requesting notification permissions: \(error)")
+               } else if granted {
+                   print("Notification permission granted.")
+               } else {
+                   print("Notification permission denied.")
+               }
+           }
+       }
+    func scheduleOrderPlacedNotification() {
+            let content = UNMutableNotificationContent()
+            content.title = "Order Placed"
+            content.body = "Your order has been placed successfully!"
+            content.sound = .default
+
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let request = UNNotificationRequest(identifier: "orderPlaced", content: content, trigger: trigger)
+
+            let center = UNUserNotificationCenter.current()
+            center.add(request) { error in
+                if let error = error {
+                    print("Error scheduling notification: \(error)")
+                } else {
+                    print("Notification scheduled.")
+                }
+            }
+        }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,6 +154,8 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         updateTotalPrice()
         updateOrderTime()
         reloadTableAndUpdateStepperTags()
+        requestNotificationPermission()
+        UNUserNotificationCenter.current().delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -216,6 +252,15 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     orderTimeLabel.text = dateFormatter.string(from: selectedDate)
                 }
           }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+           completionHandler([.banner, .sound])
+       }
+       
+       func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+           // Handle the notification response
+           completionHandler()
+       }
 
 
 }
