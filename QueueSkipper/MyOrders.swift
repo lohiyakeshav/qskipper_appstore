@@ -15,6 +15,8 @@ struct Order: Codable{
     var items: [Dish]
     var prepTimeRemaining: Int
     var bookingDate: Date
+    var scheduledDate: Date?
+    var orderSend: Bool?
     var rating: Int?
     
 //    enum CodingKeys: String, CodingKey {

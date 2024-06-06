@@ -50,9 +50,7 @@ class OrdersTableViewCell: UITableViewCell {
         OrderStatus.setTitle(order.status, for: .normal)
         
       
-        if order.status == "Preparing" {
-            OrderStatus.backgroundColor = .systemGray6
-        }
+        
         
         if order.status == "Completed" {
             
@@ -70,11 +68,25 @@ class OrdersTableViewCell: UITableViewCell {
                         } else {
                             updateStars(for: 0)
                         }
-                    } else {
+        }
+        else if order.status == "Preparing"{
+            OrderStatus.backgroundColor = .systemGray6
                         OrderPrepTimeLabel.isHidden = false
                         OrderPrepTimeLabel.text = "\(calculatePrepTimeRemaining(from: order.bookingDate, prepTime: order.prepTimeRemaining)) minutes"
                         hideRatingStars()
                     }
+        else {
+            OrderStatus.backgroundColor = .systemGray6
+                        OrderPrepTimeLabel.isHidden = true
+            let remainingTime = Calendar.current.dateComponents([.minute], from: Date(), to: order.scheduledDate!).minute ?? 0
+            if remainingTime <= 30 && order.orderSend == false {
+                Task.init {
+                    try await NetworkUtils.shared.submitOrder(order: order)
+                }
+            }
+            hideRatingStars()
+            
+        }
             OrderPriceLabel.text = String(format: "₹%.2f", order.price)
         let itemDescriptions = order.items.map { "\(String(describing: $0.quantity)) x \($0.name)" }
                 OrderItemsLabel.text = itemDescriptions.joined(separator: "\n")

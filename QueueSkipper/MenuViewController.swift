@@ -55,14 +55,29 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedItems", for: indexPath) as! FeaturedItemsCollectionViewCell
-            cell.dishImageLabel.image = UIImage(named: RestaurantController.shared.featuredMenu[indexPath.row].image)
+            cell.dishImageLabel.image = RestaurantController.shared.featuredMenu[indexPath.row].image
             cell.dishNameLabel.text = RestaurantController.shared.featuredMenu[indexPath.row].name
             cell.dishRatingLabel.text = "\(RestaurantController.shared.featuredMenu[indexPath.row].rating)"
             cell.dish = RestaurantController.shared.featuredMenu[indexPath.row]
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Menu", for: indexPath) as! MenuCollectionViewCell
-            cell.dishImage.image = UIImage(named: RestaurantController.shared.dish[indexPath.row].image)
+            
+            Task {
+                if let url = URL(string: "https://queueskipperbackend.onrender.com/get_restaurant_photo/\(RestaurantController.shared.dish[indexPath.row].dishId)") {
+                    if let image = try? await NetworkUtils.shared.fetchImage(from: url) {
+                        
+                        RestaurantController.shared.setRestaurantImage(image: image, index: indexPath.row)
+                        
+                        cell.dishImage.image = image
+                    } else {
+                        print("Failed to load image for dish:")
+                    }
+                } else {
+                    print("Invalid URL for dish: ")
+                }
+            }
+            
             cell.dishName.text = RestaurantController.shared.dish[indexPath.row].name
             cell.dishRating.text = "\(RestaurantController.shared.dish[indexPath.row].rating)"
             cell.dishDescription.text = RestaurantController.shared.dish[indexPath.row].description
