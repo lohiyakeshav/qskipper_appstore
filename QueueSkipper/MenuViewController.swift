@@ -57,17 +57,17 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedItems", for: indexPath) as! FeaturedItemsCollectionViewCell
             cell.dishImageLabel.image = RestaurantController.shared.featuredMenu[indexPath.row].image
             cell.dishNameLabel.text = RestaurantController.shared.featuredMenu[indexPath.row].name
-            cell.dishRatingLabel.text = "\(RestaurantController.shared.featuredMenu[indexPath.row].rating)"
+            cell.dishRatingLabel.text = formatRating(RestaurantController.shared.featuredMenu[indexPath.row].rating)
             cell.dish = RestaurantController.shared.featuredMenu[indexPath.row]
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Menu", for: indexPath) as! MenuCollectionViewCell
             
             Task {
-                if let url = URL(string: "https://queueskipperbackend.onrender.com/get_restaurant_photo/\(RestaurantController.shared.dish[indexPath.row].dishId)") {
+                if let url = URL(string: "https://queueskipperbackend.onrender.com/get_product_photo/\(RestaurantController.shared.dish[indexPath.row].dishId)") {
                     if let image = try? await NetworkUtils.shared.fetchImage(from: url) {
                         
-                        RestaurantController.shared.setRestaurantImage(image: image, index: indexPath.row)
+                        RestaurantController.shared.setDishImage(image: image, index: indexPath.row)
                         
                         cell.dishImage.image = image
                     } else {
@@ -79,7 +79,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             }
             
             cell.dishName.text = RestaurantController.shared.dish[indexPath.row].name
-            cell.dishRating.text = "\(RestaurantController.shared.dish[indexPath.row].rating)"
+            cell.dishRating.text = formatRating(RestaurantController.shared.dish[indexPath.row].rating)
             cell.dishDescription.text = RestaurantController.shared.dish[indexPath.row].description
             cell.dish = RestaurantController.shared.dish[indexPath.row]
             //cell.index = indexPath.row
@@ -112,6 +112,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
                     print(list)
                     for item in list {
                         if item.rating >= 4.0 {
+                            
                             RestaurantController.shared.appendFeaturedMenu(dish: item)
                         }
                     }
@@ -261,6 +262,18 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         section.boundarySupplementaryItems = [header]
         return section
     }
+    
+    func formatRating(_ rating: Double) -> String {
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            numberFormatter.maximumFractionDigits = 2
+            numberFormatter.minimumFractionDigits = 2
+
+            if let formattedRating = numberFormatter.string(from: NSNumber(value: rating)) {
+                return formattedRating
+            }
+            return String(format: "%.2f", rating) // Fallback
+        }
     /*
     // MARK: - Navigation
 
