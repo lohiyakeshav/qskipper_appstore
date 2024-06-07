@@ -85,13 +85,22 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func payNowButtonTapped(_ sender: UIButton) {
         
+        packMyOrder.isSelected = false
+        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: [], animations: {
             sender.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
             sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }, completion: nil)
+        var remainingTime : Int = 0
+        for rest in RestaurantController.shared.restaurant {
+            if RestaurantController.shared.cartDish[0].restaurant == rest.restId {
+                remainingTime = rest.restWaitingTime
+            }
+        }
         
         if scheduleLater.isSelected {
-            var scheduledOrder = Order(id: "", status: "Scheduled", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: 10, bookingDate: Date(), scheduledDate: datePickerDate, orderSend: false)
+            let scheduledOrder = Order(id: "", status: "Scheduled", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: remainingTime, bookingDate: Date(), scheduledDate: datePickerDate, orderSend: false)
+            
             orders.insert(scheduledOrder, at: 0)
             
             RestaurantController.shared.removeCartDish()
@@ -101,9 +110,10 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
             scheduleLater.isSelected = false
             
             
+            
         } else {
             
-            var order = (Order(id: "" , status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: 10, bookingDate: Date()))
+            let order = (Order(id: "" , status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: remainingTime, bookingDate: Date()))
             
             orders.insert(order, at: 0)
             
@@ -216,7 +226,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func updateTotalPrice() {
             var totalPrice = 0.0
         for item in RestaurantController.shared.cartDish {
-                totalPrice += Double(item.price) * Double(item.quantity ?? 1)
+            totalPrice += Double(item.price) * Double(item.quantity)
             }
             totalPrice += convenienceFee
         ordertotalPrice = totalPrice
@@ -253,13 +263,18 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var datePickerDate = Date()
     
     @IBAction func unwindToMyCart(_ unwindSegue: UIStoryboardSegue) {
-        if let sourceViewController = unwindSegue.source as? PreOrderTableViewController {
-                    let selectedDate = sourceViewController.scheduleDatePicker.date
-            datePickerDate = selectedDate
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MMM dd, hh:mm a"
-                    orderTimeLabel.text = dateFormatter.string(from: selectedDate)
-                }
+        if unwindSegue.identifier == "doneSegue" {
+            if let sourceViewController = unwindSegue.source as? PreOrderTableViewController {
+                let selectedDate = sourceViewController.scheduleDatePicker.date
+                datePickerDate = selectedDate
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMM dd, hh:mm a"
+                orderTimeLabel.text = dateFormatter.string(from: selectedDate)
+            }
+        } else {
+            scheduleLater.isSelected = false
+        }
+        
           }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

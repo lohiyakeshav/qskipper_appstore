@@ -40,6 +40,24 @@ class NetworkUtils{
         return restaurantListResponse.restaurants
     }
     
+    func fetchTopPicks() async throws -> [Dish]{
+        let fetchRestaurantsURL = baseURl.appendingPathComponent("top-picks")
+        let (data, response) = try await URLSession.shared.data(from: fetchRestaurantsURL)
+        
+        if let string = String(data: data, encoding: .utf8){
+            print(string)
+        }
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw NetworkUtilsError.RestaurantNotFound
+        }
+        print(httpResponse)
+        let decoder = JSONDecoder()
+        let restaurantListResponse = try decoder.decode(TopPicks.self, from: data)
+        print(restaurantListResponse)
+        return restaurantListResponse.allTopPicks
+    }
+    
     func fetchDish(from url: URL) async throws -> [Dish] {
         let (data, response) = try await URLSession.shared.data(from: url)
         

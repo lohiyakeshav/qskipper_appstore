@@ -129,9 +129,14 @@ class LoginViewController: UIViewController {
             
             func showAlert(message: String) {
                 let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default,handler: {
-                    _ in self.navigateToHomeScreen()
-                }))
+                alert.addAction(UIAlertAction(title: "OK", style: .default
+                                              
+                                              
+//                                              ,handler: {
+//                    _ in self.navigateToHomeScreen()
+//                }
+                                             
+                                             ))
                 
             //handler: { _ in
               //  self.navigateToHomeScreen()

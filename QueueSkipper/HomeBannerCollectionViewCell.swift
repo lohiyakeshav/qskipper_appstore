@@ -14,7 +14,6 @@ class HomeBannerCollectionViewCell: UICollectionViewCell {
     @IBOutlet var dishName: UILabel!
     
     
-    @IBOutlet var restaurantName: UILabel!
-    
+
     
 }

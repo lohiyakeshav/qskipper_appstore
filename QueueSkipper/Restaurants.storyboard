@@ -246,6 +246,9 @@
                     <navigationItem key="navigationItem" title="Galgotias University" largeTitleDisplayMode="never" id="0yO-4H-P59">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="location" catalog="system" id="Mjk-SM-07E">
                             <color key="tintColor" systemColor="systemGreenColor"/>
+                            <connections>
+                                <segue destination="eSd-Sj-Evc" kind="unwind" unwindAction="unwindToLocation:" id="Tc1-54-pH8"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -254,6 +257,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fkh-3l-LJX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="eSd-Sj-Evc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2744.2748091603053" y="1543.661971830986"/>
         </scene>

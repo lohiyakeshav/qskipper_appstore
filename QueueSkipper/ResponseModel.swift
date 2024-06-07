@@ -18,6 +18,14 @@ struct RestaurantsResponse: Codable {
     }
 }
 
+struct TopPicks: Codable {
+    let allTopPicks: [Dish]
+    
+    enum CodingKeys: String, CodingKey {
+        case allTopPicks
+    }
+}
+
 struct DishResponse: Codable {
     let products: [Dish]
     

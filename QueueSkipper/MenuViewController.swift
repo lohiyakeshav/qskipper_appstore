@@ -57,32 +57,22 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedItems", for: indexPath) as! FeaturedItemsCollectionViewCell
             cell.dishImageLabel.image = RestaurantController.shared.featuredMenu[indexPath.row].image
             cell.dishNameLabel.text = RestaurantController.shared.featuredMenu[indexPath.row].name
-            cell.dishRatingLabel.text = formatRating(RestaurantController.shared.featuredMenu[indexPath.row].rating)
+            cell.dishRatingLabel.text = RestaurantController.shared.formatRating(RestaurantController.shared.featuredMenu[indexPath.row].rating)
             cell.dish = RestaurantController.shared.featuredMenu[indexPath.row]
             return cell
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Menu", for: indexPath) as! MenuCollectionViewCell
-            
-            Task {
-                if let url = URL(string: "https://queueskipperbackend.onrender.com/get_product_photo/\(RestaurantController.shared.dish[indexPath.row].dishId)") {
-                    if let image = try? await NetworkUtils.shared.fetchImage(from: url) {
-                        
-                        RestaurantController.shared.setDishImage(image: image, index: indexPath.row)
-                        
-                        cell.dishImage.image = image
-                    } else {
-                        print("Failed to load image for dish:")
-                    }
-                } else {
-                    print("Invalid URL for dish: ")
-                }
-            }
-            
+            cell.dishImage.image = RestaurantController.shared.dish[indexPath.row].image
             cell.dishName.text = RestaurantController.shared.dish[indexPath.row].name
-            cell.dishRating.text = formatRating(RestaurantController.shared.dish[indexPath.row].rating)
+            cell.dishRating.text = RestaurantController.shared.formatRating(RestaurantController.shared.dish[indexPath.row].rating)
             cell.dishDescription.text = RestaurantController.shared.dish[indexPath.row].description
             cell.dish = RestaurantController.shared.dish[indexPath.row]
+            cell.dishPriceLabel.text = "₹ \(RestaurantController.shared.dish[indexPath.row].price)"
             //cell.index = indexPath.row
+            if RestaurantController.shared.dish[indexPath.row].foodType == "Non-veg" {
+                cell.foodCategoryLabel.backgroundColor = .red
+                cell.foodCategoryLabel2.backgroundColor = .red
+            }
             for dishinFavourite in RestaurantController.shared.favouriteDish {
                 if RestaurantController.shared.dish[indexPath.row] == dishinFavourite {
                     cell.addToFavourites.isSelected = true
@@ -110,13 +100,27 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
                     let list = try await NetworkUtils.shared.fetchDish(from: url)
                     print("DishesFetched")
                     print(list)
-                    for item in list {
+                    for var item in list {
+                        if let url = URL(string: "https://queueskipperbackend.onrender.com/get_product_photo/\(item.dishId)") {
+                            if let image = try? await NetworkUtils.shared.fetchImage(from: url) {
+                                
+                                item.image = image
+                                RestaurantController.shared.appendDish(dish: item)
+                                
+                                
+                            } else {
+                                print("Failed to load image for dish:")
+                            }
+                        } else {
+                            print("Invalid URL for dish: ")
+                        }
                         if item.rating >= 4.0 {
-                            
-                            RestaurantController.shared.appendFeaturedMenu(dish: item)
+                            if !RestaurantController.shared.featuredMenu.contains(item){
+                                RestaurantController.shared.appendFeaturedMenu(dish: item)
+                            }
                         }
                     }
-                    RestaurantController.shared.setDish(dish: list)
+//                    RestaurantController.shared.setDish(dish: list)
                     await MainActor.run {
                         self.collectionView.reloadData()
                     }
@@ -192,7 +196,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             
             headerView.headerLabel.text = RestaurantController.shared.sectionHeaders[indexPath.section]
             print(RestaurantController.shared.sectionHeaders[indexPath.section])
-            headerView.headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
+            //headerView.headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
             
             //headerView.button.tag = indexPath.section
             //headerView.button.setTitle("See All", for: .normal)
@@ -263,17 +267,8 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         return section
     }
     
-    func formatRating(_ rating: Double) -> String {
-            let numberFormatter = NumberFormatter()
-            numberFormatter.numberStyle = .decimal
-            numberFormatter.maximumFractionDigits = 2
-            numberFormatter.minimumFractionDigits = 2
+    
 
-            if let formattedRating = numberFormatter.string(from: NSNumber(value: rating)) {
-                return formattedRating
-            }
-            return String(format: "%.2f", rating) // Fallback
-        }
     /*
     // MARK: - Navigation
 

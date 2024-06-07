@@ -59,9 +59,10 @@ class FeaturedItemsCollectionViewCell: UICollectionViewCell {
     func updateAddButtonState() {
         if RestaurantController.shared.cartDish.contains(where: { $0.dishId == dish.dishId }) {
                 addButton.isEnabled = false
-                addButton.tintColor = .systemRed
+            addButton.backgroundColor = .secondarySystemGroupedBackground
                 addButton.setTitle("In Cart", for: .normal)
-                addButton.alpha = 0.5 // Optionally, adjust the appearance to indicate it's disabled
+            addButton.configuration?.baseForegroundColor = .systemGreen
+                addButton.alpha = 0.5
             } else {
                 addButton.isEnabled = true
                 addButton.setTitle("ADD", for: .normal)

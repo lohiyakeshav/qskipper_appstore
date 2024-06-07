@@ -16,7 +16,7 @@ struct Restaurant: Equatable, Codable{
     var restWaitingTime : Int = 0
     var cuisine : String = ""
     //var dish: [Dish] = []
-    var rating: Double = 0.0
+    var rating: Double = Double(RestaurantController.shared.formatRating(generateRandomRating())) ?? 4.0
     
     static func ==(lhs: Restaurant, rhs: Restaurant) -> Bool {
         return lhs.restName == rhs.restName
@@ -31,6 +31,9 @@ struct Restaurant: Equatable, Codable{
         
     }
     
+}
+func generateRandomRating() -> Double {
+    return Double.random(in: 3...5)
 }
 
 

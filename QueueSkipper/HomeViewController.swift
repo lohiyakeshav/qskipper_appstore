@@ -41,9 +41,26 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeBanner", for: indexPath) as! HomeBannerCollectionViewCell
-            cell.imageView.image = RestaurantController.shared.featuredItem[indexPath.row].image
+            Task.init {
+                if let url = URL(string: "https://queueskipperbackend.onrender.com/get_product_photo/\(RestaurantController.shared.featuredItem[indexPath.row].dishId)") {
+                                if let image = try? await NetworkUtils.shared.fetchImage(from: url) {
+                                    
+                                    
+                                    cell.imageView.image = image
+                                } else {
+                                    print("Failed to load image for restaurant: ")
+                                }
+                            } else {
+                                print("Invalid URL for restaurant: ")
+                            }
+                        }
+            
             cell.dishName.text = RestaurantController.shared.featuredItem[indexPath.row].name
-            cell.restaurantName.text = RestaurantController.shared.featuredItem[indexPath.row].restaurant
+//            for rest in RestaurantController.shared.restaurant {
+//                if rest.restId == RestaurantController.shared.featuredItem[indexPath.row].restaurant {
+//                    cell.restaurantName.text = rest.restName
+//                }
+//            }
             //cell.isUserInteractionEnabled = true
             return cell
         case 1:
@@ -56,7 +73,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
                         cell.waitingTime.text = "\(restaurant.restWaitingTime) Mins"
                         cell.cuisine.text = restaurant.cuisine
 
-                        Task {
+            Task.init {
                             if let url = URL(string: "https://queueskipperbackend.onrender.com/get_restaurant_photo/\(restaurant.restId)") {
                                 if let image = try? await NetworkUtils.shared.fetchImage(from: url) {
                                     
@@ -114,6 +131,8 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
                 print("Called for dusra menu")
                 RestaurantController.shared.setRestaurant(restaurant: list)
                 print(RestaurantController.shared.restaurant)
+                let topPicks = try await NetworkUtils.shared.fetchTopPicks()
+                RestaurantController.shared.setFeaturedItem(dish: topPicks)
                 await MainActor.run {
                     self.collectionView.reloadData()
                 }
@@ -152,7 +171,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
             
             headerView.headerLabel.text = RestaurantController.shared.homeHeaders[indexPath.section]
-            headerView.headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
+            //headerView.headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
             //headerView.button.tag = indexPath.section
             //headerView.button.setTitle("See All", for: .normal)
             //headerView.button.addTarget(self, action: #selector(headerButtonTapped(_:)), for: .touchUpInside)
@@ -187,12 +206,13 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     }
     
     func generateSection0() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(200))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPagingCentered
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 40)
         return section
     }
     func generateSection1() -> NSCollectionLayoutSection {
@@ -223,6 +243,8 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             viewController.restaurantSelected = isSearching ? filteredRestaurants[indexPath.row] : RestaurantController.shared.restaurant[indexPath.row]
         
         }
+        RestaurantController.shared.removeFeaturedMenu()
+        RestaurantController.shared.removeDish()
 //        let navVC = self.navigationController
 //        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
 //        navVC?.pushViewController(viewController, animated: true)

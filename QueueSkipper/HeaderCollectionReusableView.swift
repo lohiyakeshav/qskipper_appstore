@@ -9,9 +9,10 @@ import UIKit
 
 class HeaderCollectionReusableView: UICollectionReusableView {
     let headerLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 380, height: 44))
-        label.font = UIFont.systemFont(ofSize: 50, weight: .bold)
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        
         return label
     }()
 //    let button: UIButton = {

@@ -33,7 +33,7 @@ class FavouritesViewController: UIViewController,UICollectionViewDataSource, UIC
         cell.dishImage.image = RestaurantController.shared.favouriteDish[indexPath.row].image
         cell.dishName.text = RestaurantController.shared.favouriteDish[indexPath.row].name
         cell.dishDescription.text = RestaurantController.shared.favouriteDish[indexPath.row].description
-        cell.dishRating.text = "\(RestaurantController.shared.favouriteDish[indexPath.row].rating)"
+        cell.dishRating.text = RestaurantController.shared.formatRating(RestaurantController.shared.favouriteDish[indexPath.row].rating)
     
         cell.dish = RestaurantController.shared.favouriteDish[indexPath.row]
             //cell.index = indexPath.row

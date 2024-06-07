@@ -10,47 +10,38 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="WoF-OE-mh0" customClass="HomeBannerCollectionViewCell" customModule="QueueSkipper" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="180"/>
+            <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iNz-7f-lzJ">
-                <rect key="frame" x="0.0" y="0.0" width="393" height="180"/>
+                <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nGw-R8-ODm">
-                        <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                        <rect key="frame" x="10" y="0.0" width="160" height="160"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="140" id="E4h-X1-bCO"/>
-                            <constraint firstAttribute="height" constant="140" id="kiQ-kE-NYt"/>
+                            <constraint firstAttribute="height" constant="160" id="793-h4-H4k"/>
+                            <constraint firstAttribute="width" constant="160" id="Vp1-oC-wIl"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zeq-C1-o4Z">
-                        <rect key="frame" x="150" y="10" width="227" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjv-ls-D3t">
-                        <rect key="frame" x="130.66666666666669" y="150" width="131.66666666666669" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zeq-C1-o4Z">
+                        <rect key="frame" x="69.333333333333329" y="170" width="41.333333333333329" height="20.333333333333343"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Zeq-C1-o4Z" firstAttribute="leading" secondItem="nGw-R8-ODm" secondAttribute="trailing" constant="10" id="5hf-LP-QkQ"/>
-                    <constraint firstItem="nGw-R8-ODm" firstAttribute="leading" secondItem="iNz-7f-lzJ" secondAttribute="leading" id="Tqn-W7-c13"/>
-                    <constraint firstItem="nGw-R8-ODm" firstAttribute="top" secondItem="iNz-7f-lzJ" secondAttribute="top" id="csf-jH-iUd"/>
-                    <constraint firstItem="Zeq-C1-o4Z" firstAttribute="top" secondItem="iNz-7f-lzJ" secondAttribute="top" constant="10" id="oH7-o9-iO0"/>
-                    <constraint firstItem="Jjv-ls-D3t" firstAttribute="centerX" secondItem="iNz-7f-lzJ" secondAttribute="centerX" id="tk5-1T-2TS"/>
-                    <constraint firstItem="Jjv-ls-D3t" firstAttribute="top" secondItem="nGw-R8-ODm" secondAttribute="bottom" constant="10" id="whZ-0Z-jom"/>
+                    <constraint firstItem="nGw-R8-ODm" firstAttribute="centerX" secondItem="iNz-7f-lzJ" secondAttribute="centerX" id="AXO-5p-a10"/>
+                    <constraint firstItem="Zeq-C1-o4Z" firstAttribute="centerX" secondItem="iNz-7f-lzJ" secondAttribute="centerX" id="BmG-lE-nkd"/>
+                    <constraint firstItem="Zeq-C1-o4Z" firstAttribute="top" secondItem="nGw-R8-ODm" secondAttribute="bottom" constant="10" id="TQG-Vf-EOE"/>
+                    <constraint firstItem="nGw-R8-ODm" firstAttribute="top" secondItem="iNz-7f-lzJ" secondAttribute="top" id="fuv-KW-q8Y"/>
                 </constraints>
             </collectionViewCellContentView>
             <connections>
                 <outlet property="dishName" destination="Zeq-C1-o4Z" id="yvd-rk-ZQy"/>
                 <outlet property="imageView" destination="nGw-R8-ODm" id="KWo-Kj-phg"/>
-                <outlet property="restaurantName" destination="Jjv-ls-D3t" id="Nvy-jf-8rx"/>
             </connections>
-            <point key="canvasLocation" x="31.297709923664122" y="-22.535211267605636"/>
+            <point key="canvasLocation" x="30.534351145038165" y="-22.887323943661972"/>
         </collectionViewCell>
     </objects>
 </document>

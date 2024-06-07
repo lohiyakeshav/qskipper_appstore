@@ -9,7 +9,16 @@ class MenuCollectionViewCell: UICollectionViewCell {
     @IBOutlet var addToCart: UIButton!
     @IBOutlet var dishRating: UILabel!
 
-    var dish = Dish() 
+    @IBOutlet var foodCategoryLabel: UILabel!
+    
+    @IBOutlet var foodCategoryLabel2: UILabel!
+    
+    
+    
+    @IBOutlet var dishPriceLabel: UILabel!
+    
+    
+    var dish = Dish()
     {
         didSet {
             updateFavouriteButtonState()

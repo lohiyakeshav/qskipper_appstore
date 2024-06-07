@@ -5,4 +5,3 @@ struct User : Codable{
     var emailAddress: String
     var password: String
 }
-

@@ -78,8 +78,14 @@ class OrdersTableViewCell: UITableViewCell {
         else {
             OrderStatus.backgroundColor = .systemGray6
                         OrderPrepTimeLabel.isHidden = true
+            var dishRemainingTime : Int = 0
+            for rest in RestaurantController.shared.restaurant {
+                if order.items[0].restaurant == rest.restId {
+                    dishRemainingTime = rest.restWaitingTime
+                }
+            }
             let remainingTime = Calendar.current.dateComponents([.minute], from: Date(), to: order.scheduledDate!).minute ?? 0
-            if remainingTime <= 30 && order.orderSend == false {
+            if remainingTime <= dishRemainingTime && order.orderSend == false {
                 Task.init {
                     try await NetworkUtils.shared.submitOrder(order: order)
                 }

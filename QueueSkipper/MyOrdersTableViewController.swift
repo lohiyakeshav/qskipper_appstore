@@ -53,9 +53,15 @@ class MyOrdersTableViewController: UITableViewController {
                 orders[indexPath.row].status = "Completed"
             }
         }
+        var dishRemainingTime : Int = 0
+        for rest in RestaurantController.shared.restaurant {
+            if orders[indexPath.row].items[0].restaurant == rest.restId {
+                dishRemainingTime = rest.restWaitingTime
+            }
+        }
         if orders[indexPath.row].status == "Scheduled" {
             let remainingTime = Calendar.current.dateComponents([.minute], from: Date(), to: orders[indexPath.row].scheduledDate!).minute ?? 0
-            if remainingTime <= 30 && orders[indexPath.row].orderSend == false {
+            if remainingTime <= dishRemainingTime && orders[indexPath.row].orderSend == false {
                 orders[indexPath.row].status = "Preparing"
             }
             
