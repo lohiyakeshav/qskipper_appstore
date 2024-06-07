@@ -73,6 +73,10 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
                 cell.foodCategoryLabel.backgroundColor = .red
                 cell.foodCategoryLabel2.backgroundColor = .red
             }
+            else {
+                cell.foodCategoryLabel.backgroundColor = .systemGreen
+                cell.foodCategoryLabel2.backgroundColor = .systemGreen
+            }
             for dishinFavourite in RestaurantController.shared.favouriteDish {
                 if RestaurantController.shared.dish[indexPath.row] == dishinFavourite {
                     cell.addToFavourites.isSelected = true
