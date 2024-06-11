@@ -34,10 +34,17 @@ class FavouritesViewController: UIViewController,UICollectionViewDataSource, UIC
         cell.dishName.text = RestaurantController.shared.favouriteDish[indexPath.row].name
         cell.dishDescription.text = RestaurantController.shared.favouriteDish[indexPath.row].description
         cell.dishRating.text = RestaurantController.shared.formatRating(RestaurantController.shared.favouriteDish[indexPath.row].rating)
-    
+        cell.dishPriceLabel.text = "₹\(RestaurantController.shared.favouriteDish[indexPath.row].price)"
         cell.dish = RestaurantController.shared.favouriteDish[indexPath.row]
-            //cell.index = indexPath.row
         cell.addToFavourites.isSelected = true
+        if RestaurantController.shared.favouriteDish[indexPath.row].foodType == "Non-veg" {
+            cell.foodCategoryLabel.backgroundColor = .red
+            cell.foodCategoryLabel2.backgroundColor = .red
+        }
+        else {
+            cell.foodCategoryLabel.backgroundColor = .systemGreen
+            cell.foodCategoryLabel2.backgroundColor = .systemGreen
+        }
 
         return cell
     }

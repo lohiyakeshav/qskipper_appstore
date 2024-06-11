@@ -114,29 +114,19 @@ class LoginViewController: UIViewController {
         
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [viewNavController, favNavVC, orderNavVC, profileNavVC]
-        //tabBarController.tabBarItem.standardAppearance?.selectionIndicatorTintColor = .systemGreen
+        
         tabBarController.tabBar.tintColor = .systemGreen
-        //navigationController?.pushViewController(tabBarController, animated: true)
+        
         tabBarController.modalPresentationStyle = .fullScreen
         present(tabBarController, animated: true)
-       //show(tabBarController, sender: self)
+       
         print("Haan bvhai")
     }
 
             
             func showAlert(message: String) {
                 let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default
-                                              
-                                              
-//                                              ,handler: {
-//                    _ in self.navigateToHomeScreen()
-//                }
-                                             
-                                             ))
-                
-            //handler: { _ in
-              //  self.navigateToHomeScreen()
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
                 present(alert, animated: true)
             }
             
@@ -146,8 +136,6 @@ class LoginViewController: UIViewController {
             _ in self.navigateToHomeScreen()
         }))
         
-    //handler: { _ in
-      //  self.navigateToHomeScreen()
         present(alert, animated: true)
     }
     

@@ -54,7 +54,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             cell.dishRating.text = RestaurantController.shared.formatRating(RestaurantController.shared.dish[indexPath.row].rating)
             cell.dishDescription.text = RestaurantController.shared.dish[indexPath.row].description
             cell.dish = RestaurantController.shared.dish[indexPath.row]
-            cell.dishPriceLabel.text = "₹ \(RestaurantController.shared.dish[indexPath.row].price)"
+            cell.dishPriceLabel.text = "₹\(RestaurantController.shared.dish[indexPath.row].price)"
             //cell.index = indexPath.row
             if RestaurantController.shared.dish[indexPath.row].foodType == "Non-veg" {
                 cell.foodCategoryLabel.backgroundColor = .red
