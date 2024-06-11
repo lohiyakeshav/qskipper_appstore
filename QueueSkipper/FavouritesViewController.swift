@@ -52,6 +52,7 @@ class FavouritesViewController: UIViewController,UICollectionViewDataSource, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         
         let favouriteNib = UINib(nibName: "Menu", bundle: nil)
         collectionView.register(favouriteNib, forCellWithReuseIdentifier: "Menu")
