@@ -44,8 +44,6 @@
 		0574093B2BF72316000303B2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574093A2BF72316000303B2 /* MenuViewController.swift */; };
 		0598D6F32BF716CE00425F46 /* MyOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */; };
 		0598D6F72BF71AA400425F46 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6F62BF71AA400425F46 /* OrdersTableViewCell.swift */; };
-		0598D6F92BF7207C00425F46 /* MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6F82BF7207C00425F46 /* MyOrders.swift */; };
-		05A7991F2C0DCCBE00DEFA55 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7991E2C0DCCBE00DEFA55 /* TabViewController.swift */; };
 		05AFDB882BF60FB500878F68 /* Favourites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AFDB872BF60FB500878F68 /* Favourites.storyboard */; };
 		05AFDB8A2BF6100A00878F68 /* MyOrders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AFDB892BF6100A00878F68 /* MyOrders.storyboard */; };
 		05AFDB8C2BF6105F00878F68 /* Restaurants.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AFDB8B2BF6105F00878F68 /* Restaurants.storyboard */; };
@@ -95,8 +93,6 @@
 		0574093A2BF72316000303B2 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersTableViewController.swift; sourceTree = "<group>"; };
 		0598D6F62BF71AA400425F46 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
-		0598D6F82BF7207C00425F46 /* MyOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrders.swift; sourceTree = "<group>"; };
-		05A7991E2C0DCCBE00DEFA55 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		05AFDB872BF60FB500878F68 /* Favourites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favourites.storyboard; sourceTree = "<group>"; };
 		05AFDB892BF6100A00878F68 /* MyOrders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyOrders.storyboard; sourceTree = "<group>"; };
 		05AFDB8B2BF6105F00878F68 /* Restaurants.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Restaurants.storyboard; sourceTree = "<group>"; };
@@ -198,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				052289902C0AFD86009E86E9 /* GoogleService-Info.plist */,
-				05A7991E2C0DCCBE00DEFA55 /* TabViewController.swift */,
 				05C93BC72BDF4CCA0035FA61 /* AppDelegate.swift */,
 				05C93BC92BDF4CCA0035FA61 /* SceneDelegate.swift */,
 				05E4608C2BF4D33600E0108C /* Restaurant.swift */,
@@ -237,7 +232,6 @@
 				726507E72BFBB8BE00D579FF /* ProfileInfoTableViewCell.swift */,
 				72B54F782BFB65610050DD7F /* ProfileTableViewController.swift */,
 				05AFDB892BF6100A00878F68 /* MyOrders.storyboard */,
-				0598D6F82BF7207C00425F46 /* MyOrders.swift */,
 				0598D6F62BF71AA400425F46 /* OrdersTableViewCell.swift */,
 				0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */,
 				05AFDB872BF60FB500878F68 /* Favourites.storyboard */,
@@ -394,8 +388,6 @@
 				05F8D0F72C05CAAA00581125 /* PreOrderTableViewController.swift in Sources */,
 				A0D0AE5C2C0465A000129DEB /* RestaurantListCollectionViewCell.swift in Sources */,
 				72CD1C772C103341002A7DC0 /* AvailableLocationsViewController.swift in Sources */,
-				0598D6F92BF7207C00425F46 /* MyOrders.swift in Sources */,
-				05A7991F2C0DCCBE00DEFA55 /* TabViewController.swift in Sources */,
 				A03CE6F92BFBA33900803028 /* MenuCollectionViewCell.swift in Sources */,
 				0522898F2C0AF902009E86E9 /* UserDataModel.swift in Sources */,
 				72CD1C792C103361002A7DC0 /* LocationViewController.swift in Sources */,

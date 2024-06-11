@@ -22,6 +22,8 @@ class RestaurantController {
     
     private var _cartDish: [Dish] = []
     
+    private var _orders: [Order] = []
+    
     private var _sectionHeaders: [String] = [ "PRLiveFoods", "Featured Items", "Dishes"]
     private var _homeHeaders: [String] = ["Top Picks", "Restaurants"]
     
@@ -43,6 +45,8 @@ class RestaurantController {
     
     var homeHeaders: [String] { return _homeHeaders }
     
+    var orders: [Order] { return _orders }
+    
     
     
     func appendCartDish(dish: Dish) { _cartDish.append(dish) }
@@ -60,6 +64,11 @@ class RestaurantController {
     func setDishImage(image: UIImage, index: Int) { _dish[index].image = image }
     func appendDish(dish: Dish) { _dish.append(dish) }
     func setFeaturedItem(dish: [Dish]){ _featuredItem = dish }
+    func appendOrder(order: Order, index: Int) { _orders.insert(order, at: index) }
+    func setOrderStatus(status: String, index: Int) { _orders[index].status = status }
+    func setOrderSend(orderSend: Bool, index: Int) { _orders[index].orderSend = orderSend }
+    func setBookingDate(date: Date, index: Int) { _orders[index].bookingDate = date }
+    func setOrderRating(rating: Int, index: Int) { _orders[index].rating = rating }
     
     func formatRating(_ rating: Double) -> String {
         let numberFormatter = NumberFormatter()
@@ -74,4 +83,4 @@ class RestaurantController {
     }
 }
 
-var orders: [Order] = []
+

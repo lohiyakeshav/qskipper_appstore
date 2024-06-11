@@ -68,5 +68,20 @@ struct Dish: Equatable, Codable {
    
 }
 
+struct Order: Codable{
+    var id: String
+    var status: String
+    var price: Double
+    var items: [Dish]
+    var prepTimeRemaining: Int
+    var bookingDate: Date
+    var scheduledDate: Date?
+    var orderSend: Bool?
+    var rating: Int?
+    
+//    enum CodingKeys: String, CodingKey {
+//        case id
+//    }
+}
 
 
