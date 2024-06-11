@@ -10,11 +10,8 @@ import UIKit
 class RestaurantListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageView: UIImageView!
-    
     @IBOutlet var name: UILabel!
-    
     @IBOutlet var waitingTime: UILabel!
-    
     @IBOutlet var cuisine: UILabel!
     
     

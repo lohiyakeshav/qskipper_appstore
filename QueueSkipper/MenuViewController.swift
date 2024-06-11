@@ -10,21 +10,8 @@ import UIKit
 
 class MenuViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-
     var restaurantSelected = Restaurant()
-    
-   
     @IBOutlet var collectionView: UICollectionView!
-    
-    
-//    init?(coder: NSCoder, restaurantSelected: Restaurant) {
-//        self.restaurantSelected = restaurantSelected
-//        super.init(coder: coder)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
@@ -82,8 +69,6 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
                     cell.addToFavourites.isSelected = true
                 }
             }
-
-            
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantDetails", for: indexPath)
@@ -97,6 +82,7 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         self.navigationItem.title = restaurantSelected.restName
         self.navigationController?.navigationBar.prefersLargeTitles = true
 
+        //GET call to the server to fetch dishes
         Task.init {
             do {
                 if let url = URL(string: "https://queueskipperbackend.onrender.com/get_all_product/\(restaurantSelected.restId)"){
@@ -124,7 +110,6 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
                             }
                         }
                     }
-//                    RestaurantController.shared.setDish(dish: list)
                     await MainActor.run {
                         self.collectionView.reloadData()
                     }
@@ -174,19 +159,12 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
        }
     
     @objc func cartButtonTapped() {
-        
-        
         let storyboard = UIStoryboard(name: "MyCart", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "MyCartViewController") as! MyCartViewController
-//        viewController.restaurantSelected = Restaurant()
-        
         let navVC = self.navigationController
         self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
         navVC?.pushViewController(viewController, animated: true)
-        
-        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -200,12 +178,6 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
             
             headerView.headerLabel.text = RestaurantController.shared.sectionHeaders[indexPath.section]
             print(RestaurantController.shared.sectionHeaders[indexPath.section])
-            //headerView.headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
-            
-            //headerView.button.tag = indexPath.section
-            //headerView.button.setTitle("See All", for: .normal)
-            //headerView.button.addTarget(self, action: #selector(headerButtonTapped(_:)), for: .touchUpInside)
-            
             return headerView
         }
         fatalError("Unexpected element kind")
@@ -270,18 +242,6 @@ class MenuViewController: UIViewController,UICollectionViewDataSource,UICollecti
         section.boundarySupplementaryItems = [header]
         return section
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
    
 }

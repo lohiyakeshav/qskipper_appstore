@@ -10,9 +10,6 @@ import UIKit
 class HomeViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     @IBOutlet var collectionView: UICollectionView!
-    
-    
-    
     @IBOutlet var searchBar: UISearchBar!
     
     var filteredRestaurants: [Restaurant] = []
@@ -35,12 +32,11 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        
+    
         switch indexPath.section {
-            
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeBanner", for: indexPath) as! HomeBannerCollectionViewCell
+            //GET call to the server to fetch TopPicks
             Task.init {
                 if let url = URL(string: "https://queueskipperbackend.onrender.com/get_product_photo/\(RestaurantController.shared.featuredItem[indexPath.row].dishId)") {
                                 if let image = try? await NetworkUtils.shared.fetchImage(from: url) {
@@ -56,12 +52,6 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
                         }
             
             cell.dishName.text = RestaurantController.shared.featuredItem[indexPath.row].name
-//            for rest in RestaurantController.shared.restaurant {
-//                if rest.restId == RestaurantController.shared.featuredItem[indexPath.row].restaurant {
-//                    cell.restaurantName.text = rest.restName
-//                }
-//            }
-            //cell.isUserInteractionEnabled = true
             return cell
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantList", for: indexPath) as? RestaurantListCollectionViewCell else {
@@ -72,7 +62,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
                         cell.name.text = restaurant.restName
                         cell.waitingTime.text = "\(restaurant.restWaitingTime) Mins"
                         cell.cuisine.text = restaurant.cuisine
-
+            //GET call to the server to fetch Restaurant Images
             Task.init {
                             if let url = URL(string: "https://queueskipperbackend.onrender.com/get_restaurant_photo/\(restaurant.restId)") {
                                 if let image = try? await NetworkUtils.shared.fetchImage(from: url) {
@@ -91,12 +81,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             return cell
         default:
             return UICollectionViewCell()
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeBanner", for: indexPath)
-//            return cell
         }
         
     }
-    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
@@ -120,10 +107,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationController?.isNavigationBarHidden = false
         self.hidesBottomBarWhenPushed = false
-        
-        
         searchBar.delegate = self
         
+        //GET call to the server to fetch Restaurants
         Task.init {
             do {
                 print("Called for menu")
@@ -141,7 +127,6 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
             }
         }
         
-       
         let featuredNib = UINib(nibName: "HomeBanner", bundle: nil)
         collectionView.register(featuredNib, forCellWithReuseIdentifier: "HomeBanner")
         let restaurantNib = UINib(nibName: "RestaurantList", bundle: nil)
@@ -153,28 +138,18 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(generateLayout(), animated: true)
         filteredRestaurants = RestaurantController.shared.restaurant
-        
-        
-        
-       
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
-
-   
-    
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
             
             headerView.headerLabel.text = RestaurantController.shared.homeHeaders[indexPath.section]
-            //headerView.headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
-            //headerView.button.tag = indexPath.section
-            //headerView.button.setTitle("See All", for: .normal)
-            //headerView.button.addTarget(self, action: #selector(headerButtonTapped(_:)), for: .touchUpInside)
             
             return headerView
         }
@@ -228,7 +203,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         print("Selected")
         let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-//        viewController.restaurantSelected = Restaurant()
+
         switch indexPath.section {
         case 0:
             for rest in RestaurantController.shared.restaurant {
@@ -245,20 +220,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         }
         RestaurantController.shared.removeFeaturedMenu()
         RestaurantController.shared.removeDish()
-//        let navVC = self.navigationController
-//        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
-//        navVC?.pushViewController(viewController, animated: true)
         show(viewController, sender: self)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

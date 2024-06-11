@@ -14,45 +14,31 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet var orderTimeLabel: UILabel!
     @IBOutlet var convenienceFeeLabel: UILabel!
-    
     @IBOutlet var totalPriceLabel: UILabel!
-    
-    
     @IBOutlet var packMyOrder: UIButton!
-    
-    
     @IBOutlet var scheduleLater: UIButton!
     
-    
-    
-    
-    @IBAction func packMyOrderPressed(_ sender: UIButton) {
-//        packMyOrder.image = UIImage(systemName: "circle.fill")
-        packMyOrder.isSelected.toggle()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        updateTotalPrice()
+        updateOrderTime()
+        reloadTableAndUpdateStepperTags()
+        requestNotificationPermission()
+        UNUserNotificationCenter.current().delegate = self
+        // Do any additional setup after loading the view.
     }
     
-    
+    @IBAction func packMyOrderPressed(_ sender: UIButton) {
+        packMyOrder.isSelected.toggle()
+    }
     @IBAction func scheduleLaterPressed(_ sender: UIButton) {
         scheduleLater.isSelected.toggle()
     }
     
-    
-    
     let convenienceFee = 0.0
-    
-    
-    
-    
-//    var cartItems :[(image: UIImage, name: String, price: Double, quantity: Int )] = [
-//        
-//        (UIImage(named: "big_1")!, "pizza", 321, 1),
-//        (UIImage(named: "big_2")!, "burger", 132, 2),
-//        (UIImage(named: "big_3")!, "coke", 60, 1),
-//        
-//        
-//    ]
-
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return RestaurantController.shared.cartDish.count
@@ -78,10 +64,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
                return cell
            }
     
-    
-    
     @IBOutlet var tableView: UITableView!
-    
     
     @IBAction func payNowButtonTapped(_ sender: UIButton) {
         
@@ -98,26 +81,23 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         
+        //when order is scheduled for later
         if scheduleLater.isSelected {
             let scheduledOrder = Order(id: "", status: "Scheduled", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: remainingTime, bookingDate: Date(), scheduledDate: datePickerDate, orderSend: false)
             
             RestaurantController.shared.appendOrder(order: scheduledOrder, index: 0)
-            
-            
             RestaurantController.shared.removeCartDish()
             tableView.reloadData()
             updateTotalPrice()
             updateOrderTime()
             scheduleLater.isSelected = false
-            
-            
-            
-        } else {
-            
-            let order = (Order(id: "" , status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: remainingTime, bookingDate: Date()))
-            
+        }
+        
+        //when order is placed for now
+        else {
+            let order = (Order(id: "" , status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: remainingTime, bookingDate: Date(), orderSend: true))
             RestaurantController.shared.appendOrder(order: order, index: 0)
-            
+            //Post call for server to send orders placed
             Task.init {
                 try await NetworkUtils.shared.submitOrder(order: order)
             }
@@ -125,9 +105,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.reloadData()
             updateTotalPrice()
             updateOrderTime()
-            
             scheduleOrderPlacedNotification()
-            
         }
     }
     
@@ -164,18 +142,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        updateTotalPrice()
-        updateOrderTime()
-        reloadTableAndUpdateStepperTags()
-        requestNotificationPermission()
-        UNUserNotificationCenter.current().delegate = self
-        // Do any additional setup after loading the view.
-    }
+    
     
     
     
@@ -183,18 +150,6 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         90
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    
-    
     
     @objc func stepperValueChanged(_ sender: UIStepper) {
         let row = sender.tag
@@ -204,7 +159,6 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         let quantity = Int(sender.value)
-        
         RestaurantController.shared.setCartDishQuantity(index: row, quantity: quantity)
         
         // Update the cell

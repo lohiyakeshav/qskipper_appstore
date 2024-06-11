@@ -11,19 +11,10 @@ class MyCartTableViewCell: UITableViewCell {
 
  
     @IBOutlet var dishQuantity: UILabel!
-    
-    
-    
     @IBOutlet var cartFoodImage: UIImageView!
-    
     @IBOutlet var cartDishName: UILabel!
-    
-
-    
     @IBOutlet var dishPrice: UILabel!
-    
     @IBOutlet var stepper: UIStepper!
-    
     
     var quantityChanged: ((Int) -> Void)?
     
@@ -39,7 +30,6 @@ class MyCartTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-   
     func configure(with item: Dish,index: Int) {
         cartFoodImage.image = item.image
            cartDishName.text = item.name

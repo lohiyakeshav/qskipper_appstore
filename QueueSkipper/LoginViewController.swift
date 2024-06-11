@@ -16,10 +16,7 @@ import FirebaseDatabaseInternal
 class LoginViewController: UIViewController {
     
     @IBOutlet var emailAddressTextField: UITextField!
-    
-    
     @IBOutlet var passwordTextField: UITextField!
-    
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: [], animations: {
@@ -32,15 +29,15 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
-                guard let password = passwordTextField.text, isValidPassword(password) else {
+        guard let password = passwordTextField.text, isValidPassword(password) else {
                     showAlert(message: "Password must be at least 6 characters long.")
                     return
                 }
                 
-                showLoading(true)
+        showLoading(true)
                 
-                Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                    self.showLoading(false)
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            self.showLoading(false)
                     
                     if let error = error {
                         self.showAlert(message: "Error logging in: \(error.localizedDescription)")

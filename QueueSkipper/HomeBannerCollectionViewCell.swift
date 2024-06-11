@@ -9,11 +9,8 @@ import UIKit
 
 class HomeBannerCollectionViewCell: UICollectionViewCell {
     
+    //Outlets to show TopPicks in HomeViewController
     @IBOutlet var imageView: UIImageView!
-    
     @IBOutlet var dishName: UILabel!
-    
-    
-
     
 }

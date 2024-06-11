@@ -13,11 +13,8 @@ import FirebaseDatabase
 class AuthViewController: UIViewController {
 
     @IBOutlet var userNameTextField: UITextField!
-    
     @IBOutlet var emailAddressTextField: UITextField!
-    
     @IBOutlet var passwordTextField: UITextField!
-    
     
     @IBAction func createAccountButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: [], animations: {

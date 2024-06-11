@@ -24,14 +24,10 @@ class OrdersTableViewCell: UITableViewCell {
     @IBOutlet var starButton5: UIButton!
     
     @IBOutlet var scheduledTimeLabel: UILabel!
-    
     @IBOutlet var expectedAtLabel: UILabel!
     
     
     var ratingChanged: ((Int) -> Void)?
-
-    
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,20 +45,13 @@ class OrdersTableViewCell: UITableViewCell {
         
         scheduledTimeLabel.isHidden = true
         expectedAtLabel.isHidden = true
-
         isHighlighted = false
-
         OrderIdLabel.text = "Order#\(order.id)"
         OrderStatus.setTitle(order.status, for: .normal)
         
-      
-        
-        
         if order.status == "Completed" {
-            
             backgroundColor = .systemGray5
             OrderStatus.backgroundColor = .systemGray6
-            
             OrderStatus.setTitleColor(.systemGreen, for: .normal)
             OrderStatus.setTitle("Re-Order", for: .normal)
             OrderStatus.configuration?.baseForegroundColor = .black
@@ -75,12 +64,13 @@ class OrdersTableViewCell: UITableViewCell {
                             updateStars(for: 0)
                         }
         }
+        
         else if order.status == "Preparing"{
             OrderStatus.backgroundColor = .systemGray6
                         OrderPrepTimeLabel.isHidden = false
                         OrderPrepTimeLabel.text = "\(calculatePrepTimeRemaining(from: order.bookingDate, prepTime: order.prepTimeRemaining)) minutes"
                         hideRatingStars()
-                    }
+        }
         else {
             scheduledTimeLabel.isHidden = false
             expectedAtLabel.isHidden = false

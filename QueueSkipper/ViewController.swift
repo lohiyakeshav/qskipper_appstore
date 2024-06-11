@@ -48,51 +48,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
             super.viewDidLoad()
             self.navigationController?.isNavigationBarHidden = true
-        //configureNavigationBarHidden(true)
+            //configureNavigationBarHidden(true)
             initialCenter = sliderView.center
-//        
-//        UserDefaults.standard.register(defaults: ["isLoggedIn": false])
-//                
-//                let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
-//                
-//                if isLoggedIn {
-//                    navigateToHomeScreen()
-//                } else {
-//                    navigateToLoginScreen()
-//                }
-        
-            
-//               
-//               let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
-//               
-//               if isLoggedIn {
-//                   let storyboard = UIStoryboard(name: "Restaurants", bundle: nil)
-//                   let mainVC = storyboard.instantiateViewController(withIdentifier: "restaurantVC")
-//
-//                   let navVC = UINavigationController()
-//                   navVC.pushViewController(mainVC, animated: true)
-//                  
-//
-//                   //window?.rootViewController = navVC
-//               } else {
-//                   
-//                   let storyboard = UIStoryboard(name: "auth", bundle: nil)
-//                   let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
-//                   let navVC = UINavigationController()
-//                   navVC.pushViewController(authVC, animated: true)
-//                 
-//                   //window?.rootViewController = navVC
-//                   
-//               }
-////               
-//            
-//           
-//        
-        
-        
-        
-            
-            
+
         }
         
         func resetSlider() {
@@ -143,13 +101,7 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "auth", bundle: nil)
                let viewController = storyboard.instantiateViewController(withIdentifier: "authVC") as! LoginViewController
                navigationController?.pushViewController(viewController, animated: true)
-               
-        //self.navigationController?.pushViewController(viewController, animated: true)
-        //show(viewController, sender: nil)
-      
-//
-//        let navVC = UINavigationController()
-//        navVC.pushViewController(viewController, animated: true)
+       
     }
 
 

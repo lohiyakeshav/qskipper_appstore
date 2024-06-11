@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-
-
+//Response Model to get Restaurants
 struct RestaurantsResponse: Codable {
     let restaurants: [Restaurant]
     
@@ -17,24 +16,6 @@ struct RestaurantsResponse: Codable {
         case restaurants = "Restaurant"
     }
 }
-
-struct TopPicks: Codable {
-    let allTopPicks: [Dish]
-    
-    enum CodingKeys: String, CodingKey {
-        case allTopPicks
-    }
-}
-
-struct DishResponse: Codable {
-    let products: [Dish]
-    
-    enum CodingKeys: String, CodingKey {
-        case products
-    }
-}
-
-
 struct RestaurantImage: Codable {
     let restaurant: Image
     
@@ -43,6 +24,23 @@ struct RestaurantImage: Codable {
     }
 }
 
+//Response Model to get Top Picks
+struct TopPicks: Codable {
+    let allTopPicks: [Dish]
+    
+    enum CodingKeys: String, CodingKey {
+        case allTopPicks
+    }
+}
+
+//Response Model to get Dish
+struct DishResponse: Codable {
+    let products: [Dish]
+    
+    enum CodingKeys: String, CodingKey {
+        case products
+    }
+}
 struct DishImage: Codable {
     let product_photo: Image
     

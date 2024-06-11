@@ -6,9 +6,9 @@
 //
 
 import Foundation
-
 import UIKit
 
+// Data Model for Restaurants
 struct Restaurant: Equatable, Codable{
     var restId: String = ""
     var restImage = UIImage(systemName: "photo.on.rectangle")
@@ -32,11 +32,13 @@ struct Restaurant: Equatable, Codable{
     }
     
 }
+
+// function to generate random ratings for Restaurants
 func generateRandomRating() -> Double {
     return Double.random(in: 3...5)
 }
 
-
+//Data Model for dishes
 struct Dish: Equatable, Codable {
     var dishId: String = ""
     var image = UIImage(systemName: "photo.on.rectangle")
@@ -68,6 +70,7 @@ struct Dish: Equatable, Codable {
    
 }
 
+// Data Model for orders being placed
 struct Order: Codable{
     var id: String
     var status: String
@@ -79,9 +82,7 @@ struct Order: Codable{
     var orderSend: Bool?
     var rating: Int?
     
-//    enum CodingKeys: String, CodingKey {
-//        case id
-//    }
+
 }
 
 

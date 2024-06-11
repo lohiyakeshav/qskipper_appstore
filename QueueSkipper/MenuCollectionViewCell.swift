@@ -2,21 +2,16 @@ import UIKit
 
 class MenuCollectionViewCell: UICollectionViewCell {
     
+    //Outlets to show dishes in MenuViewController
     @IBOutlet var dishImage: UIImageView!
     @IBOutlet var dishName: UILabel!
     @IBOutlet var dishDescription: UITextView!
     @IBOutlet var addToFavourites: UIButton!
     @IBOutlet var addToCart: UIButton!
     @IBOutlet var dishRating: UILabel!
-
     @IBOutlet var foodCategoryLabel: UILabel!
-    
     @IBOutlet var foodCategoryLabel2: UILabel!
-    
-    
-    
     @IBOutlet var dishPriceLabel: UILabel!
-    
     
     var dish = Dish()
     {
@@ -50,11 +45,6 @@ class MenuCollectionViewCell: UICollectionViewCell {
                     
                     NotificationCenter.default.post(name: .cartUpdated, object: nil)
                 })
-//        NotificationCenter.default.post(name: .cartUpdated, object: nil)
-        
-        
-        
-        
     }
     
     private func updateFavouriteButtonState() {
@@ -78,5 +68,4 @@ class MenuCollectionViewCell: UICollectionViewCell {
 
 extension Notification.Name {
     static let favouritesUpdated = Notification.Name("favouritesUpdated")
-    //static let cartUpdate = Notification.Name("cartUpdated")
 }

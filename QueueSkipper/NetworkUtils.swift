@@ -14,12 +14,10 @@ class NetworkUtils{
 
     static let shared = NetworkUtils()
     
-    
     enum NetworkUtilsError : Error, LocalizedError {
     case RestaurantNotFound
     case ImageNotFound
     case DishNotFound
-//    case restaurantNotFound
     }
     
     func fetchRestaurants() async throws -> [Restaurant]{
@@ -91,23 +89,6 @@ class NetworkUtils{
         print(image)
         return image
     }
-    
-//    func fetchDishImage(from url: URL) async throws -> UIImage {
-//        let (data, response) = try await URLSession.shared.data(from: url)
-//        
-//        if let string = String(data: data, encoding: .utf8){
-//            print(string)
-//        }
-//        
-//        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 202 else {
-//            throw NetworkUtilsError.ImageNotFound
-//        }
-//        let decoder = JSONDecoder()
-//        let restaurantImage = try decoder.decode(DishImage.self, from: data)
-//        print("chalagya")
-//        print(restaurantImage.product_photo.banner_photo64)
-//        return restaurantImage.product_photo.banner_photo64
-//    }
     
     func submitOrder(order: Order) async throws {
         let submitOrderURL = baseURl.appendingPathComponent("order-placed")
