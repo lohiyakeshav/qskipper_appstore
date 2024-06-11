@@ -23,6 +23,11 @@ class OrdersTableViewCell: UITableViewCell {
     @IBOutlet var starButton4: UIButton!
     @IBOutlet var starButton5: UIButton!
     
+    @IBOutlet var scheduledTimeLabel: UILabel!
+    
+    @IBOutlet var expectedAtLabel: UILabel!
+    
+    
     var ratingChanged: ((Int) -> Void)?
 
     
@@ -42,7 +47,8 @@ class OrdersTableViewCell: UITableViewCell {
     
     func configureCell(for order: Order) {
         
-       
+        scheduledTimeLabel.isHidden = true
+        expectedAtLabel.isHidden = true
 
         isHighlighted = false
 
@@ -76,6 +82,12 @@ class OrdersTableViewCell: UITableViewCell {
                         hideRatingStars()
                     }
         else {
+            scheduledTimeLabel.isHidden = false
+            expectedAtLabel.isHidden = false
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .short
+            scheduledTimeLabel.text = dateFormatter.string(from: order.scheduledDate!)
             OrderStatus.backgroundColor = .systemGray6
                         OrderPrepTimeLabel.isHidden = true
             var dishRemainingTime : Int = 0
@@ -86,6 +98,7 @@ class OrdersTableViewCell: UITableViewCell {
             }
             let remainingTime = Calendar.current.dateComponents([.minute], from: Date(), to: order.scheduledDate!).minute ?? 0
             if remainingTime <= dishRemainingTime && order.orderSend == false {
+                
                 Task.init {
                     try await NetworkUtils.shared.submitOrder(order: order)
                 }

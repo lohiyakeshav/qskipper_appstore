@@ -62,7 +62,9 @@ class MyOrdersTableViewController: UITableViewController {
         if orders[indexPath.row].status == "Scheduled" {
             let remainingTime = Calendar.current.dateComponents([.minute], from: Date(), to: orders[indexPath.row].scheduledDate!).minute ?? 0
             if remainingTime <= dishRemainingTime && orders[indexPath.row].orderSend == false {
+                orders[indexPath.row].orderSend = true
                 orders[indexPath.row].status = "Preparing"
+                orders[indexPath.row].bookingDate = Date()
             }
             
         }
