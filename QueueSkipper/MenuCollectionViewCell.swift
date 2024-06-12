@@ -5,7 +5,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
     //Outlets to show dishes in MenuViewController
     @IBOutlet var dishImage: UIImageView!
     @IBOutlet var dishName: UILabel!
-    @IBOutlet var dishDescription: UITextView!
+    @IBOutlet var dishDescription: UILabel!
     @IBOutlet var addToFavourites: UIButton!
     @IBOutlet var addToCart: UIButton!
     @IBOutlet var dishRating: UILabel!
