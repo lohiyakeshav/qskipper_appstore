@@ -108,7 +108,7 @@
 		05C93BD52BDF4CCB0035FA61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05E4608C2BF4D33600E0108C /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		05F8D0F02C05C90600581125 /* MyCart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyCart.storyboard; sourceTree = "<group>"; };
-		05F8D0F22C05C99600581125 /* MyCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyCartViewController.swift; path = ../MyCartViewController.swift; sourceTree = "<group>"; };
+		05F8D0F22C05C99600581125 /* MyCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCartViewController.swift; sourceTree = "<group>"; };
 		05F8D0F42C05CA7800581125 /* MyCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCartTableViewCell.swift; sourceTree = "<group>"; };
 		05F8D0F62C05CAAA00581125 /* PreOrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreOrderTableViewController.swift; sourceTree = "<group>"; };
 		05F8D0F82C05ECD700581125 /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
@@ -192,51 +192,91 @@
 				052289902C0AFD86009E86E9 /* GoogleService-Info.plist */,
 				05C93BC72BDF4CCA0035FA61 /* AppDelegate.swift */,
 				05C93BC92BDF4CCA0035FA61 /* SceneDelegate.swift */,
-				05E4608C2BF4D33600E0108C /* Restaurant.swift */,
-				054106F52C098926001739D8 /* RestaurantController.swift */,
-				05C7489A2C0835280047B4D5 /* ResponseModel.swift */,
-				05F8D0F82C05ECD700581125 /* NetworkUtils.swift */,
-				0522898E2C0AF902009E86E9 /* UserDataModel.swift */,
-				72DBDF402C107539008B4B83 /* UserController.swift */,
-				0522898A2C0AEF81009E86E9 /* auth.storyboard */,
-				0522898C2C0AF254009E86E9 /* AuthViewController.swift */,
-				052289CB2C0B0605009E86E9 /* LoginViewController.swift */,
-				72CD1C742C103279002A7DC0 /* Location.storyboard */,
-				72CD1C782C103361002A7DC0 /* LocationViewController.swift */,
-				72CD1C762C103341002A7DC0 /* AvailableLocationsViewController.swift */,
-				05C8CFB72BFB5FAF00279977 /* RestaurantDetails.xib */,
-				05C8CFB92BFB63F300279977 /* RestaurantDetailsCollectionViewCell.swift */,
-				A03CE6F22BFB92BB00803028 /* FeaturedItems.xib */,
-				A03CE6F42BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift */,
-				05C93BCD2BDF4CCA0035FA61 /* Main.storyboard */,
-				05C93BCB2BDF4CCA0035FA61 /* ViewController.swift */,
-				05AFDB8B2BF6105F00878F68 /* Restaurants.storyboard */,
-				A0D0AE572C04545D00129DEB /* HeaderCollectionReusableView.swift */,
-				A077D15A2C00AB8500A94830 /* HomeViewController.swift */,
-				0574093A2BF72316000303B2 /* MenuViewController.swift */,
-				05F8D0F02C05C90600581125 /* MyCart.storyboard */,
-				05F8D0F22C05C99600581125 /* MyCartViewController.swift */,
-				05F8D0F62C05CAAA00581125 /* PreOrderTableViewController.swift */,
-				05F8D0F42C05CA7800581125 /* MyCartTableViewCell.swift */,
-				A077D1582C00A88000A94830 /* HomeBanner.xib */,
-				A0D0AE532C043C1000129DEB /* HomeBannerCollectionViewCell.swift */,
-				A03CE6F62BFBA0E100803028 /* Menu.xib */,
-				A03CE6F82BFBA33900803028 /* MenuCollectionViewCell.swift */,
-				A0D0AE592C04643B00129DEB /* RestaurantList.xib */,
-				A0D0AE5B2C0465A000129DEB /* RestaurantListCollectionViewCell.swift */,
-				05AFDB8D2BF6115C00878F68 /* Profile.storyboard */,
-				726507E72BFBB8BE00D579FF /* ProfileInfoTableViewCell.swift */,
-				72B54F782BFB65610050DD7F /* ProfileTableViewController.swift */,
-				05AFDB892BF6100A00878F68 /* MyOrders.storyboard */,
-				0598D6F62BF71AA400425F46 /* OrdersTableViewCell.swift */,
-				0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */,
-				05AFDB872BF60FB500878F68 /* Favourites.storyboard */,
-				05AFDB932BF616A700878F68 /* FavouritesViewController.swift */,
+				72678F602C197FA600C0DBC3 /* Controller */,
+				72678F5F2C197F9900C0DBC3 /* DataModel */,
+				72678F612C197FCB00C0DBC3 /* Utils */,
+				72678F632C19808B00C0DBC3 /* Screens */,
+				72678F642C19810600C0DBC3 /* ViewControllers */,
 				05C93BD02BDF4CCB0035FA61 /* Assets.xcassets */,
 				05C93BD52BDF4CCB0035FA61 /* Info.plist */,
 				72255ACC2BFB575500CDFD89 /* QueueSkipper-Bridging-Header.h */,
 			);
 			path = QueueSkipper;
+			sourceTree = "<group>";
+		};
+		72678F5F2C197F9900C0DBC3 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				05E4608C2BF4D33600E0108C /* Restaurant.swift */,
+				05C7489A2C0835280047B4D5 /* ResponseModel.swift */,
+				0522898E2C0AF902009E86E9 /* UserDataModel.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		72678F602C197FA600C0DBC3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				054106F52C098926001739D8 /* RestaurantController.swift */,
+				72DBDF402C107539008B4B83 /* UserController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		72678F612C197FCB00C0DBC3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				05F8D0F82C05ECD700581125 /* NetworkUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		72678F632C19808B00C0DBC3 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				0522898A2C0AEF81009E86E9 /* auth.storyboard */,
+				72CD1C742C103279002A7DC0 /* Location.storyboard */,
+				A03CE6F22BFB92BB00803028 /* FeaturedItems.xib */,
+				05C93BCD2BDF4CCA0035FA61 /* Main.storyboard */,
+				05AFDB8B2BF6105F00878F68 /* Restaurants.storyboard */,
+				05F8D0F02C05C90600581125 /* MyCart.storyboard */,
+				A077D1582C00A88000A94830 /* HomeBanner.xib */,
+				A03CE6F62BFBA0E100803028 /* Menu.xib */,
+				A0D0AE592C04643B00129DEB /* RestaurantList.xib */,
+				05AFDB8D2BF6115C00878F68 /* Profile.storyboard */,
+				05AFDB892BF6100A00878F68 /* MyOrders.storyboard */,
+				05AFDB872BF60FB500878F68 /* Favourites.storyboard */,
+				05C8CFB72BFB5FAF00279977 /* RestaurantDetails.xib */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		72678F642C19810600C0DBC3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				72CD1C762C103341002A7DC0 /* AvailableLocationsViewController.swift */,
+				05C8CFB92BFB63F300279977 /* RestaurantDetailsCollectionViewCell.swift */,
+				A03CE6F42BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift */,
+				0522898C2C0AF254009E86E9 /* AuthViewController.swift */,
+				052289CB2C0B0605009E86E9 /* LoginViewController.swift */,
+				72CD1C782C103361002A7DC0 /* LocationViewController.swift */,
+				05C93BCB2BDF4CCA0035FA61 /* ViewController.swift */,
+				A0D0AE572C04545D00129DEB /* HeaderCollectionReusableView.swift */,
+				A077D15A2C00AB8500A94830 /* HomeViewController.swift */,
+				0574093A2BF72316000303B2 /* MenuViewController.swift */,
+				05F8D0F22C05C99600581125 /* MyCartViewController.swift */,
+				05F8D0F62C05CAAA00581125 /* PreOrderTableViewController.swift */,
+				05F8D0F42C05CA7800581125 /* MyCartTableViewCell.swift */,
+				A0D0AE532C043C1000129DEB /* HomeBannerCollectionViewCell.swift */,
+				A03CE6F82BFBA33900803028 /* MenuCollectionViewCell.swift */,
+				A0D0AE5B2C0465A000129DEB /* RestaurantListCollectionViewCell.swift */,
+				726507E72BFBB8BE00D579FF /* ProfileInfoTableViewCell.swift */,
+				72B54F782BFB65610050DD7F /* ProfileTableViewController.swift */,
+				0598D6F62BF71AA400425F46 /* OrdersTableViewCell.swift */,
+				0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */,
+				05AFDB932BF616A700878F68 /* FavouritesViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
