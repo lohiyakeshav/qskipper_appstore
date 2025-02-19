@@ -3,7 +3,7 @@
 //  QueueSkipper
 //
 //  Created by Batch-2 on 29/04/24.
-//
+
 
 import UIKit
 
@@ -23,13 +23,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         
-//        guard let _ = (scene as? UIWindowScene) else { return }
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//               let mainVC = storyboard.instantiateViewController(withIdentifier: "mainVC")
-//
-//               let navVC = UINavigationController()
-//               navVC.pushViewController(mainVC, animated: true)
-//               window?.rootViewController = navVC
+        guard let _ = (scene as? UIWindowScene) else { return }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+               let mainVC = storyboard.instantiateViewController(withIdentifier: "mainVC")
+
+               let navVC = UINavigationController()
+               navVC.pushViewController(mainVC, animated: true)
+               window?.rootViewController = navVC
                
         
         
@@ -65,4 +65,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
+
+//import UIKit
+//import SwiftUI
+//
+//class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+//    var window: UIWindow?
+//
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        UserDefaults.standard.register(defaults: ["isLoggedIn": false])
+//
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        
+//        // Create the SwiftUI view
+//        let contentView = WelcomeView() // Make sure this matches the SwiftUI view name
+//
+//        // Use a UIHostingController to wrap the SwiftUI view
+//        let window = UIWindow(windowScene: windowScene)
+//        window.rootViewController = UIHostingController(rootView: contentView)
+//        self.window = window
+//        window.makeKeyAndVisible()
+//    }
+//}
+
+//import UIKit
+//import SwiftUI
+//
+//class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+//    var window: UIWindow?
+//
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let initialViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+//        
+//        let window = UIWindow(windowScene: windowScene)
+//        window.rootViewController = initialViewController
+//        self.window = window
+//        window.makeKeyAndVisible()
+//    }
+//}
+
 

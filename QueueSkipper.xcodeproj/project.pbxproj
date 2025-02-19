@@ -63,7 +63,12 @@
 		05F8D0F52C05CA7800581125 /* MyCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F8D0F42C05CA7800581125 /* MyCartTableViewCell.swift */; };
 		05F8D0F72C05CAAA00581125 /* PreOrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F8D0F62C05CAAA00581125 /* PreOrderTableViewController.swift */; };
 		05F8D0F92C05ECD700581125 /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F8D0F82C05ECD700581125 /* NetworkUtils.swift */; };
+		721D5D342D5788F10083DBBF /* login.gif in Resources */ = {isa = PBXBuildFile; fileRef = 721D5D332D5788F10083DBBF /* login.gif */; };
+		721D5D362D5789010083DBBF /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D5D352D5789010083DBBF /* WelcomeView.swift */; };
 		726507E82BFBB8BE00D579FF /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726507E72BFBB8BE00D579FF /* ProfileInfoTableViewCell.swift */; };
+		7271800D2D579CC000F88D77 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7271800C2D579CC000F88D77 /* SignInView.swift */; };
+		7271800F2D57A62700F88D77 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7271800E2D57A62700F88D77 /* RegisterView.swift */; };
+		72A6252E2D663EE300FE34C8 /* LocationViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A6252D2D663EE300FE34C8 /* LocationViewWrapper.swift */; };
 		72B54F792BFB65610050DD7F /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B54F782BFB65610050DD7F /* ProfileTableViewController.swift */; };
 		72CD1C752C103279002A7DC0 /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72CD1C742C103279002A7DC0 /* Location.storyboard */; };
 		72CD1C772C103341002A7DC0 /* AvailableLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CD1C762C103341002A7DC0 /* AvailableLocationsViewController.swift */; };
@@ -112,8 +117,13 @@
 		05F8D0F42C05CA7800581125 /* MyCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCartTableViewCell.swift; sourceTree = "<group>"; };
 		05F8D0F62C05CAAA00581125 /* PreOrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreOrderTableViewController.swift; sourceTree = "<group>"; };
 		05F8D0F82C05ECD700581125 /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
+		721D5D332D5788F10083DBBF /* login.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = login.gif; sourceTree = "<group>"; };
+		721D5D352D5789010083DBBF /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		72255ACC2BFB575500CDFD89 /* QueueSkipper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QueueSkipper-Bridging-Header.h"; sourceTree = "<group>"; };
 		726507E72BFBB8BE00D579FF /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
+		7271800C2D579CC000F88D77 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		7271800E2D57A62700F88D77 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		72A6252D2D663EE300FE34C8 /* LocationViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewWrapper.swift; sourceTree = "<group>"; };
 		72B54F782BFB65610050DD7F /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		72CD1C742C103279002A7DC0 /* Location.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
 		72CD1C762C103341002A7DC0 /* AvailableLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableLocationsViewController.swift; sourceTree = "<group>"; };
@@ -255,11 +265,15 @@
 			isa = PBXGroup;
 			children = (
 				72CD1C762C103341002A7DC0 /* AvailableLocationsViewController.swift */,
+				721D5D352D5789010083DBBF /* WelcomeView.swift */,
+				7271800E2D57A62700F88D77 /* RegisterView.swift */,
+				7271800C2D579CC000F88D77 /* SignInView.swift */,
 				05C8CFB92BFB63F300279977 /* RestaurantDetailsCollectionViewCell.swift */,
 				A03CE6F42BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift */,
 				0522898C2C0AF254009E86E9 /* AuthViewController.swift */,
 				052289CB2C0B0605009E86E9 /* LoginViewController.swift */,
 				72CD1C782C103361002A7DC0 /* LocationViewController.swift */,
+				72A6252D2D663EE300FE34C8 /* LocationViewWrapper.swift */,
 				05C93BCB2BDF4CCA0035FA61 /* ViewController.swift */,
 				A0D0AE572C04545D00129DEB /* HeaderCollectionReusableView.swift */,
 				A077D15A2C00AB8500A94830 /* HomeViewController.swift */,
@@ -275,6 +289,7 @@
 				0598D6F62BF71AA400425F46 /* OrdersTableViewCell.swift */,
 				0598D6F22BF716CE00425F46 /* MyOrdersTableViewController.swift */,
 				05AFDB932BF616A700878F68 /* FavouritesViewController.swift */,
+				721D5D332D5788F10083DBBF /* login.gif */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -383,6 +398,7 @@
 				05C93BCF2BDF4CCA0035FA61 /* Main.storyboard in Resources */,
 				A03CE6F72BFBA0E100803028 /* Menu.xib in Resources */,
 				05AFDB8C2BF6105F00878F68 /* Restaurants.storyboard in Resources */,
+				721D5D342D5788F10083DBBF /* login.gif in Resources */,
 				05AFDB882BF60FB500878F68 /* Favourites.storyboard in Resources */,
 				05AFDB8A2BF6100A00878F68 /* MyOrders.storyboard in Resources */,
 				05C8CFB82BFB5FAF00279977 /* RestaurantDetails.xib in Resources */,
@@ -401,6 +417,7 @@
 				0574093B2BF72316000303B2 /* MenuViewController.swift in Sources */,
 				05C93BC82BDF4CCA0035FA61 /* AppDelegate.swift in Sources */,
 				0598D6F32BF716CE00425F46 /* MyOrdersTableViewController.swift in Sources */,
+				72A6252E2D663EE300FE34C8 /* LocationViewWrapper.swift in Sources */,
 				A0D0AE542C043C1000129DEB /* HomeBannerCollectionViewCell.swift in Sources */,
 				726507E82BFBB8BE00D579FF /* ProfileInfoTableViewCell.swift in Sources */,
 				A077D15B2C00AB8500A94830 /* HomeViewController.swift in Sources */,
@@ -409,6 +426,7 @@
 				A0D0AE582C04545D00129DEB /* HeaderCollectionReusableView.swift in Sources */,
 				A03CE6F52BFB95ED00803028 /* FeaturedItemsCollectionViewCell.swift in Sources */,
 				05C8CFBA2BFB63F300279977 /* RestaurantDetailsCollectionViewCell.swift in Sources */,
+				7271800F2D57A62700F88D77 /* RegisterView.swift in Sources */,
 				05AFDB942BF616A700878F68 /* FavouritesViewController.swift in Sources */,
 				05F8D0F32C05C99600581125 /* MyCartViewController.swift in Sources */,
 				054106F62C098926001739D8 /* RestaurantController.swift in Sources */,
@@ -421,10 +439,12 @@
 				A0D0AE5C2C0465A000129DEB /* RestaurantListCollectionViewCell.swift in Sources */,
 				72CD1C772C103341002A7DC0 /* AvailableLocationsViewController.swift in Sources */,
 				A03CE6F92BFBA33900803028 /* MenuCollectionViewCell.swift in Sources */,
+				721D5D362D5789010083DBBF /* WelcomeView.swift in Sources */,
 				0522898F2C0AF902009E86E9 /* UserDataModel.swift in Sources */,
 				72CD1C792C103361002A7DC0 /* LocationViewController.swift in Sources */,
 				05C7489B2C0835280047B4D5 /* ResponseModel.swift in Sources */,
 				05F8D0F92C05ECD700581125 /* NetworkUtils.swift in Sources */,
+				7271800D2D579CC000F88D77 /* SignInView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,7 +590,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 57D58UHB8R;
+				DEVELOPMENT_TEAM = P533CX5FTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueueSkipper/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is required to show nearby restaurants that provide takeaway of food.";
@@ -604,7 +624,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 57D58UHB8R;
+				DEVELOPMENT_TEAM = P533CX5FTN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueueSkipper/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is required to show nearby restaurants that provide takeaway of food.";

@@ -27,6 +27,10 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
+        
+        self.edgesForExtendedLayout = []
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+
     }
 
     func setupAvailableLocations() {

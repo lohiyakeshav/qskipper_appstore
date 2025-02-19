@@ -8,6 +8,7 @@
 //my comment
 
 import UIKit
+import SwiftUI
 
 class ViewController: UIViewController {
     
@@ -64,9 +65,13 @@ class ViewController: UIViewController {
             print("Unlocked!")
             
             if UserController.shared.isLoggedIn() {
+                print("Location")
                 navigateToLocation()
+                
             } else {
+                print("Welcome")
                 navigateToLoginScreen()
+                
             }
                
             //self.navigateToLoginScreen()
@@ -88,21 +93,25 @@ class ViewController: UIViewController {
            present(navVC, animated: true, completion: nil)
        }
        
-       func navigateToLoginScreen() {
-           let storyboard = UIStoryboard(name: "auth", bundle: nil)
-           let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
-           let navVC = UINavigationController(rootViewController: authVC)
-           navVC.modalPresentationStyle = .fullScreen
-           present(navVC, animated: true, completion: nil)
-       }
-    
-    
-    func navigateToRestaurantScreen() {
-        let storyboard = UIStoryboard(name: "auth", bundle: nil)
-               let viewController = storyboard.instantiateViewController(withIdentifier: "authVC") as! LoginViewController
-               navigationController?.pushViewController(viewController, animated: true)
-       
+   
+
+    func navigateToLoginScreen() {
+        let welcomeView = WelcomeView() // Your SwiftUI View
+        let hostingController = UIHostingController(rootView: welcomeView)
+        
+        // Push instead of present
+        navigationController?.pushViewController(hostingController, animated: true)
     }
+
+
+    
+    
+    //func navigateToRestaurantScreen() {
+//        let storyboard = UIStoryboard(name: "auth", bundle: nil)
+//               let viewController = storyboard.instantiateViewController(withIdentifier: "authVC") as! LoginViewController
+//               navigationController?.pushViewController(viewController, animated: true)
+//       
+//    }
 
 
     }

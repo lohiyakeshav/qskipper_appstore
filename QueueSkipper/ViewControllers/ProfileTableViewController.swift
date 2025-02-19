@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ProfileTableViewController: UITableViewController {
 
@@ -93,12 +94,18 @@ class ProfileTableViewController: UITableViewController {
         present(navVC, animated: true, completion: nil)
     }
     
+//    func navigateToLoginScreen() {
+//        let storyboard = UIStoryboard(name: "auth", bundle: nil)
+//        let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
+//        let navVC = UINavigationController(rootViewController: authVC)
+//        navVC.modalPresentationStyle = .fullScreen
+//        present(navVC, animated: true, completion: nil)
+//    }
     func navigateToLoginScreen() {
-        let storyboard = UIStoryboard(name: "auth", bundle: nil)
-        let authVC = storyboard.instantiateViewController(withIdentifier: "authVC")
-        let navVC = UINavigationController(rootViewController: authVC)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true, completion: nil)
+        let welcomeView = WelcomeView() // Your SwiftUI View
+        let hostingController = UIHostingController(rootView: welcomeView)
+        
+        // Push instead of present
+        navigationController?.pushViewController(hostingController, animated: true)
     }
-    
 }
