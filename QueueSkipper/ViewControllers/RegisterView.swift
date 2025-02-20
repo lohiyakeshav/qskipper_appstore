@@ -7,6 +7,7 @@ struct RegisterView: View {
     @State private var isOTPReceived: Bool = false
     @State private var isRegistered: Bool = false
     @State private var errorMessage: String?
+    @State private var showLocationView = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -108,6 +109,10 @@ struct RegisterView: View {
                            startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
         )
+        .fullScreenCover(isPresented: $showLocationView) {
+            LocationViewControllerWrapper() // Present the wrapped `LocationViewController`
+        }
+        
     }
 
     // MARK: - API Calls
@@ -131,20 +136,21 @@ struct RegisterView: View {
                 let userID = try await NetworkUtils.shared.verifyUser(email: email, otp: otp)
                 print("User Registered with ID: \(userID)")
                 isRegistered = true
-                navigateToMenuViewController()
+                showLocationView = true 
             } catch {
                 errorMessage = "Invalid OTP. Please try again."
             }
         }
     }
 
-    func navigateToMenuViewController() {
-            if let window = UIApplication.shared.windows.first {
-                let menuViewController = MenuViewController()
-                window.rootViewController = UINavigationController(rootViewController: menuViewController)
-                window.makeKeyAndVisible()
-            }
-        }
+
+//    func navigateToMenuViewController() {
+//            if let window = UIApplication.shared.windows.first {
+//                let menuViewController = MenuViewController()
+//                window.rootViewController = UINavigationController(rootViewController: menuViewController)
+//                window.makeKeyAndVisible()
+//            }
+//        }
     }
 
 #Preview {
