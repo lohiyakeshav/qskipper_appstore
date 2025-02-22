@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         Task {
             do {
                 let (username, userId) = try await NetworkUtils.shared.loginUser(email: email)
-                let user = User(userName: username, emailAddress: email, password: password)
+                let user = User(userId: userId, userName: username, emailAddress: email, password: password)
                 
                 UserController.shared.loginUser(user: user)
                 navigateToHomeScreen()

@@ -86,6 +86,27 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let scheduledOrder = Order(id: "", status: "Scheduled", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: remainingTime, bookingDate: Date(), scheduledDate: datePickerDate, orderSend: false)
             
             RestaurantController.shared.appendOrder(order: scheduledOrder, index: 0)
+            Task {
+                    do {
+                        if let userId = UserController.shared.getCurrentUserId() {
+                            print("User ID: \(userId)") // Debugging Step
+
+                            let jsonData = try JSONEncoder().encode(scheduledOrder)
+                            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                                print("Scheduled Order JSON: \(jsonString)") // Debugging Step
+                            }
+
+                            try await NetworkUtils.shared.submitOrder(order: scheduledOrder)
+           
+                            
+                            print("✅ Scheduled Order Placed Successfully")
+                        } else {
+                            print("Error: User ID not found")
+                        }
+                    } catch {
+                        print("Error: \(error.localizedDescription)")
+                    }
+                }
             RestaurantController.shared.removeCartDish()
             tableView.reloadData()
             updateTotalPrice()
@@ -98,9 +119,27 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let order = (Order(id: "" , status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: remainingTime, bookingDate: Date(), orderSend: true))
             RestaurantController.shared.appendOrder(order: order, index: 0)
             //Post call for server to send orders placed
-            Task.init {
-                try await NetworkUtils.shared.submitOrder(order: order)
-            }
+            Task {
+                    do {
+                        if let userId = UserController.shared.getCurrentUserId() {
+                            print("User ID: \(userId)") // Debugging Step
+
+                            let jsonData = try JSONEncoder().encode(order)
+                            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                                print("Order JSON: \(jsonString)") // Debugging Step
+                            }
+
+                            try await NetworkUtils.shared.submitOrder(order: order)
+                            
+                        } else {
+                            print("Error: User ID not found")
+                        }
+                    } catch {
+                        print("Error: \(error.localizedDescription)")
+                    }
+                }
+
+
             RestaurantController.shared.removeCartDish()
             tableView.reloadData()
             updateTotalPrice()

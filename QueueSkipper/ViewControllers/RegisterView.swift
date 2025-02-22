@@ -135,6 +135,14 @@ struct RegisterView: View {
             do {
                 let userID = try await NetworkUtils.shared.verifyUser(email: email, otp: otp)
                 print("User Registered with ID: \(userID)")
+                
+                let user = User(userId: userID,
+                                         userName: username,
+                                         emailAddress: email,
+                                         password: "")
+                           
+                           // Store user in UserController
+                           UserController.shared.registerUser(user: user)
                 isRegistered = true
                 showLocationView = true 
             } catch {

@@ -8,21 +8,28 @@ class UserController {
     var credential: [User] {
         return _credential
     }
+    
+    func getCurrentUserId() -> String? {
+            return UserDefaults.standard.string(forKey: "currentUserId")
+        }
 
     func registerUser(user: User) {
         _credential.append(user)
         saveUsers()
         UserDefaults.standard.set(true, forKey: "isLoggedIn")
+        UserDefaults.standard.set(user.userId, forKey: "currentUserId")
     }
 
     func loginUser(user: User) {
         _credential = [user]
         saveUsers()
         UserDefaults.standard.set(true, forKey: "isLoggedIn")
+        UserDefaults.standard.set(user.userId, forKey: "currentUserId")
     }
 
     func logoutUser() {
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
+        UserDefaults.standard.removeObject(forKey: "currentUserId")
         _credential.removeAll()
         saveUsers()
     }

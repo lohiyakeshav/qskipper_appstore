@@ -123,6 +123,14 @@ struct SignInView: View {
             do {
                 let userID = try await NetworkUtils.shared.verifyLoginUser(email: email, otp: otp)
                 print("User Signed In with ID: \(userID)")
+                
+                let user = User(userId: userID,
+                                          userName: email.components(separatedBy: "@")[0],
+                                          emailAddress: email,
+                                          password: "")
+                            
+                            // Store user in UserController
+                            UserController.shared.loginUser(user: user)
                 isLoggedIn = true
                 showLocationView = true // Trigger navigation
             } catch {
