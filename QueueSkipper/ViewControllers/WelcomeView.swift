@@ -4,7 +4,7 @@ struct WelcomeView: View {
     var body: some View {
         NavigationView { // Wrap in NavigationView
             VStack {
-                Spacer(minLength: 20)
+//                Spacer(minLength: 20)
 
                 // Image instead of GIF
                 Image("login")
@@ -12,7 +12,7 @@ struct WelcomeView: View {
                     .scaledToFill()
                     .frame(width: 300, height: 250)
                     .padding(.top, 20)
-                    .padding(80)
+                    .padding(50)
                     .blendMode(.multiply)
 
                 // Headline Text
@@ -21,7 +21,7 @@ struct WelcomeView: View {
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(red: 0.0, green: 0.6, blue: 0.2))
-                    .padding(.top, 20)
+                    .padding(.top, 10)
 
                 // Subtitle Text
                 Text("Because great food shouldn’t come with long lines!")
@@ -30,6 +30,7 @@ struct WelcomeView: View {
                     .multilineTextAlignment(.center)
                     .frame(width: 250) // Adjust width to force wrapping
                     .padding(.horizontal, 30)
+                    .padding(.top, 10)
 
                 Spacer()
 
@@ -44,7 +45,7 @@ struct WelcomeView: View {
                             .cornerRadius(12)
                     }
 
-                    NavigationLink(destination: RegisterView()) { // Navigate to RegisterView
+                    NavigationLink(destination: RegisterView()) { // sNavigate to RegisterView
                         Text("Register")
                             .fontWeight(.bold)
                             .frame(width: 140, height: 50)

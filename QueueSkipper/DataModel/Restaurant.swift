@@ -44,7 +44,7 @@ struct Dish: Equatable, Codable {
     var image = UIImage(systemName: "photo.on.rectangle")
     var name: String = ""
     var description: String = ""
-    var price: Int = 0
+    var price: Double = 0.0
     var rating: Double = 0.0
     var foodType: String = ""
     //var favourites: Bool = false
@@ -70,8 +70,23 @@ struct Dish: Equatable, Codable {
    
 }
 
+//struct OrderItem: Codable {
+//    let productId: String
+//    let name: String
+//    let price: Double
+//    let quantity: Int
+//    
+//    enum CodingKeys: String, CodingKey {
+//        case productId
+//        case name
+//        case price
+//        case quantity
+//    }
+//}
+
+
 // Data Model for orders being placed
-struct Order: Codable{
+struct Order: Codable {
     var id: String
     var status: String
     var price: Double
@@ -82,7 +97,24 @@ struct Order: Codable{
     var orderSend: Bool?
     var rating: Int?
     
-
+    // Computed property for restaurantId (should not be in CodingKeys)
+    var restaurantId: String {
+        return items.first?.restaurant ?? ""
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case status
+        case price = "totalAmount"
+        case items
+        case prepTimeRemaining = "cookTime"
+        case bookingDate = "Time"  // Fixed key mapping
+    }
+    
+    
+   
+    
+    
+    
+    
 }
-
-

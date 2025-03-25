@@ -85,7 +85,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if scheduleLater.isSelected {
             let scheduledOrder = Order(id: "", status: "Scheduled", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: remainingTime, bookingDate: Date(), scheduledDate: datePickerDate, orderSend: false)
             
-            RestaurantController.shared.appendOrder(order: scheduledOrder, index: 0)
+            RestaurantController.shared.appendOrder(order: scheduledOrder)
             Task {
                     do {
                         if let userId = UserController.shared.getCurrentUserId() {
@@ -117,7 +117,7 @@ class MyCartViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //when order is placed for now
         else {
             let order = (Order(id: "" , status: "Preparing", price: ordertotalPrice, items: RestaurantController.shared.cartDish, prepTimeRemaining: remainingTime, bookingDate: Date(), orderSend: true))
-            RestaurantController.shared.appendOrder(order: order, index: 0)
+            RestaurantController.shared.appendOrder(order: order)
             //Post call for server to send orders placed
             Task {
                     do {

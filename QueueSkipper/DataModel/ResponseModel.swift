@@ -34,3 +34,12 @@ struct DishResponse: Codable {
         case products
     }
 }
+
+// Response Model to get Orders
+struct OrderResponse: Codable {
+    let order: [Order]
+    enum CodingKeys: String, CodingKey {
+        case order = "all_orders"
+    }
+}
+

@@ -18,6 +18,8 @@ class UserController {
         saveUsers()
         UserDefaults.standard.set(true, forKey: "isLoggedIn")
         UserDefaults.standard.set(user.userId, forKey: "currentUserId")
+        print("Registered: \(UserDefaults.standard.bool(forKey: "isLoggedIn"))")
+        
     }
 
     func loginUser(user: User) {
@@ -25,6 +27,7 @@ class UserController {
         saveUsers()
         UserDefaults.standard.set(true, forKey: "isLoggedIn")
         UserDefaults.standard.set(user.userId, forKey: "currentUserId")
+        print("Logged in: \(UserDefaults.standard.bool(forKey: "isLoggedIn"))")
     }
 
     func logoutUser() {

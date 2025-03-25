@@ -590,7 +590,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P533CX5FTN;
+				DEVELOPMENT_TEAM = TSA26XPUZB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueueSkipper/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is required to show nearby restaurants that provide takeaway of food.";
@@ -624,7 +624,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P533CX5FTN;
+				DEVELOPMENT_TEAM = TSA26XPUZB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueueSkipper/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is required to show nearby restaurants that provide takeaway of food.";

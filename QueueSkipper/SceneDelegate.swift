@@ -6,6 +6,7 @@
 
 
 import UIKit
+import SwiftUI
 
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -23,16 +24,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         
-        guard let _ = (scene as? UIWindowScene) else { return }
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-               let mainVC = storyboard.instantiateViewController(withIdentifier: "mainVC")
-
-               let navVC = UINavigationController()
-               navVC.pushViewController(mainVC, animated: true)
-               window?.rootViewController = navVC
-               
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        // Create window
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
         
+        // Check if user is logged in using UserController
+        if UserController.shared.isLoggedIn() {
+            // User is logged in, navigate to LocationView
+            window.rootViewController = UIHostingController(rootView: LocationViewControllerWrapper())
+        } else {
+            // User is not logged in, navigate to WelcomeView
+            window.rootViewController = UIHostingController(rootView: NavigationView {
+                WelcomeView()
+            })
+        }
+        
+        window.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -57,12 +66,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to undo the changes made on entering the background.
     }
 
-    func sceneDidEnterBackground(_ scene: UIScene) {
+    func sceneDidEnterBackgrouxnd(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
 
+    func changeRootViewController(_ viewController: UIViewController, animated: Bool = true) {
+        guard let window = self.window else { return }
+        
+        if animated {
+            UIView.transition(with: window,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                window.rootViewController = viewController
+                              })
+        } else {
+            window.rootViewController = viewController
+        }
+    }
 
 }
 
@@ -76,7 +99,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        UserDefaults.standard.register(defaults: ["isLoggedIn": false])
 //
 //        guard let windowScene = (scene as? UIWindowScene) else { return }
-//        
+//
 //        // Create the SwiftUI view
 //        let contentView = WelcomeView() // Make sure this matches the SwiftUI view name
 //
@@ -96,10 +119,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //
 //    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 //        guard let windowScene = (scene as? UIWindowScene) else { return }
-//        
+//
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let initialViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-//        
+//
 //        let window = UIWindow(windowScene: windowScene)
 //        window.rootViewController = initialViewController
 //        self.window = window
